@@ -1,0 +1,54 @@
+import psycopg2
+from google.protobuf.json_format import MessageToJson
+
+from CommonCode.intigerToStringIdConvertor import IntigerToStringIdConverter
+from Database.databaseConnection import DatabaseConnection
+from Database.databaseHelper import DatabaseHelper
+from Enums.databaseTables import Tables
+
+
+class QueryExecuter:
+    m_helper = DatabaseHelper()
+    m_dbConnection = DatabaseConnection()
+    m_encoder = IntigerToStringIdConverter()
+    id = None
+
+    def create(self, builder, table):
+        try:
+            query = self.m_helper.getInsertQuery(table=table, data=builder)
+            conn = self.m_dbConnection.getConnection()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            if (cursor.rowcount == 1):
+                conn.commit()
+                conn.close()
+                conn.close()
+                return MessageToJson(builder)
+            else:
+                conn.commit()
+                conn.close()
+                conn.close()
+                return None
+        except (Exception, psycopg2.Error) as error:
+            print("Error in update operation", error)
+
+    def get(self, id, table):
+        try:
+            query = self.m_helper.getRowDataQuery(table=table, id=id)
+            conn = self.m_dbConnection.getConnection()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            if (cursor.rowcount == 1):
+                row=cursor.fetchall()
+                data = row[0]
+                conn.commit()
+                conn.close()
+                cursor.close()
+                return data[0]
+            else:
+                conn.commit()
+                conn.close()
+                cursor.close()
+                return None
+        except (Exception, psycopg2.Error) as error:
+            print("Error in update operation", error)

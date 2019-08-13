@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "entity.proto";
+
+message WorkerPb {
+  EntityPb dbInfo= 1;
+}
