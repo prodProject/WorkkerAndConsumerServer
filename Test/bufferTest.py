@@ -2,14 +2,16 @@ from google.protobuf import json_format
 
 from Services.workerService import WorkerService
 from protobuff import worker_pb2
+from protobuff.entity_pb2 import StatusEnum
 from protobuff.worker_pb2 import WorkerPb
 
 service = WorkerService()
 # json = ConvertPbToJSON()
 builder = service.get(id="8")
-#builder.dbInfo.lifeTime = StatusEnum.ACTIVE
+builder.dbInfo.lifeTime = StatusEnum.DELETED
 # print(json.converPbtojsonString(builder=builder))
-print(builder)
+print(service.update(id=builder.dbInfo.id,builder=builder))
+#print(service.create(builder=builder))
 
 '''pbjson = MessageToJson(builder)
 stringjson = str(json.dumps(pbjson))

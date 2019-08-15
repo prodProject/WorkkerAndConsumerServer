@@ -30,3 +30,7 @@ class DatabaseHelper:
 
     def getRowDataQuery(self, table, id):
         return self.BASE_RAW_DATA_QUERY + ' "' + table + '"' + "WHERE dbid = " + self.getSingleQuotedString(id) + ";"
+
+    def updateRawDataEntityQuery(self, id,newPb,table):
+        return self.BASE_UPDATE_QUERY + ' "' + table + '"' + " SET raw_data = " + self.m_pbConvertor.converPbtojsonString(
+            builder=newPb) + " WHERE dbid = "+ self.getSingleQuotedString(id)+" ;"

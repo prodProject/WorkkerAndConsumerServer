@@ -32,6 +32,25 @@ class QueryExecuter:
         except (Exception, psycopg2.Error) as error:
             print("Error in update operation", error)
 
+    def update(self, id, builder, table):
+        try:
+            query = self.m_helper.updateRawDataEntityQuery(id=id,newPb=builder,table=table)
+            conn = self.m_dbConnection.getConnection()
+            cursor = conn.cursor()
+            cursor.execute(str(query))
+            if (cursor.rowcount > 0):
+                conn.commit()
+                conn.close()
+                cursor.close()
+                return MessageToJson(builder)
+            else:
+                conn.commit()
+                conn.close()
+                cursor.close()
+                return None
+        except (Exception, psycopg2.Error) as error:
+            print("Error in update operation", error)
+
     def get(self, id, table):
         try:
             query = self.m_helper.getRowDataQuery(table=table, id=id)

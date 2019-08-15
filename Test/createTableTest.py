@@ -7,7 +7,8 @@ database = DatabaseConnection()
 con = database.getConnection()
 cur = con.cursor()
 try:
-    res = cur.execute('Select * from "WORKER_DATA"')
+    res = cur.execute(
+        'UPDATE "WORKER_DATA" SET raw_data = \'{ "dbInfo": { "id": "8", "lifeTime": "ACTIVE" } }\' WHERE dbid = \'8\';')
     print(cur.rowcount)
     print(cur.fetchall())
 
