@@ -7,11 +7,11 @@ app = Flask(__name__)
 
 
 @app.route('/workerMain', methods=['GET'])
-def index(self):
+def index():
     print(request.url.rsplit('/workerMain', 1)[-1])
     return Response("Hello")
 
 
 @app.route('/user', methods=['POST'])
-def user(self):
+def user():
     return redirect(url_for('index'))
