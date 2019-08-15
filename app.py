@@ -11,7 +11,7 @@ class Worker:
     @app.route('/workerMain/', methods=['GET'])
     def index(self):
         print(request.url.rsplit('/workerMain/', 1)[-1])
-        
+
 
 
     @app.route('/user', methods=['POST'])
