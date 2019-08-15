@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 class Worker:
 
-    @app.route('/workerMain/', methods=['GET'])
+    @app.route('/workerMain', methods=['GET'])
     def index(self):
-        print(request.url.rsplit('/workerMain/', 1)[-1])
+        print(request.url.rsplit('/workerMain', 1)[-1])
 
 
 
