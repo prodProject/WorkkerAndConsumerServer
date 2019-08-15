@@ -31,4 +31,4 @@ class WorkerService:
 
     def delete(builder):
         assert builder.dbInfo.id is not '', "DbInfo id cannot be empty"
-        print(builder)n
+        print(builder)
