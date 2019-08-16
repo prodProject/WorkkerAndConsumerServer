@@ -6,10 +6,10 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 
-@app.route('/workerMain/', methods=['GET'])
-def index():
+@app.route('/workerMain', methods=['GET'])
+def getWorker():
     print(request.url.rsplit('/workerMain', 1)[-1])
-    return Response(request.url.rsplit('/workerMain/', 1)[-1])
+    return Response(request.get_json())
 
 
 @app.route('/user', methods=['POST'])
