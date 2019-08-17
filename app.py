@@ -16,11 +16,11 @@ def getServerStatus():
     return response
 
 
-@app.route('/workerMain', methods=['GET'])
+@app.route('/workerMain/', methods=['GET'])
 def getWorker():
     data = request.get_json(silent=True)
     if (request.json == None):
-        print(request.url.rsplit('/workerMain', 1)[-1])
+        print(request.url.rsplit('/workerMain/', 1)[-1])
     else:
         return str(request.json)
 
