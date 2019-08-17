@@ -19,7 +19,7 @@ def getServerStatus():
 @app.route('/workerMain', methods=['GET'])
 def getWorker():
     if (request.json == None):
-        return str(request.url.rsplit('/workerMain', 1)[0])
+        return str(request.url.rsplit('/workerMain', 1)[-2])
     else:
         return str(request.json)
 
