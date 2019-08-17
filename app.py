@@ -3,6 +3,8 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
+from CommonCode.strings import Strings
+
 app = Flask(__name__)
 
 
@@ -19,7 +21,8 @@ def getServerStatus():
 @app.route('/workerMain', methods=['GET'])
 def getWorker():
     if (request.json == None):
-        return str(request.url.rsplit('/workerMain', 1)[-2])
+        data = request.url.rsplit('/workerMain', 1)[-1]
+        return data[Strings.length(data)-1]
     else:
         return str(request.json)
 

@@ -1,3 +1,3 @@
-from Database.databaseConnection import DatabaseConnection
+from CommonCode.strings import Strings
 
-DatabaseConnection.getConnection()
+print(Strings.notEmpty("dfhdfh"))
