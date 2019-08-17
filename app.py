@@ -11,7 +11,7 @@ def getServerStatus():
     environment = "ENVIRONMENT :"+os.environ.get('ENVIRONMENT',1)
     url = "URL :"+os.environ.get('URL',2)
     status = "STATUS :"+os.environ.get('STATUS',3)
-    response = database+"\n"+environment+"\n"+url+"\n"+status
+    response = database+"<br>"+environment+"<br>"+url+"<br>"+status
     return response
 
 
