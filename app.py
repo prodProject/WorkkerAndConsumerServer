@@ -10,8 +10,7 @@ app = Flask(__name__)
 def getWorker():
     print(request.url.rsplit('/workerMain', 1)[-1])
     data =request.get_json(silent=True)
-
-    return jsonify(request.json)
+    return request.json
 
 
 @app.route('/user', methods=['POST'])
