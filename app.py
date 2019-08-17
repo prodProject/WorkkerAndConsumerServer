@@ -5,20 +5,24 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET','POST'])
+
+@app.route('/', methods=['GET', 'POST'])
 def getServerStatus():
-    database = "DATABASE_URL :"+os.environ.get('DATABASE_URL',0)
-    environment = "ENVIRONMENT :"+os.environ.get('ENVIRONMENT',1)
-    url = "URL :"+os.environ.get('URL',2)
-    status = "STATUS :"+os.environ.get('STATUS',3)
-    response = database+"<br>"+environment+"<br>"+url+"<br>"+status
+    # database = "DATABASE_URL :"+os.environ.get('DATABASE_URL',0)
+    environment = "ENVIRONMENT :" + os.environ.get('ENVIRONMENT', 1)
+    url = "URL :" + os.environ.get('URL', 2)
+    status = "STATUS :" + os.environ.get('STATUS', 3)
+    response = environment + "<br>" + url + "<br>" + status
     return response
 
 
 @app.route('/workerMain', methods=['GET'])
 def getWorker():
-    data =request.get_json(silent=True)
-    return str(request.json)
+    data = request.get_json(silent=True)
+    if (request.json == None):
+        print(request.url.rsplit('/workerMain', 1)[-1])
+    else:
+        return str(request.json)
 
 
 @app.route('/user', methods=['POST'])
