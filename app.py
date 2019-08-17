@@ -7,10 +7,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def getServerStatus():
-    database = os.environ.get('DATABASE_URL',0)
-    environment = os.environ.get('ENVIRONMENT',1)
-    url = os.environ.get('URL',2)
-    status = os.environ.get('STATUS',3)
+    database = "DATABASE_URL :"+os.environ.get('DATABASE_URL',0)
+    environment = "ENVIRONMENT :"+os.environ.get('ENVIRONMENT',1)
+    url = "URL :"+os.environ.get('URL',2)
+    status = "STATUS :"+os.environ.get('STATUS',3)
     response = database+"\n"+environment+"\n"+url+"\n"+status
     return response
 
