@@ -19,6 +19,7 @@ google = "*"
 protobuf= "*"
 enum34= "*"
 numpy= "*"
+more-itertools= "*"
 
 
 [requires]
