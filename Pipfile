@@ -15,7 +15,7 @@ flask = "*"
 flask-sqlalchemy = "*"
 "psycopg2" = "*"
 gunicorn = "*"
-google = "*"
+google = "2.0.2"
 
 
 [requires]
