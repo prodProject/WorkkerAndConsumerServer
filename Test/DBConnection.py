@@ -1,3 +1,4 @@
-from CommonCode.strings import Strings
+from Database.createTableIfNotExixts import CreateTableIfNotExists
 
-print(Strings.notEmpty("dfhdfh"))
+cf = CreateTableIfNotExists()
+cf.start()

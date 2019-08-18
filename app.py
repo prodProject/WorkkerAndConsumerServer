@@ -1,9 +1,11 @@
 import os
 
+from astroid import builder
 from flask import Flask, render_template, request, redirect, url_for, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 from CommonCode.strings import Strings
+from Handlers.workerHandler import WorkerHandler
 
 app = Flask(__name__)
 
@@ -20,11 +22,14 @@ def getServerStatus():
 
 @app.route('/workerMain', methods=['GET'])
 def getWorker():
-    if (request.json == None):
-        data = request.url.rsplit('/workerMain', 1)[-1]
-        return data[Strings.length(data)-1]
-    else:
-        return str(request.json)
+    data = request.url.rsplit('/workerMain', 1)[-1]
+    assert data is not '',"Invalid id"
+    return WorkerHandler.getWorker(data[Strings.length(data)-1])
+
+@app.route('/workerMain', methods=['POST'])
+def getWorker():
+    assert  request.json is not None,"WorkerPb is invalid"
+    return  WorkerHandler.createWorker(builder=request.json)
 
 
 @app.route('/user', methods=['POST'])

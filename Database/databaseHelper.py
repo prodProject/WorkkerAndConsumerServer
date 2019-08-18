@@ -31,6 +31,15 @@ class DatabaseHelper:
     def getRowDataQuery(self, table, id):
         return self.BASE_RAW_DATA_QUERY + ' "' + table + '"' + "WHERE dbid = " + self.getSingleQuotedString(id) + ";"
 
-    def updateRawDataEntityQuery(self, id,newPb,table):
+    def updateRawDataEntityQuery(self, id, newPb, table):
         return self.BASE_UPDATE_QUERY + ' "' + table + '"' + " SET raw_data = " + self.m_pbConvertor.converPbtojsonString(
-            builder=newPb) + " WHERE dbid = "+ self.getSingleQuotedString(id)+" ;"
+            builder=newPb) + " WHERE dbid = " + self.getSingleQuotedString(id) + " ;"
+
+    def getAllTableQuery(self):
+        return "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
+
+    def getCreateTableQuery(self, table):
+        return 'CREATE TABLE'+'"'+table+'"'+'(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
+
+    def getCreateEntityTableQuery(self, table):
+        return 'CREATE TABLE '+'"'+table+'"'+' (id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL);'
