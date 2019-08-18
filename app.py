@@ -1,8 +1,8 @@
 import os
 
-from astroid import builder
-from flask import Flask, render_template, request, redirect, url_for, Response, jsonify
-from flask_sqlalchemy import SQLAlchemy
+
+from flask import Flask,request, redirect, url_for
+
 
 from CommonCode.strings import Strings
 from Handlers.workerHandler import WorkerHandler
