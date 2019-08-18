@@ -16,6 +16,9 @@ flask-sqlalchemy = "*"
 "psycopg2" = "*"
 gunicorn = "*"
 google = "*"
+protobuf= "*"
+enum34= "*"
+numpy= "*"
 
 
 [requires]
