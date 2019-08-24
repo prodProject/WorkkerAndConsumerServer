@@ -1,6 +1,7 @@
 from google.protobuf import json_format
 
 from CommonCode.convertPbToJSON import ConvertPbToJSON
+from Handlers.workerHandler import WorkerHandler
 from Services.workerService import WorkerService
 from protobuff import worker_pb2
 from protobuff.entity_pb2 import StatusEnum
@@ -14,7 +15,9 @@ builder.dbInfo.lifeTime = StatusEnum.DELETED
 # print(json.converPbtojsonString(builder=builder))
 #print(service.update(id=builder.dbInfo.id,builder=builder))
 #print(service.create(builder=builder))
-print(json_format.Parse('{"dbInfo": {"lifeTime": "DELETED"}}', worker_pb2.WorkerPb(), ignore_unknown_fields=False))
+#print(json_format.Parse('{"dbInfo": {"lifeTime": "DELETED"}}', worker_pb2.WorkerPb(), ignore_unknown_fields=False))
+reqJson = '{"dbInfo": {"lifeTime": "DELETED"}}'
+print(WorkerHandler.createWorker(builder=reqJson))
 '''pbjson = MessageToJson(builder)
 stringjson = str(json.dumps(pbjson))
 formattedstringjson = stringjson

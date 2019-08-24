@@ -1,3 +1,5 @@
+import json
+
 from google.protobuf import json_format
 
 
@@ -17,7 +19,7 @@ class ConvertJSONToPb:
         finaljson = finaljson+"'"
 
         print(finaljson)
-        return json_format.Parse(finaljson, instanceType, ignore_unknown_fields=False)
+        return json_format.Parse(json.loads(json.dumps(response)), message=instanceType, ignore_unknown_fields=False)
 
     def convertToProperjson(self, response):
         finaljson = '"'
