@@ -13,7 +13,9 @@ class ConvertJSONToPb:
                 finaljson += '"'
             else:
                 finaljson += i
-        return json_format.Parse(finaljson, instanceType, ignore_unknown_fields=False)
+
+        print(finaljson)
+        return json_format.Parse(self.getQuotedJson(jsonReq=finaljson), instanceType, ignore_unknown_fields=False)
 
     def convertToProperjson(self, response):
         finaljson = '"'
@@ -23,3 +25,6 @@ class ConvertJSONToPb:
             else:
                 finaljson += i
         return finaljson
+
+    def getQuotedJson(self,jsonReq):
+        return '"'+str(jsonReq)+'"'
