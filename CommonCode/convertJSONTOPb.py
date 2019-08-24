@@ -18,7 +18,7 @@ class ConvertJSONToPb:
                 finaljson += i
         finaljson = finaljson+"'"
 
-        print(finaljson)
+        print(json.dumps(response))
         return json_format.Parse(text=json.dumps(response), message=instanceType, ignore_unknown_fields=False)
 
     def convertToProperjson(self, response):
