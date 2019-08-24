@@ -17,5 +17,5 @@ class WorkerHandler:
         print(builder)
         service = WorkerService()
         m_converter = ConvertJSONToPb()
-        builder = m_converter.converjsontoPBProper(response=builder,instanceType=worker_pb2.WorkerPb())
+        builder = m_converter.converjsontoPBProper(response=str(builder),instanceType=worker_pb2.WorkerPb())
         return service.create(builder=builder)
