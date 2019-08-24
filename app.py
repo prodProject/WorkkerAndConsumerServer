@@ -27,7 +27,7 @@ def getWorker():
     return WorkerHandler.getWorker(data[Strings.length(data)-1])
 
 @app.route('/workerMain', methods=['POST'])
-def getWorker():
+def createWorker():
     assert  request.json is not None,"WorkerPb is invalid"
     return  WorkerHandler.createWorker(builder=request.json)
 
