@@ -8,14 +8,16 @@ class ConvertJSONToPb:
 
     def converjsontoPBProper(self, response, instanceType):
         finaljson = ""
+        finaljson = finaljson+'"'
         for i in response:
             if (i == "'"):
                 finaljson += '"'
             else:
                 finaljson += i
+        finaljson = finaljson+'"'
 
         print(finaljson)
-        return json_format.Parse(self.getQuotedJson(jsonReq=finaljson), instanceType, ignore_unknown_fields=False)
+        return json_format.Parse(finaljson, instanceType, ignore_unknown_fields=False)
 
     def convertToProperjson(self, response):
         finaljson = '"'
