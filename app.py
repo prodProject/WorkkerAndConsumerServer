@@ -34,7 +34,7 @@ def createWorker():
 @app.route('/workerMain', methods=['PUT'])
 def updateWorker():
     assert  request.json is not None,"WorkerPb is invalid"
-    return  WorkerHandler.update(builder=request.json)
+    return  WorkerHandler.updateWorker(builder=request.json)
 
 @app.route('/user', methods=['POST'])
 def user():
