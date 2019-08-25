@@ -13,7 +13,7 @@ class ConvertJSONToPb:
 
     def converjsontoPBProper(self, response, instanceType):
         #return json2pb(pb=WorkerPb,js=json.dumps(response))
-        return json_format.Parse(text=json.loads(json.dumps(response)), message=instanceType, ignore_unknown_fields=False)
+        return json_format.Parse(text=json.dumps(response), message=instanceType, ignore_unknown_fields=False)
 
     def convertToProperjson(self, response):
         finaljson = '"'
