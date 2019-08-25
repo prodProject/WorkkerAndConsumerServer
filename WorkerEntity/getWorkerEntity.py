@@ -32,7 +32,7 @@ class GetWorkerEntity:
     def getEntityId(self):
         workerPb = self.m_queryExecutor.get(id=self.id, table=Tables.WORKER_DATA.name)
         if (workerPb != None):
-            self.builder = self.m_converterJsonToPb.converjsontoPBProper(response=str(workerPb),instanceType=worker_pb2.WorkerPb())
+            self.builder = self.m_converterJsonToPb.converjsontoPBProper(response=workerPb,instanceType=worker_pb2.WorkerPb())
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):
