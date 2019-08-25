@@ -18,3 +18,10 @@ class WorkerHandler:
         m_converter = ConvertJSONToPb()
         builder = m_converter.converjsontoPBProper(response=builder,instanceType=worker_pb2.WorkerPb())
         return service.create(builder=builder)
+
+    @staticmethod
+    def update(builder):
+        service = WorkerService()
+        m_converter = ConvertJSONToPb()
+        builder = m_converter.converjsontoPBProper(response=builder,instanceType=worker_pb2.WorkerPb())
+        return service.update(id=builder.dbInfo.id,builder=builder)
