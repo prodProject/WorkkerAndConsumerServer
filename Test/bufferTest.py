@@ -16,7 +16,7 @@ builder.dbInfo.lifeTime = StatusEnum.DELETED
 #print(service.update(id=builder.dbInfo.id,builder=builder))
 #print(service.create(builder=builder))
 #print(json_format.Parse('{"dbInfo": {"lifeTime": "DELETED"}}', worker_pb2.WorkerPb(), ignore_unknown_fields=False))
-reqJson = '{"dbInfo": {"lifeTime": "DELETED"}}'
+reqJson = '{"dbInfo": {"id":"0","lifeTime": "DELETED"}}'
 print(WorkerHandler.createWorker(builder=reqJson))
 '''pbjson = MessageToJson(builder)
 stringjson = str(json.dumps(pbjson))
