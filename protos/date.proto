@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package protobuff;
+
+message DatePb {
+    int32 date = 1;
+    int32 month = 2;
+    int32 year = 3;
+}

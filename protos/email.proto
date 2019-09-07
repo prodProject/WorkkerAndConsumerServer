@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package protobuff;
+
+message EmailPb {
+    string localpart = 1;
+    string domain = 2;
+}

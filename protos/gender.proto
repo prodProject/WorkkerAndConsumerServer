@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protobuff;
+
+message GenderPb {
+    GenderEnum gender = 1;
+}
+
+enum GenderEnum{
+    UNKNOWN=0;
+    MALE=1;
+    FEMALE=2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "email.proto";
+import "mobile.proto";
+
+message ContactDetailsPb {
+    EmailPb email = 1;
+    repeated MobilePb mobile = 2;
+}
