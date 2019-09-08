@@ -33,28 +33,80 @@ class CreateTableIfNotExists:
 
     def createTable(self):
         print(type(self.response))
-        if(self.response==[]):
+        if (len(self.response) == 0):
             for table in Tables:
-                if(table==Tables.UNKNOWN):
+                if (table == Tables.UNKNOWN):
                     continue
-                if(table==Tables.ENTITY_DATA):
-                    query = self.m_helper.getCreateEntityTableQuery(table=table.name)
-                    conn = self.m_dbConnection.getConnection()
-                    cursor = conn.cursor()
-                    cursor.execute(query)
-                    conn.commit()
-                    conn.close()
-                    conn.close()
+                if (Tables.ENTITY_DATA not in table):
+                    try:
+                        query = self.m_helper.getCreateEntityTableQuery(table=table.name)
+                        conn = self.m_dbConnection.getConnection()
+                        cursor = conn.cursor()
+                        cursor.execute(query)
+                        conn.commit()
+                        conn.close()
+                        conn.close()
+                    except:
+                        print()
+                elif (table == Tables.WORKER_TYPE):
+                    try:
+                        query = self.m_helper.getWorkerTypeTableQuery(table=table.name)
+                        conn = self.m_dbConnection.getConnection()
+                        cursor = conn.cursor()
+                        cursor.execute(query)
+                        conn.commit()
+                        conn.close()
+                        conn.close()
+                    except:
+                        print()
                 else:
-                    query = self.m_helper.getCreateTableQuery(table=table.name)
-                    conn = self.m_dbConnection.getConnection()
-                    cursor = conn.cursor()
-                    cursor.execute(query)
-                    conn.commit()
-                    conn.close()
-                    conn.close()
+                    try:
+                        query = self.m_helper.getCreateTableQuery(table=table.name)
+                        conn = self.m_dbConnection.getConnection()
+                        cursor = conn.cursor()
+                        cursor.execute(query)
+                        conn.commit()
+                        conn.close()
+                        conn.close()
+                    except:
+                        print()
         else:
-            print()
+            for table in Tables:
+                if (table == Tables.UNKNOWN):
+                    continue
+                if (table not in self.response and table == Tables.ENTITY_DATA):
+                    try:
+                        query = self.m_helper.getCreateEntityTableQuery(table=table.name)
+                        conn = self.m_dbConnection.getConnection()
+                        cursor = conn.cursor()
+                        cursor.execute(query)
+                        conn.commit()
+                        conn.close()
+                        conn.close()
+                    except:
+                        print()
+                elif (table not in self.response and table == Tables.WORKER_TYPE):
+                    try:
+                        query = self.m_helper.getWorkerTypeTableQuery(table=table.name)
+                        conn = self.m_dbConnection.getConnection()
+                        cursor = conn.cursor()
+                        cursor.execute(query)
+                        conn.commit()
+                        conn.close()
+                        conn.close()
+                    except:
+                        print()
+                elif (table not in self.response):
+                    try:
+                        query = self.m_helper.getCreateTableQuery(table=table.name)
+                        conn = self.m_dbConnection.getConnection()
+                        cursor = conn.cursor()
+                        cursor.execute(query)
+                        conn.commit()
+                        conn.close()
+                        conn.close()
+                    except:
+                        print()
 
     def controlFlow(self, currentState):
         if (currentState == States.GET_TABLES_FROM_DB):

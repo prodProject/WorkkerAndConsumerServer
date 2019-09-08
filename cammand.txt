@@ -1,1 +1,1 @@
-protoc example.proto --python_out=..\protobuffCode
+protoc example.proto --python_out=..\protobuff

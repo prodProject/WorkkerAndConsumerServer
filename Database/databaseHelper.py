@@ -43,3 +43,6 @@ class DatabaseHelper:
 
     def getCreateEntityTableQuery(self, table):
         return 'CREATE TABLE '+'"'+table+'"'+' (id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL);'
+
+    def getWorkerTypeTableQuery(self,table):
+       return 'CREATE TABLE'+'"'+table+'"'+'(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,workertype VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'

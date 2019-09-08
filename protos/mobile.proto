@@ -8,6 +8,6 @@ message MobilePb {
 }
 
 enum CountryCodeEnum{
-    UNKNOWN =0;
+    UNKNOWN_CODE =0;
     ISD_91 = 1;
 }

@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0c\x65ntity.proto\x12\tprotobuff\"?\n\x08\x45ntityPb\x12\n\n\x02id\x18\x01 \x01(\t\x12\'\n\x08lifeTime\x18\x02 \x01(\x0e\x32\x15.protobuff.StatusEnum*N\n\nStatusEnum\x12\x0b\n\x07UNKNOWN\x10\x00\x12\n\n\x06\x41\x43TIVE\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x12\r\n\tSUSPUNDED\x10\x03\x12\x0b\n\x07\x42LOCKED\x10\x04\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x65ntity.proto\x12\tprotobuff\"?\n\x08\x45ntityPb\x12\n\n\x02id\x18\x01 \x01(\t\x12\'\n\x08lifeTime\x18\x02 \x01(\x0e\x32\x15.protobuff.StatusEnum*U\n\nStatusEnum\x12\x12\n\x0eUNKNOWN_STATUS\x10\x00\x12\n\n\x06\x41\x43TIVE\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x12\r\n\tSUSPUNDED\x10\x03\x12\x0b\n\x07\x42LOCKED\x10\x04\x62\x06proto3')
 )
 
 _STATUSENUM = _descriptor.EnumDescriptor(
@@ -31,7 +31,7 @@ _STATUSENUM = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='UNKNOWN', index=0, number=0,
+      name='UNKNOWN_STATUS', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
@@ -54,12 +54,12 @@ _STATUSENUM = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=92,
-  serialized_end=170,
+  serialized_end=177,
 )
 _sym_db.RegisterEnumDescriptor(_STATUSENUM)
 
 StatusEnum = enum_type_wrapper.EnumTypeWrapper(_STATUSENUM)
-UNKNOWN = 0
+UNKNOWN_STATUS = 0
 ACTIVE = 1
 DELETED = 2
 SUSPUNDED = 3

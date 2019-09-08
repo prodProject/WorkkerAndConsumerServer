@@ -8,7 +8,7 @@ message EntityPb {
 }
 
 enum StatusEnum {
-    UNKNOWN = 0;
+    UNKNOWN_STATUS = 0;
     ACTIVE = 1;
     DELETED = 2;
     SUSPUNDED = 3;
