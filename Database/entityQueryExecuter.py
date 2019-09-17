@@ -16,6 +16,7 @@ class EntityQueryExecuter:
     def execute(self):
         try:
             query = self.m_helper.getEntityQuery(data=Tables.ENTITY_DATA.name)
+            print(query)
             conn = self.m_dbConnection.getConnection()
             cursor = conn.cursor()
             cursor.execute(query)
@@ -30,6 +31,7 @@ class EntityQueryExecuter:
 
         try:
             query = self.m_helper.updateEntityQuery(data=Tables.ENTITY_DATA.name, value=str(int(self.id) + 1))
+            print(query)
             conn = self.m_dbConnection.getConnection()
             cursor = conn.cursor()
             cursor.execute(query)

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "entity.proto";
+import "names.proto";
+import "contactdetails.proto";
+import "time.proto";
+
+message LoginPb {
+    EntityPb dbInfo = 1;
+    NamesPb name = 2;
+    ContactDetailsPb contactDetails = 3;
+    TimePb dob = 4;
+    string password =5;
+}

@@ -1,7 +1,11 @@
-import numpy
-import math
+from google.protobuf.json_format import MessageToJson
 
-from CommonCode.intigerToStringIdConvertor import IntigerToStringIdConverter
-
-convrter = IntigerToStringIdConverter()
-print(convrter.convert(0))
+from Handlers.workerHandler import WorkerHandler
+from WorkerEntity.searchWorkerEntity import WorkerSearchEntity
+from protobuff.entity_pb2 import ACTIVE, DELETED
+from protobuff.workersearch_pb2 import WorkerSearchRequestPb
+service = WorkerSearchEntity()
+req = WorkerSearchRequestPb()
+req.lifeTime = DELETED
+service.start(workerPb=req)
+print(MessageToJson(service.done()))

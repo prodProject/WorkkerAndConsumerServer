@@ -16,3 +16,7 @@ class Strings:
     @staticmethod
     def length(string):
         return len(string)
+
+    @staticmethod
+    def qoutedString(string):
+        return "'"+string+"'"

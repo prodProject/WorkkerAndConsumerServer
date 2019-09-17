@@ -16,9 +16,10 @@ _sym_db = _symbol_database.Default()
 import entity_pb2 as entity__pb2
 import names_pb2 as names__pb2
 import contactdetails_pb2 as contactdetails__pb2
-import date_pb2 as date__pb2
+import time_pb2 as time__pb2
 import gender_pb2 as gender__pb2
 import address_pb2 as address__pb2
+import workertype_pb2 as workertype__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0cworker.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ndate.proto\x1a\x0cgender.proto\x1a\raddress.proto\"\xf2\x01\n\x08WorkerPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.DatePb\x12#\n\x06gender\x18\x05 \x01(\x0b\x32\x13.protobuff.GenderPb\x12%\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x14.protobuff.AddressPbb\x06proto3')
+  serialized_pb=_b('\n\x0cworker.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ntime.proto\x1a\x0cgender.proto\x1a\raddress.proto\x1a\x10workertype.proto\"\xab\x02\n\x08WorkerPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.TimePb\x12#\n\x06gender\x18\x05 \x01(\x0b\x32\x13.protobuff.GenderPb\x12%\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x14.protobuff.AddressPb\x12\x37\n\x10workerTypeConfig\x18\x07 \x01(\x0b\x32\x1d.protobuff.WorkerTypeConfigPb\"k\n\x12WorkerTypeConfigPb\x12-\n\nworkerType\x18\x01 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\x12&\n\ncategories\x18\x02 \x03(\x0b\x32\x12.protobuff.NamesPbb\x06proto3')
   ,
-  dependencies=[entity__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,date__pb2.DESCRIPTOR,gender__pb2.DESCRIPTOR,address__pb2.DESCRIPTOR,])
+  dependencies=[entity__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,gender__pb2.DESCRIPTOR,address__pb2.DESCRIPTOR,workertype__pb2.DESCRIPTOR,])
 
 
 
@@ -82,6 +83,13 @@ _WORKERPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='workerTypeConfig', full_name='protobuff.WorkerPb.workerTypeConfig', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -94,17 +102,59 @@ _WORKERPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=118,
-  serialized_end=360,
+  serialized_start=136,
+  serialized_end=435,
+)
+
+
+_WORKERTYPECONFIGPB = _descriptor.Descriptor(
+  name='WorkerTypeConfigPb',
+  full_name='protobuff.WorkerTypeConfigPb',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='workerType', full_name='protobuff.WorkerTypeConfigPb.workerType', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='categories', full_name='protobuff.WorkerTypeConfigPb.categories', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=437,
+  serialized_end=544,
 )
 
 _WORKERPB.fields_by_name['dbInfo'].message_type = entity__pb2._ENTITYPB
 _WORKERPB.fields_by_name['name'].message_type = names__pb2._NAMESPB
 _WORKERPB.fields_by_name['contactDetails'].message_type = contactdetails__pb2._CONTACTDETAILSPB
-_WORKERPB.fields_by_name['dob'].message_type = date__pb2._DATEPB
+_WORKERPB.fields_by_name['dob'].message_type = time__pb2._TIMEPB
 _WORKERPB.fields_by_name['gender'].message_type = gender__pb2._GENDERPB
 _WORKERPB.fields_by_name['address'].message_type = address__pb2._ADDRESSPB
+_WORKERPB.fields_by_name['workerTypeConfig'].message_type = _WORKERTYPECONFIGPB
+_WORKERTYPECONFIGPB.fields_by_name['workerType'].enum_type = workertype__pb2._WORKERTYPEENUM
+_WORKERTYPECONFIGPB.fields_by_name['categories'].message_type = names__pb2._NAMESPB
 DESCRIPTOR.message_types_by_name['WorkerPb'] = _WORKERPB
+DESCRIPTOR.message_types_by_name['WorkerTypeConfigPb'] = _WORKERTYPECONFIGPB
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 WorkerPb = _reflection.GeneratedProtocolMessageType('WorkerPb', (_message.Message,), {
@@ -113,6 +163,13 @@ WorkerPb = _reflection.GeneratedProtocolMessageType('WorkerPb', (_message.Messag
   # @@protoc_insertion_point(class_scope:protobuff.WorkerPb)
   })
 _sym_db.RegisterMessage(WorkerPb)
+
+WorkerTypeConfigPb = _reflection.GeneratedProtocolMessageType('WorkerTypeConfigPb', (_message.Message,), {
+  'DESCRIPTOR' : _WORKERTYPECONFIGPB,
+  '__module__' : 'worker_pb2'
+  # @@protoc_insertion_point(class_scope:protobuff.WorkerTypeConfigPb)
+  })
+_sym_db.RegisterMessage(WorkerTypeConfigPb)
 
 
 # @@protoc_insertion_point(module_scope)

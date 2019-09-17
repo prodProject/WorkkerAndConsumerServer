@@ -1,4 +1,6 @@
 from CommonCode.convertPbToJSON import ConvertPbToJSON
+from Enums.databaseTables import Tables
+from protobuff.workertype_pb2 import WorkerTypeEnum
 
 
 class DatabaseHelper:
@@ -24,9 +26,16 @@ class DatabaseHelper:
         return self.BASE_UPDATE_QUERY + ' "' + data + '"' + " SET dbid = " + value + " WHERE id = 1"
 
     def getInsertQuery(self, table, data):
-        return self.BASE_INSERT_QUERY + ' "' + table + '"' + "( dbid , raw_data) " + " VALUES " + "(" + self.getSingleQuotedString(
-            data.dbInfo.id) + " , " + self.m_pbConvertor.converPbtojsonString(
-            builder=data) + ");"
+        if(table == Tables.WORKER_TYPE.name):
+            print(type(data.workerType))
+            return self.BASE_INSERT_QUERY + ' "' + table + '"' + "( dbid ,workertype, raw_data) " + " VALUES " + "(" + self.getSingleQuotedString(
+                data.dbInfo.id) + " , " + self.getSingleQuotedString(
+                str(WorkerTypeEnum.Name(data.workerType))) + " , " + self.m_pbConvertor.converPbtojsonString(
+                builder=data) + ");"
+        else:
+            return self.BASE_INSERT_QUERY + ' "' + table + '"' + "( dbid , raw_data) " + " VALUES " + "(" + self.getSingleQuotedString(
+                data.dbInfo.id) + " , " + self.m_pbConvertor.converPbtojsonString(
+                builder=data) + ");"
 
     def getRowDataQuery(self, table, id):
         return self.BASE_RAW_DATA_QUERY + ' "' + table + '"' + "WHERE dbid = " + self.getSingleQuotedString(id) + ";"
@@ -46,3 +55,6 @@ class DatabaseHelper:
 
     def getWorkerTypeTableQuery(self,table):
        return 'CREATE TABLE'+'"'+table+'"'+'(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,workertype VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
+
+    def getSearchQuery(self,table,subquery):
+       return self.BASE_RAW_DATA_QUERY +'"'+table+'" WHERE '+ subquery + ';'

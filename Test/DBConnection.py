@@ -1,4 +1,6 @@
-from Database.createTableIfNotExixts import CreateTableIfNotExists
+class Color():
+     RED = 'stop'
+     GREEN = 'go'
+     BLUE = 'too fast!'
 
-cf = CreateTableIfNotExists()
-cf.start()
+print(Color.RED)

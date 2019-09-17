@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "entity.proto";
+import "names.proto";
+import "contactdetails.proto";
+import "time.proto";
+import "gender.proto";
+import "address.proto";
+
+message ConsumerPb {
+  EntityPb dbInfo = 1;
+  NamesPb name = 2;
+  ContactDetailsPb contactDetails = 3;
+  TimePb dob = 4;
+  GenderPb gender=5;
+  AddressPb address = 6;
+}

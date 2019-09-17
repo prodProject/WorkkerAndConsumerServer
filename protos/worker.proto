@@ -5,15 +5,22 @@ package protobuff;
 import "entity.proto";
 import "names.proto";
 import "contactdetails.proto";
-import "date.proto";
+import "time.proto";
 import "gender.proto";
 import "address.proto";
+import "workertype.proto";
 
 message WorkerPb {
   EntityPb dbInfo = 1;
   NamesPb name = 2;
   ContactDetailsPb contactDetails = 3;
-  DatePb dob = 4;
+  TimePb dob = 4;
   GenderPb gender=5;
   AddressPb address = 6;
+  WorkerTypeConfigPb workerTypeConfig = 7;
+}
+
+message WorkerTypeConfigPb {
+  WorkerTypeEnum workerType=1;
+  repeated NamesPb categories = 2;
 }

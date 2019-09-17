@@ -1,6 +1,7 @@
 from Helper.workerEntityHelper import WorkerEntityHelper
 from WorkerEntity.createWorkerEntity import CreateWorkerEntity
 from WorkerEntity.getWorkerEntity import GetWorkerEntity
+from WorkerEntity.searchWorkerEntity import WorkerSearchEntity
 from WorkerEntity.updateWorkerEntity import UpdateWorkerEntity
 
 
@@ -8,6 +9,7 @@ class WorkerService:
     m_createWorker = CreateWorkerEntity()
     m_getWorkerEntity = GetWorkerEntity()
     m_updateWorkerEntity = UpdateWorkerEntity()
+    m_workerSearchEntity = WorkerSearchEntity()
     m_workerEntityHelper = WorkerEntityHelper()
 
     def create(self, builder):
@@ -28,6 +30,11 @@ class WorkerService:
             assert True ,"Upadting Wrong Entity"
         self.m_updateWorkerEntity.start(id=id, builder=builder)
         return self.m_updateWorkerEntity.done()
+
+    def search(self, builder):
+        assert builder is not None, "WorkerSearchRequest Cannot be empty"
+        self.m_workerSearchEntity.start(builder=builder)
+        return self.m_workerSearchEntity.done()
 
     def delete(builder):
         assert builder.dbInfo.id is not '', "DbInfo id cannot be empty"

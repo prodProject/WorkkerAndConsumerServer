@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "entity.proto";
+import "summary.proto";
+import "worker.proto";
+
+message WorkerSearchRequestPb {
+    StatusEnum lifeTime =1;
+}
+
+message WorkerSearchResponsePb {
+    SummaryPb summary =1;
+    repeated WorkerPb results =2;
+}

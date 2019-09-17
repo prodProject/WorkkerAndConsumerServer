@@ -2,8 +2,10 @@ syntax = "proto3";
 
 package protobuff;
 
-message DatePb {
+message TimePb {
     int32 date = 1;
     int32 month = 2;
     int32 year = 3;
+    int64 milliseconds =4;
+    string formattedDate = 5;
 }
