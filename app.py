@@ -46,3 +46,4 @@ def mail():
      msg = Message("Hello",
                   sender="no-reply@app.com",
                   recipients=["shubhamtiwaricr07@gmail.com"])
+     return "<h1>Done</h1>"
