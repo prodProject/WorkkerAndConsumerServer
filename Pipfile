@@ -20,6 +20,7 @@ protobuf= "*"
 enum34= "*"
 numpy= "*"
 more-itertools= "*"
+Flask-Mail="*"
 
 
 [requires]

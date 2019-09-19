@@ -17,3 +17,8 @@ message ConsumerPb {
   GenderPb gender=5;
   AddressPb address = 6;
 }
+
+message ConsumerPbRef {
+    EntityPb dbInfo = 1;
+    NamesPb name = 2;
+}

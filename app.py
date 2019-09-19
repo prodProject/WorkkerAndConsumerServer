@@ -2,7 +2,7 @@ import os
 
 
 from flask import Flask,request, redirect, url_for
-
+from flask_mail import Message
 
 from CommonCode.strings import Strings
 from Handlers.workerHandler import WorkerHandler
@@ -39,3 +39,10 @@ def updateWorker():
 @app.route('/user', methods=['POST'])
 def user():
     return redirect(url_for('index'))
+
+
+@app.route('/mail', methods=['POST'])
+def user():
+     msg = Message("Hello",
+                  sender="no-reply@app.com",
+                  recipients=["shubhamtiwaricr07@gmail.com"])

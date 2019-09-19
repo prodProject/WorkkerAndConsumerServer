@@ -6,11 +6,20 @@ import "entity.proto";
 import "names.proto";
 import "contactdetails.proto";
 import "time.proto";
+import "worker.proto";
 
 message LoginPb {
     EntityPb dbInfo = 1;
     NamesPb name = 2;
     ContactDetailsPb contactDetails = 3;
-    TimePb dob = 4;
-    string password =5;
+    string password =4;
+    PersonTypeEnum personTyp=5;
+    WorkerPbRef workerRef = 6;
+    TimePb dob = 7;
+}
+
+enum PersonTypeEnum{
+    UNKNOWN_PERSON=0;
+    WORKER=1;
+    CONSUMER=2;
 }
