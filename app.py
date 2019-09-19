@@ -41,8 +41,8 @@ def user():
     return redirect(url_for('index'))
 
 
-@app.route('/mail', methods=['POST'])
-def user():
+@app.route('/mail', methods=['GET'])
+def mail():
      msg = Message("Hello",
                   sender="no-reply@app.com",
                   recipients=["shubhamtiwaricr07@gmail.com"])
