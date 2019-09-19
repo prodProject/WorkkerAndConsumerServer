@@ -1,5 +1,5 @@
 import os
-
+import smtplib
 
 from flask import Flask,request, redirect, url_for
 from flask_mail import Message
@@ -44,8 +44,19 @@ def user():
 
 @app.route('/mail', methods=['GET'])
 def mailSend():
-     msg = Message("Hello",
-                  sender="no-reply@app.com",
-                  recipients=["shubhamtiwaricr07@gmail.com"])
-     mail.send(msg)
-     return "<h1>Done</h1>"
+    sender = 'no_reply@mydomain.com'
+    receivers = ['person@otherdomain.com']
+
+    message = """From: No Reply <no_reply@mydomain.com>
+To: Person <person@otherdomain.com>
+Subject: Test Email
+
+This is a test e-mail message.
+"""
+
+    try:
+        smtpObj = smtplib.SMTP('localhost')
+        smtpObj.sendmail(sender, receivers, message)
+        return "Successfully sent email"
+    except smtplib.SMTPException:
+        return "Error: unable to send email"
