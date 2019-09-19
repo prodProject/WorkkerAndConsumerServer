@@ -3,12 +3,13 @@ import os
 
 from flask import Flask,request, redirect, url_for
 from flask_mail import Message
+from flask_mail import Mail
 
 from CommonCode.strings import Strings
 from Handlers.workerHandler import WorkerHandler
 
 app = Flask(__name__)
-
+mail = Mail(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def getServerStatus():
@@ -42,8 +43,9 @@ def user():
 
 
 @app.route('/mail', methods=['GET'])
-def mail():
+def mailSend():
      msg = Message("Hello",
                   sender="no-reply@app.com",
                   recipients=["shubhamtiwaricr07@gmail.com"])
+     mail.send(msg)
      return "<h1>Done</h1>"
