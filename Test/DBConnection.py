@@ -1,6 +1,6 @@
-class Color():
-     RED = 'stop'
-     GREEN = 'go'
-     BLUE = 'too fast!'
+from Database import createTableIfNotExixts
+from Database.createTableIfNotExixts import CreateTableIfNotExists
 
-print(Color.RED)
+ser=CreateTableIfNotExists()
+ser.start()
+print(ser.done())

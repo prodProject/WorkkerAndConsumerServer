@@ -16,6 +16,8 @@ _sym_db = _symbol_database.Default()
 import entity_pb2 as entity__pb2
 import summary_pb2 as summary__pb2
 import worker_pb2 as worker__pb2
+import mobile_pb2 as mobile__pb2
+import contactdetails_pb2 as contactdetails__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -23,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x12workersearch.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\rsummary.proto\x1a\x0cworker.proto\"@\n\x15WorkerSearchRequestPb\x12\'\n\x08lifeTime\x18\x01 \x01(\x0e\x32\x15.protobuff.StatusEnum\"e\n\x16WorkerSearchResponsePb\x12%\n\x07summary\x18\x01 \x01(\x0b\x32\x14.protobuff.SummaryPb\x12$\n\x07results\x18\x02 \x03(\x0b\x32\x13.protobuff.WorkerPbb\x06proto3')
+  serialized_pb=_b('\n\x12workersearch.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\rsummary.proto\x1a\x0cworker.proto\x1a\x0cmobile.proto\x1a\x14\x63ontactdetails.proto\"\x9b\x01\n\x15WorkerSearchRequestPb\x12\'\n\x08lifeTime\x18\x01 \x01(\x0e\x32\x15.protobuff.StatusEnum\x12\x32\n\rcontactDetais\x18\x02 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12%\n\x08mobileNo\x18\x03 \x01(\x0b\x32\x13.protobuff.MobilePb\"e\n\x16WorkerSearchResponsePb\x12%\n\x07summary\x18\x01 \x01(\x0b\x32\x14.protobuff.SummaryPb\x12$\n\x07results\x18\x02 \x03(\x0b\x32\x13.protobuff.WorkerPbb\x06proto3')
   ,
-  dependencies=[entity__pb2.DESCRIPTOR,summary__pb2.DESCRIPTOR,worker__pb2.DESCRIPTOR,])
+  dependencies=[entity__pb2.DESCRIPTOR,summary__pb2.DESCRIPTOR,worker__pb2.DESCRIPTOR,mobile__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,])
 
 
 
@@ -44,6 +46,20 @@ _WORKERSEARCHREQUESTPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='contactDetais', full_name='protobuff.WorkerSearchRequestPb.contactDetais', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='mobileNo', full_name='protobuff.WorkerSearchRequestPb.mobileNo', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -56,8 +72,8 @@ _WORKERSEARCHREQUESTPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=76,
-  serialized_end=140,
+  serialized_start=113,
+  serialized_end=268,
 )
 
 
@@ -94,11 +110,13 @@ _WORKERSEARCHRESPONSEPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=142,
-  serialized_end=243,
+  serialized_start=270,
+  serialized_end=371,
 )
 
 _WORKERSEARCHREQUESTPB.fields_by_name['lifeTime'].enum_type = entity__pb2._STATUSENUM
+_WORKERSEARCHREQUESTPB.fields_by_name['contactDetais'].message_type = contactdetails__pb2._CONTACTDETAILSPB
+_WORKERSEARCHREQUESTPB.fields_by_name['mobileNo'].message_type = mobile__pb2._MOBILEPB
 _WORKERSEARCHRESPONSEPB.fields_by_name['summary'].message_type = summary__pb2._SUMMARYPB
 _WORKERSEARCHRESPONSEPB.fields_by_name['results'].message_type = worker__pb2._WORKERPB
 DESCRIPTOR.message_types_by_name['WorkerSearchRequestPb'] = _WORKERSEARCHREQUESTPB

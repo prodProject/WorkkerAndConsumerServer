@@ -3,6 +3,7 @@ syntax = "proto3";
 package protobuff;
 
 import "entity.proto";
+import "persontypeenum.proto";
 import "names.proto";
 import "contactdetails.proto";
 import "time.proto";
@@ -16,6 +17,7 @@ message ConsumerPb {
   TimePb dob = 4;
   GenderPb gender=5;
   AddressPb address = 6;
+  PersonTypePb type = 8;
 }
 
 message ConsumerPbRef {

@@ -3,7 +3,7 @@ from enum import Enum
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
 from Enums.databaseTables import Tables
-from Helper.workerEntityHelper import WorkerEntityHelper
+from Helper.entityHelper import EntityHelper
 from Services.entityService import EntityService
 
 
@@ -16,7 +16,7 @@ class States(Enum):
 
 class CreateWorkerEntity:
     m_entityId = EntityService()
-    m_helper = WorkerEntityHelper()
+    m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
     m_converter = ConvertPbToJSON()
     builder = None
@@ -34,7 +34,7 @@ class CreateWorkerEntity:
         self.controlFlow(currentState=States.CREATE_WORKER_ENTITY)
 
     def createEntityId(self):
-        workerEntity = self.m_helper.createWorkerEntity(id=self.id, builder=self.builder)
+        workerEntity = self.m_helper.createEntity(id=self.id, builder=self.builder)
         self.builder = self.m_queryExecutor.create(builder=workerEntity,table=Tables.WORKER_DATA.name)
         self.controlFlow(currentState=States.DONE)
 

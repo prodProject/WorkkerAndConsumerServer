@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "worker.proto";
+import "consumer.proto";
+
+message RegistrationRequestPb {
+    WorkerPb worker = 1;
+    ConsumerPb comsumer = 2;
+    string password = 3;
+}
+
+message RegistrationResponsePb {
+    WorkerPb worker = 1;
+    ConsumerPb comsumer = 2;
+    ResponseStatusEnum status = 3;
+}
+
+enum ResponseStatusEnum {
+    UNKNOWN_RESPONSE_STATUS = 0;
+    SUCCESS = 1;
+    FAILED = 2;
+    ERROR = 3;
+    USER_EXIST = 4;
+    USER_NOT_REGISTRED = 5;
+    UNEXP_ERROR = 6;
+}

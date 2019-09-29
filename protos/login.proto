@@ -3,6 +3,8 @@ syntax = "proto3";
 package protobuff;
 
 import "entity.proto";
+import "persontypeenum.proto";
+import "summary.proto";
 import "names.proto";
 import "contactdetails.proto";
 import "time.proto";
@@ -10,16 +12,18 @@ import "worker.proto";
 
 message LoginPb {
     EntityPb dbInfo = 1;
-    NamesPb name = 2;
-    ContactDetailsPb contactDetails = 3;
-    string password =4;
-    PersonTypeEnum personTyp=5;
-    WorkerPbRef workerRef = 6;
-    TimePb dob = 7;
+    ContactDetailsPb contactDetails = 2;
+    string password = 3;
+    PersonTypePb personType = 4;
+    WorkerPbRef workerRef = 5;
+    TimePb dob = 6;
 }
 
-enum PersonTypeEnum{
-    UNKNOWN_PERSON=0;
-    WORKER=1;
-    CONSUMER=2;
+message LoginSearchRequestPb {
+    LoginPb login = 1;
+}
+
+message LoginSearchRespsonsePb {
+    SummaryPb summary =1;
+    repeated LoginPb results = 2;
 }

@@ -2,7 +2,7 @@ from enum import Enum
 
 from CommonCode.queryExecutor import QueryExecuter
 from Enums.databaseTables import Tables
-from Helper.workerEntityHelper import WorkerEntityHelper
+from Helper.entityHelper import EntityHelper
 from Services.entityService import EntityService
 
 
@@ -14,7 +14,7 @@ class States(Enum):
 
 class CreateWorkerTypeEntity:
     m_entityId = EntityService()
-    m_helper = WorkerEntityHelper()
+    m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
     builder = None
     id = None
@@ -31,7 +31,7 @@ class CreateWorkerTypeEntity:
         self.controlFlow(currentState=States.CREATE_WORKER_TYPE_ENTITY)
 
     def createEntityId(self):
-        workerTypeEntity = self.m_helper.createWorkerEntity(id=self.id, builder=self.builder)
+        workerTypeEntity = self.m_helper.createEntity(id=self.id, builder=self.builder)
         self.builder = self.m_queryExecutor.create(builder=workerTypeEntity,table=Tables.WORKER_TYPE.name)
         self.controlFlow(currentState=States.DONE)
 

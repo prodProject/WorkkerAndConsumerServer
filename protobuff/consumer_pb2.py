@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 import entity_pb2 as entity__pb2
+import persontypeenum_pb2 as persontypeenum__pb2
 import names_pb2 as names__pb2
 import contactdetails_pb2 as contactdetails__pb2
 import time_pb2 as time__pb2
@@ -26,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0e\x63onsumer.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ntime.proto\x1a\x0cgender.proto\x1a\raddress.proto\"\xf4\x01\n\nConsumerPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.TimePb\x12#\n\x06gender\x18\x05 \x01(\x0b\x32\x13.protobuff.GenderPb\x12%\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x14.protobuff.AddressPbb\x06proto3')
+  serialized_pb=_b('\n\x0e\x63onsumer.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x14persontypeenum.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ntime.proto\x1a\x0cgender.proto\x1a\raddress.proto\"\x9b\x02\n\nConsumerPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.TimePb\x12#\n\x06gender\x18\x05 \x01(\x0b\x32\x13.protobuff.GenderPb\x12%\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x14.protobuff.AddressPb\x12%\n\x04type\x18\x08 \x01(\x0b\x32\x17.protobuff.PersonTypePb\"V\n\rConsumerPbRef\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPbb\x06proto3')
   ,
-  dependencies=[entity__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,gender__pb2.DESCRIPTOR,address__pb2.DESCRIPTOR,])
+  dependencies=[entity__pb2.DESCRIPTOR,persontypeenum__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,gender__pb2.DESCRIPTOR,address__pb2.DESCRIPTOR,])
 
 
 
@@ -82,6 +83,13 @@ _CONSUMERPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='protobuff.ConsumerPb.type', index=6,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -94,8 +102,46 @@ _CONSUMERPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=120,
-  serialized_end=364,
+  serialized_start=142,
+  serialized_end=425,
+)
+
+
+_CONSUMERPBREF = _descriptor.Descriptor(
+  name='ConsumerPbRef',
+  full_name='protobuff.ConsumerPbRef',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='dbInfo', full_name='protobuff.ConsumerPbRef.dbInfo', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='protobuff.ConsumerPbRef.name', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=427,
+  serialized_end=513,
 )
 
 _CONSUMERPB.fields_by_name['dbInfo'].message_type = entity__pb2._ENTITYPB
@@ -104,7 +150,11 @@ _CONSUMERPB.fields_by_name['contactDetails'].message_type = contactdetails__pb2.
 _CONSUMERPB.fields_by_name['dob'].message_type = time__pb2._TIMEPB
 _CONSUMERPB.fields_by_name['gender'].message_type = gender__pb2._GENDERPB
 _CONSUMERPB.fields_by_name['address'].message_type = address__pb2._ADDRESSPB
+_CONSUMERPB.fields_by_name['type'].message_type = persontypeenum__pb2._PERSONTYPEPB
+_CONSUMERPBREF.fields_by_name['dbInfo'].message_type = entity__pb2._ENTITYPB
+_CONSUMERPBREF.fields_by_name['name'].message_type = names__pb2._NAMESPB
 DESCRIPTOR.message_types_by_name['ConsumerPb'] = _CONSUMERPB
+DESCRIPTOR.message_types_by_name['ConsumerPbRef'] = _CONSUMERPBREF
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ConsumerPb = _reflection.GeneratedProtocolMessageType('ConsumerPb', (_message.Message,), {
@@ -113,6 +163,13 @@ ConsumerPb = _reflection.GeneratedProtocolMessageType('ConsumerPb', (_message.Me
   # @@protoc_insertion_point(class_scope:protobuff.ConsumerPb)
   })
 _sym_db.RegisterMessage(ConsumerPb)
+
+ConsumerPbRef = _reflection.GeneratedProtocolMessageType('ConsumerPbRef', (_message.Message,), {
+  'DESCRIPTOR' : _CONSUMERPBREF,
+  '__module__' : 'consumer_pb2'
+  # @@protoc_insertion_point(class_scope:protobuff.ConsumerPbRef)
+  })
+_sym_db.RegisterMessage(ConsumerPbRef)
 
 
 # @@protoc_insertion_point(module_scope)

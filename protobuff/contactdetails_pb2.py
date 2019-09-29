@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x14\x63ontactdetails.proto\x12\tprotobuff\x1a\x0b\x65mail.proto\x1a\x0cmobile.proto\"Z\n\x10\x43ontactDetailsPb\x12!\n\x05\x65mail\x18\x01 \x01(\x0b\x32\x12.protobuff.EmailPb\x12#\n\x06mobile\x18\x02 \x03(\x0b\x32\x13.protobuff.MobilePbb\x06proto3')
+  serialized_pb=_b('\n\x14\x63ontactdetails.proto\x12\tprotobuff\x1a\x0b\x65mail.proto\x1a\x0cmobile.proto\"\x90\x01\n\x10\x43ontactDetailsPb\x12#\n\x05\x65mail\x18\x01 \x01(\x0b\x32\x14.protobuff.EmailIdPb\x12*\n\rprimaryMobile\x18\x02 \x01(\x0b\x32\x13.protobuff.MobilePb\x12+\n\x0esecondryMobile\x18\x03 \x03(\x0b\x32\x13.protobuff.MobilePbb\x06proto3')
   ,
   dependencies=[email__pb2.DESCRIPTOR,mobile__pb2.DESCRIPTOR,])
 
@@ -44,8 +44,15 @@ _CONTACTDETAILSPB = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='mobile', full_name='protobuff.ContactDetailsPb.mobile', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='primaryMobile', full_name='protobuff.ContactDetailsPb.primaryMobile', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='secondryMobile', full_name='protobuff.ContactDetailsPb.secondryMobile', index=2,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -62,12 +69,13 @@ _CONTACTDETAILSPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=62,
-  serialized_end=152,
+  serialized_start=63,
+  serialized_end=207,
 )
 
-_CONTACTDETAILSPB.fields_by_name['email'].message_type = email__pb2._EMAILPB
-_CONTACTDETAILSPB.fields_by_name['mobile'].message_type = mobile__pb2._MOBILEPB
+_CONTACTDETAILSPB.fields_by_name['email'].message_type = email__pb2._EMAILIDPB
+_CONTACTDETAILSPB.fields_by_name['primaryMobile'].message_type = mobile__pb2._MOBILEPB
+_CONTACTDETAILSPB.fields_by_name['secondryMobile'].message_type = mobile__pb2._MOBILEPB
 DESCRIPTOR.message_types_by_name['ContactDetailsPb'] = _CONTACTDETAILSPB
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

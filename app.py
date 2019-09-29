@@ -47,12 +47,7 @@ def mailSend():
     sender = 'no_reply@mydomain.com'
     receivers = ['person@otherdomain.com']
 
-    message = """From: No Reply <no_reply@mydomain.com>
-To: Person <person@otherdomain.com>
-Subject: Test Email
-
-This is a test e-mail message.
-"""
+    message = "hi"
 
     try:
         smtpObj = smtplib.SMTP('localhost')

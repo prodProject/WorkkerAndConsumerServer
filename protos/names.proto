@@ -4,6 +4,6 @@ package protobuff;
 
 message NamesPb {
     string firstName = 1;
-    string lastNme = 2;
+    string lastName = 2;
     string canonicalName =3;
 }

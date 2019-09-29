@@ -20,28 +20,28 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0b\x65mail.proto\x12\tprotobuff\",\n\x07\x45mailPb\x12\x11\n\tlocalpart\x18\x01 \x01(\t\x12\x0e\n\x06\x64omain\x18\x02 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n\x0b\x65mail.proto\x12\tprotobuff\".\n\tEmailIdPb\x12\x11\n\tlocalPart\x18\x01 \x01(\t\x12\x0e\n\x06\x64omain\x18\x02 \x01(\t\"|\n\x0e\x45mailBuilderPb\x12$\n\x06\x66romId\x18\x01 \x01(\x0b\x32\x14.protobuff.EmailIdPb\x12\"\n\x04toId\x18\x02 \x03(\x0b\x32\x14.protobuff.EmailIdPb\x12\x0f\n\x07subject\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\tb\x06proto3')
 )
 
 
 
 
-_EMAILPB = _descriptor.Descriptor(
-  name='EmailPb',
-  full_name='protobuff.EmailPb',
+_EMAILIDPB = _descriptor.Descriptor(
+  name='EmailIdPb',
+  full_name='protobuff.EmailIdPb',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='localpart', full_name='protobuff.EmailPb.localpart', index=0,
+      name='localPart', full_name='protobuff.EmailIdPb.localPart', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='domain', full_name='protobuff.EmailPb.domain', index=1,
+      name='domain', full_name='protobuff.EmailIdPb.domain', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -60,18 +60,80 @@ _EMAILPB = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=26,
-  serialized_end=70,
+  serialized_end=72,
 )
 
-DESCRIPTOR.message_types_by_name['EmailPb'] = _EMAILPB
+
+_EMAILBUILDERPB = _descriptor.Descriptor(
+  name='EmailBuilderPb',
+  full_name='protobuff.EmailBuilderPb',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='fromId', full_name='protobuff.EmailBuilderPb.fromId', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='toId', full_name='protobuff.EmailBuilderPb.toId', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='subject', full_name='protobuff.EmailBuilderPb.subject', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='content', full_name='protobuff.EmailBuilderPb.content', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=74,
+  serialized_end=198,
+)
+
+_EMAILBUILDERPB.fields_by_name['fromId'].message_type = _EMAILIDPB
+_EMAILBUILDERPB.fields_by_name['toId'].message_type = _EMAILIDPB
+DESCRIPTOR.message_types_by_name['EmailIdPb'] = _EMAILIDPB
+DESCRIPTOR.message_types_by_name['EmailBuilderPb'] = _EMAILBUILDERPB
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-EmailPb = _reflection.GeneratedProtocolMessageType('EmailPb', (_message.Message,), {
-  'DESCRIPTOR' : _EMAILPB,
+EmailIdPb = _reflection.GeneratedProtocolMessageType('EmailIdPb', (_message.Message,), {
+  'DESCRIPTOR' : _EMAILIDPB,
   '__module__' : 'email_pb2'
-  # @@protoc_insertion_point(class_scope:protobuff.EmailPb)
+  # @@protoc_insertion_point(class_scope:protobuff.EmailIdPb)
   })
-_sym_db.RegisterMessage(EmailPb)
+_sym_db.RegisterMessage(EmailIdPb)
+
+EmailBuilderPb = _reflection.GeneratedProtocolMessageType('EmailBuilderPb', (_message.Message,), {
+  'DESCRIPTOR' : _EMAILBUILDERPB,
+  '__module__' : 'email_pb2'
+  # @@protoc_insertion_point(class_scope:protobuff.EmailBuilderPb)
+  })
+_sym_db.RegisterMessage(EmailBuilderPb)
 
 
 # @@protoc_insertion_point(module_scope)

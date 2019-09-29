@@ -14,9 +14,12 @@ _sym_db = _symbol_database.Default()
 
 
 import entity_pb2 as entity__pb2
+import persontypeenum_pb2 as persontypeenum__pb2
+import summary_pb2 as summary__pb2
 import names_pb2 as names__pb2
 import contactdetails_pb2 as contactdetails__pb2
 import time_pb2 as time__pb2
+import worker_pb2 as worker__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -24,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0blogin.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ntime.proto\"\xb7\x01\n\x07LoginPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.TimePb\x12\x10\n\x08password\x18\x05 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n\x0blogin.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x14persontypeenum.proto\x1a\rsummary.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ntime.proto\x1a\x0cworker.proto\"\xed\x01\n\x07LoginPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12\x33\n\x0e\x63ontactDetails\x18\x02 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x10\n\x08password\x18\x03 \x01(\t\x12+\n\npersonType\x18\x04 \x01(\x0b\x32\x17.protobuff.PersonTypePb\x12)\n\tworkerRef\x18\x05 \x01(\x0b\x32\x16.protobuff.WorkerPbRef\x12\x1e\n\x03\x64ob\x18\x06 \x01(\x0b\x32\x11.protobuff.TimePb\"9\n\x14LoginSearchRequestPb\x12!\n\x05login\x18\x01 \x01(\x0b\x32\x12.protobuff.LoginPb\"d\n\x16LoginSearchRespsonsePb\x12%\n\x07summary\x18\x01 \x01(\x0b\x32\x14.protobuff.SummaryPb\x12#\n\x07results\x18\x02 \x03(\x0b\x32\x12.protobuff.LoginPbb\x06proto3')
   ,
-  dependencies=[entity__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,])
+  dependencies=[entity__pb2.DESCRIPTOR,persontypeenum__pb2.DESCRIPTOR,summary__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,worker__pb2.DESCRIPTOR,])
 
 
 
@@ -46,30 +49,37 @@ _LOGINPB = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='name', full_name='protobuff.LoginPb.name', index=1,
+      name='contactDetails', full_name='protobuff.LoginPb.contactDetails', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='contactDetails', full_name='protobuff.LoginPb.contactDetails', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='password', full_name='protobuff.LoginPb.password', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='dob', full_name='protobuff.LoginPb.dob', index=3,
+      name='personType', full_name='protobuff.LoginPb.personType', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='password', full_name='protobuff.LoginPb.password', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='workerRef', full_name='protobuff.LoginPb.workerRef', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dob', full_name='protobuff.LoginPb.dob', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -85,15 +95,90 @@ _LOGINPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=88,
-  serialized_end=271,
+  serialized_start=139,
+  serialized_end=376,
+)
+
+
+_LOGINSEARCHREQUESTPB = _descriptor.Descriptor(
+  name='LoginSearchRequestPb',
+  full_name='protobuff.LoginSearchRequestPb',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='login', full_name='protobuff.LoginSearchRequestPb.login', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=378,
+  serialized_end=435,
+)
+
+
+_LOGINSEARCHRESPSONSEPB = _descriptor.Descriptor(
+  name='LoginSearchRespsonsePb',
+  full_name='protobuff.LoginSearchRespsonsePb',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='summary', full_name='protobuff.LoginSearchRespsonsePb.summary', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='results', full_name='protobuff.LoginSearchRespsonsePb.results', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=437,
+  serialized_end=537,
 )
 
 _LOGINPB.fields_by_name['dbInfo'].message_type = entity__pb2._ENTITYPB
-_LOGINPB.fields_by_name['name'].message_type = names__pb2._NAMESPB
 _LOGINPB.fields_by_name['contactDetails'].message_type = contactdetails__pb2._CONTACTDETAILSPB
+_LOGINPB.fields_by_name['personType'].message_type = persontypeenum__pb2._PERSONTYPEPB
+_LOGINPB.fields_by_name['workerRef'].message_type = worker__pb2._WORKERPBREF
 _LOGINPB.fields_by_name['dob'].message_type = time__pb2._TIMEPB
+_LOGINSEARCHREQUESTPB.fields_by_name['login'].message_type = _LOGINPB
+_LOGINSEARCHRESPSONSEPB.fields_by_name['summary'].message_type = summary__pb2._SUMMARYPB
+_LOGINSEARCHRESPSONSEPB.fields_by_name['results'].message_type = _LOGINPB
 DESCRIPTOR.message_types_by_name['LoginPb'] = _LOGINPB
+DESCRIPTOR.message_types_by_name['LoginSearchRequestPb'] = _LOGINSEARCHREQUESTPB
+DESCRIPTOR.message_types_by_name['LoginSearchRespsonsePb'] = _LOGINSEARCHRESPSONSEPB
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 LoginPb = _reflection.GeneratedProtocolMessageType('LoginPb', (_message.Message,), {
@@ -102,6 +187,20 @@ LoginPb = _reflection.GeneratedProtocolMessageType('LoginPb', (_message.Message,
   # @@protoc_insertion_point(class_scope:protobuff.LoginPb)
   })
 _sym_db.RegisterMessage(LoginPb)
+
+LoginSearchRequestPb = _reflection.GeneratedProtocolMessageType('LoginSearchRequestPb', (_message.Message,), {
+  'DESCRIPTOR' : _LOGINSEARCHREQUESTPB,
+  '__module__' : 'login_pb2'
+  # @@protoc_insertion_point(class_scope:protobuff.LoginSearchRequestPb)
+  })
+_sym_db.RegisterMessage(LoginSearchRequestPb)
+
+LoginSearchRespsonsePb = _reflection.GeneratedProtocolMessageType('LoginSearchRespsonsePb', (_message.Message,), {
+  'DESCRIPTOR' : _LOGINSEARCHRESPSONSEPB,
+  '__module__' : 'login_pb2'
+  # @@protoc_insertion_point(class_scope:protobuff.LoginSearchRespsonsePb)
+  })
+_sym_db.RegisterMessage(LoginSearchRespsonsePb)
 
 
 # @@protoc_insertion_point(module_scope)

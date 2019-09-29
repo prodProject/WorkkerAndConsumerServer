@@ -20,3 +20,7 @@ class Strings:
     @staticmethod
     def qoutedString(string):
         return "'"+string+"'"
+
+    @staticmethod
+    def getFormattedEmail(builder):
+        return builder.localpart+'@'+builder.domain

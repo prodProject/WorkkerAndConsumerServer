@@ -6,6 +6,8 @@ import "email.proto";
 import "mobile.proto";
 
 message ContactDetailsPb {
-    EmailPb email = 1;
-    repeated MobilePb mobile = 2;
+    EmailIdPb email = 1;
+    MobilePb primaryMobile = 2;
+    repeated MobilePb secondryMobile = 3;
+
 }

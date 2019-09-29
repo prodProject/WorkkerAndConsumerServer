@@ -1,14 +1,16 @@
 import json
 
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
-from protobuff import worker_pb2
+from protobuff import worker_pb2, login_pb2
+from protobuff.login_pb2 import LoginSearchRespsonsePb
 from protobuff.workersearch_pb2 import WorkerSearchResponsePb
 
 
-class WorkerEntityHelper:
+class EntityHelper:
     m_converterJsonToPb = ConvertJSONToPb()
     workerlist = list()
-    def createWorkerEntity(self, id, builder):
+    loginlist = list()
+    def createEntity(self, id, builder):
         builder.dbInfo.id = id
         return builder
 
@@ -25,9 +27,21 @@ class WorkerEntityHelper:
         for index, worker in enumerate(workerResp):
             # workerSearchResponse.results.add()
             try:
-                print(self.m_converterJsonToPb.converjsontoPBProper(response=worker[0],instanceType=worker_pb2.WorkerPb()))
                 self.workerlist.append(self.m_converterJsonToPb.converjsontoPBProper(response=worker[0], instanceType=worker_pb2.WorkerPb()))
             except ValueError:
                 pass
         workerSearchResponse.results.extend(self.workerlist)
         return workerSearchResponse
+
+    def loginResponse(self, loginResp):
+        self.loginlist.clear()
+        loginSearchResponse = LoginSearchRespsonsePb()
+        loginSearchResponse.summary.totalHits = len(loginResp)
+        for index, login in enumerate(loginResp):
+            # workerSearchResponse.results.add()
+            try:
+                self.loginlist.append(self.m_converterJsonToPb.converjsontoPBProper(response=login[0], instanceType=login_pb2.LoginPb()))
+            except ValueError:
+                pass
+        loginSearchResponse.results.extend(self.loginlist)
+        return loginSearchResponse

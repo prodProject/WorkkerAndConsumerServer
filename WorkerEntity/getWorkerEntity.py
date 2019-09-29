@@ -4,7 +4,7 @@ from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
 from Enums.databaseTables import Tables
-from Helper.workerEntityHelper import WorkerEntityHelper
+from Helper.entityHelper import EntityHelper
 from protobuff import worker_pb2
 
 
@@ -15,7 +15,7 @@ class States(Enum):
 
 
 class GetWorkerEntity:
-    m_helper = WorkerEntityHelper()
+    m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
     m_converterPbToJson = ConvertPbToJSON()
     m_converterJsonToPb = ConvertJSONToPb()

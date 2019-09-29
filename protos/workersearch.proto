@@ -5,9 +5,13 @@ package protobuff;
 import "entity.proto";
 import "summary.proto";
 import "worker.proto";
+import "mobile.proto";
+import "contactdetails.proto";
 
 message WorkerSearchRequestPb {
     StatusEnum lifeTime =1;
+    ContactDetailsPb contactDetais =2;
+    MobilePb mobileNo = 3;
 }
 
 message WorkerSearchResponsePb {
