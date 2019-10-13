@@ -54,7 +54,7 @@ class RegistrationWorker:
             builder=self.m_helper.getLoginPb(self.response.worker, self.resgistrationReq.worker.type.personType,self.resgistrationReq.password))
         if (login != None):
             self.response.login.CopyFrom(login)
-            self.respone.status = SUCCESS
+            self.response.status = SUCCESS
         self.controlFlow(currentState=States.SEND_MAIL)
 
     def sendMail(self):
