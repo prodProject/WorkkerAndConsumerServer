@@ -22,6 +22,7 @@ numpy= "*"
 more-itertools= "*"
 Flask-Mail="*"
 sendgrid = "*"
+bcrypt = "*"
 
 [requires]
 
