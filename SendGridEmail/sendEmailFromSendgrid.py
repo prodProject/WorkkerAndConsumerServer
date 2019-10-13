@@ -17,8 +17,8 @@ class SendMail:
     response = None
     builder = None
 
-    def start(self, builder):
-        self.builder = builder
+    def start(self, emailBuilder):
+        self.builder = emailBuilder
         self.controlFlow(currentState=States.SEND_MAIL)
 
     def done(self):

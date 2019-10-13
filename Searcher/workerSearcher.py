@@ -1,21 +1,22 @@
+import sys, os
 from CommonCode.queryExecutor import QueryExecuter
 from CommonCode.strings import Strings
 from Enums.databaseTables import Tables
-from Searcher.searcherHelper import SercherHelper
+from Searcher.searcherHelper import SearcherHelper
 from Searcher.sercherConfig import SearcherConfig
 from protobuff.entity_pb2 import StatusEnum
 
 
 class WorkerSearchConfig():
     LIFETIME = "raw_data -> 'dbInfo' ->> 'lifeTime'"
-    EMAIL_LOCAL_PART = "'raw_data -> contactDetails'->'email' ->> 'localPart'"
-    EMAIL_DOMAIN_PART = "'raw_data -> contactDetails'->'email' ->> 'domain'"
-    PRIMARY_MOBILE_NO = "'raw_data -> contactDetails'->'primaryMobile' ->> 'number'"
+    EMAIL_LOCAL_PART = "raw_data -> 'contactDetails'->'email' ->> 'localPart'"
+    EMAIL_DOMAIN_PART = "raw_data -> 'contactDetails'->'email' ->> 'domain'"
+    PRIMARY_MOBILE_NO = "raw_data -> 'contactDetails'->'primaryMobile' ->> 'number'"
 
 
 class WorkerSearcher:
     m_queryExecutor = QueryExecuter()
-    m_helper = SercherHelper()
+    m_helper = SearcherHelper()
     typeConfig = list()
 
     def handle(self, workerpb):
@@ -28,10 +29,10 @@ class WorkerSearcher:
         subQuery = '';
         i = 0
         for data in self.typeConfig:
-            subQuery = subQuery.join(str(data))
+            subQuery = " "+subQuery+" "+data
             if len(self.typeConfig) - 1 == i:
                 continue
-            subQuery = subQuery.join(str(SearcherConfig.AND))
+            subQuery = " "+subQuery+" "+SearcherConfig.AND
             i = i + 1
         return subQuery
 

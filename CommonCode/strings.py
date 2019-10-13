@@ -23,4 +23,4 @@ class Strings:
 
     @staticmethod
     def getFormattedEmail(builder):
-        return builder.localpart+'@'+builder.domain
+        return builder.localPart+'@'+builder.domain

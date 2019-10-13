@@ -6,6 +6,7 @@ from flask_mail import Message
 from flask_mail import Mail
 
 from CommonCode.strings import Strings
+from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
 
 app = Flask(__name__)
@@ -36,6 +37,11 @@ def createWorker():
 def updateWorker():
     assert  request.json is not None,"WorkerPb is invalid"
     return  WorkerHandler.updateWorker(builder=request.json)
+
+@app.route('/registrationWorkerMain', methods=['POST'])
+def registration():
+    assert  request.json is not None,"RegistrationRequestPb is invalid"
+    return  RegistrionHandler.createRegistrationworker(builder=request.json)
 
 @app.route('/user', methods=['POST'])
 def user():

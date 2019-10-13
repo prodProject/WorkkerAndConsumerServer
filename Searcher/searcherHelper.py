@@ -2,11 +2,9 @@ from CommonCode.strings import Strings
 
 # (select json_array_elements(json_extract_path(json_extract_path(raw_data,'contactDetails'),'secondryMobile'))->> 'number')= '8687598496'
 from Searcher.sercherConfig import SearcherConfig
-from Searcher.workerSearcher import WorkerSearcher, WorkerSearchConfig
 
 
-class SercherHelper:
-
+class SearcherHelper:
     def getCondition(self, cond, value):
         return cond + '=' + Strings.qoutedString(value)
 

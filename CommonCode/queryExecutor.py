@@ -24,7 +24,7 @@ class QueryExecuter:
                 conn.commit()
                 conn.close()
                 conn.close()
-                return MessageToJson(builder)
+                return builder
             else:
                 conn.commit()
                 conn.close()

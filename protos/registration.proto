@@ -4,6 +4,7 @@ package protobuff;
 
 import "worker.proto";
 import "consumer.proto";
+import "login.proto";
 
 message RegistrationRequestPb {
     WorkerPb worker = 1;
@@ -14,7 +15,8 @@ message RegistrationRequestPb {
 message RegistrationResponsePb {
     WorkerPb worker = 1;
     ConsumerPb comsumer = 2;
-    ResponseStatusEnum status = 3;
+    LoginPb login = 3;
+    ResponseStatusEnum status = 4;
 }
 
 enum ResponseStatusEnum {

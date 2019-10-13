@@ -1,40 +1,25 @@
-from google.protobuf import json_format
-
-from CommonCode.convertPbToJSON import ConvertPbToJSON
-from Handlers.workerHandler import WorkerHandler
-from Services.workerService import WorkerService
-from protobuff import worker_pb2
-from protobuff.entity_pb2 import StatusEnum
+from Services.registrationWorkerService import RegistrationWorkerService
+from protobuff.entity_pb2 import ACTIVE
+from protobuff.mobile_pb2 import ISD_91
+from protobuff.persontypeenum_pb2 import WORKER
 from protobuff.worker_pb2 import WorkerPb
 
-service = WorkerService()
-json = ConvertPbToJSON()
-builder = WorkerPb()
-builder.dbInfo.lifeTime = StatusEnum.DELETED
-#print(json.converPbtojsonStringWithProperFormat(builder=builder))
-# print(json.converPbtojsonString(builder=builder))
-#print(service.update(id=builder.dbInfo.id,builder=builder))
-#print(service.create(builder=builder))
-#print(json_format.Parse('{"dbInfo": {"lifeTime": "DELETED"}}', worker_pb2.WorkerPb(), ignore_unknown_fields=False))
-reqJson = '{"dbInfo": {"id":"0","lifeTime": "DELETED"}}'
-print(WorkerHandler.createWorker(builder=reqJson))
-'''pbjson = MessageToJson(builder)
-stringjson = str(json.dumps(pbjson))
-formattedstringjson = stringjson
-formattedstringjson = formattedstringjson.replace('\\n', '')
-formattedstringjson = formattedstringjson.replace('\\', '')
-formattedstringjson = formattedstringjson.replace(" ", "")
-# formattedstringjson = formattedstringjson[0].replace('"', "'")
-# formattedstringjson = formattedstringjson[len(formattedstringjson) - 1].replace('"', "'")
-counter = 0;
-finaljson = ""
-for i in formattedstringjson:
-    if (counter == 0):
-        finaljson += "'"
-    elif (counter == len(formattedstringjson) - 1):
-        finaljson += "'"
-    else:
-        finaljson += i
-    counter += 1
-
-print(finaljson)'''
+workerReg =RegistrationWorkerService()
+worker  = WorkerPb()
+worker.dbInfo.lifeTime = ACTIVE
+worker.name.firstName = 'shubham'
+worker.name.lastName = 'tiwari'
+worker.contactDetails.email.localPart = 'shubhamtiwaricr07'
+worker.contactDetails.email.domain = 'gmail.com'
+worker.contactDetails.primaryMobile.code = ISD_91
+worker.contactDetails.primaryMobile.number = '1'
+mobile =worker.contactDetails.secondryMobile.add()
+mobile.code = ISD_91
+mobile.number = '1'
+worker.type.personType = WORKER
+worker.device.macId = '19:68:15:c4:77:ad'
+worker.device.osType = 'ANDROID'
+worker.device.model = 'Redmi'
+worker.device.deviceName = 'H@cker'
+workerReg.worker = worker
+print(workerReg.registration(workerPb=workerReg))

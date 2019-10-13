@@ -4,7 +4,7 @@ from RegisrationModule.registrationHelper import RegistrationHelper
 from Services.emailService import EmailService
 from Services.loginService import LoginService
 from Services.workerService import WorkerService
-from protobuff.persontypeenum_pb2 import WORKER, CONSUMER
+from protobuff.registration_pb2 import RegistrationResponsePb
 
 
 class States(Enum):
@@ -16,50 +16,59 @@ class States(Enum):
     DONE = 6,
 
 
-class Registration:
+class RegistrationWorker:
     m_workerService = WorkerService()
     m_emailService = EmailService()
     m_loginService = LoginService()
     m_helper = RegistrationHelper()
     id = None
     resgistrationReq = None
-    response = None
-    def start(self,workerPb):
+    workerPb = None
+    response = RegistrationResponsePb();
+
+    def start(self, workerPb):
         assert workerPb is not None, "WorkerPb cannot be empty"
-        self.resgistrationReq=workerPb
+        self.resgistrationReq = workerPb
+        self.workerPb = workerPb.worker
         self.controlFlow(currentState=States.CHECK_WORKER_EXISTS)
 
-
     def done(self):
-        return self.id
+        return self.response
 
     def getWorkerIsExists(self):
-        searchRequest = self.m_helper.workerSearchReqBuilder(workerPb=self.resgistrationReq)
-        respone =  self.m_workerService.search(builder=searchRequest)
-        if(respone.summary.totalHits>0):
+        searchRequest = self.m_helper.workerSearchReqBuilder(workerPb=self.workerPb)
+        respone = self.m_workerService.search(builder=searchRequest)
+        if (respone.summary.totalHits > 0):
             self.respone = self.m_helper.userExixts()
             self.controlFlow(currentState=States.DONE)
         self.controlFlow(currentState=States.CREATE_ENTITY_IN_WORKER)
 
     def createEntityInWorker(self):
         worker = self.m_workerService.create(builder=self.resgistrationReq.worker)
-        if(worker != None):
-            self.respone.worker = worker
+        if (worker != None):
+            self.response.worker.CopyFrom(worker)
         self.controlFlow(currentState=States.CREATE_ENTITY_IN_LOGIN)
-
 
     def createEntityInLogin(self):
-        worker = self.m_loginService.create(builder=self.resgistrationReq.worker)
-        if(worker != None):
-            self.respone.worker = worker
-        self.controlFlow(currentState=States.CREATE_ENTITY_IN_LOGIN)
+        login = self.m_loginService.create(
+            builder=self.m_helper.getLoginPb(self.response.worker, self.resgistrationReq.worker.type.personType))
+        if (login != None):
+            self.response.login.CopyFrom(login)
+        self.controlFlow(currentState=States.SEND_MAIL)
 
-
+    def sendMail(self):
+        self.m_emailService.send(
+            emailbuilder=self.m_helper.getEmailBuilder(emailpb=self.resgistrationReq.worker.contactDetails.email))
+        self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):
-        if (currentState == States.GET_ENTITY_ID):
-            self.getEntityId()
-        elif (currentState == States.UPDATE_ENTITY):
-            self.upadteId()
+        if (currentState == States.CHECK_WORKER_EXISTS):
+            self.getWorkerIsExists()
+        elif (currentState == States.CREATE_ENTITY_IN_WORKER):
+            self.createEntityInWorker()
+        elif (currentState == States.CREATE_ENTITY_IN_LOGIN):
+            self.createEntityInLogin()
+        elif (currentState == States.SEND_MAIL):
+            self.sendMail()
         elif (currentState == States.DONE):
             self.done()

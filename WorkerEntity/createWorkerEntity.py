@@ -5,6 +5,7 @@ from CommonCode.queryExecutor import QueryExecuter
 from Enums.databaseTables import Tables
 from Helper.entityHelper import EntityHelper
 from Services.entityService import EntityService
+from protobuff.worker_pb2 import WorkerPb
 
 
 class States(Enum):
@@ -19,7 +20,7 @@ class CreateWorkerEntity:
     m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
     m_converter = ConvertPbToJSON()
-    builder = None
+    builder = WorkerPb()
     id = None
 
     def start(self, builder):

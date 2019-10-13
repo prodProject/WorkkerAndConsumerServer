@@ -3,10 +3,6 @@ from LoginEntity.createLoginEntity import CreateLoginEntity
 from LoginEntity.getLoginEntity import GetLoginEntity
 from LoginEntity.searchLoginEntity import LoginSearchEntity
 from LoginEntity.updateLoginEntity import UpdateLoginEntity
-from WorkerEntity.createWorkerEntity import CreateWorkerEntity
-from WorkerEntity.getWorkerEntity import GetWorkerEntity
-from WorkerEntity.searchWorkerEntity import WorkerSearchEntity
-from WorkerEntity.updateWorkerEntity import UpdateWorkerEntity
 
 
 class LoginService:

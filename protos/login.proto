@@ -16,7 +16,7 @@ message LoginPb {
     string password = 3;
     PersonTypePb personType = 4;
     WorkerPbRef workerRef = 5;
-    TimePb dob = 6;
+    TimePb timeCreation = 6;
 }
 
 message LoginSearchRequestPb {

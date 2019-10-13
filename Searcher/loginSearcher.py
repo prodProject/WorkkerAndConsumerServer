@@ -1,7 +1,7 @@
 from CommonCode.queryExecutor import QueryExecuter
 from CommonCode.strings import Strings
 from Enums.databaseTables import Tables
-from Searcher.searcherHelper import SercherHelper
+from Searcher.searcherHelper import SearcherHelper
 from Searcher.sercherConfig import SearcherConfig
 from protobuff.entity_pb2 import StatusEnum
 
@@ -15,7 +15,7 @@ class loginSearchConfig():
 
 class LoginSearcher:
     m_queryExecutor = QueryExecuter()
-    m_helper = SercherHelper()
+    m_helper = SearcherHelper()
     typeConfig = list()
 
     def handle(self, loginpb):
