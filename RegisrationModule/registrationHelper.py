@@ -1,10 +1,10 @@
 from ConstantsProperties import sendGridEmailProperties
+from Enums.passwordEnum import PasswordMode
 from Services.passwordService import PasswordService
 from TimeUtility.timeUtill import TimeUtil
 from protobuff.email_pb2 import EmailBuilderPb, EmailIdPb
 from protobuff.entity_pb2 import ACTIVE
 from protobuff.login_pb2 import LoginPb
-from protobuff.persontypeenum_pb2 import WORKER, CONSUMER
 from protobuff.registration_pb2 import RegistrationResponsePb, USER_EXIST
 from protobuff.time_pb2 import TimeZoneEnum
 from protobuff.workersearch_pb2 import WorkerSearchRequestPb
@@ -28,14 +28,15 @@ class RegistrationHelper:
         respone.status = USER_EXIST
         return respone
 
-    def getLoginPb(self, newRegisterdPb, persontype):
+    def getLoginPb(self, newRegisterdPb, persontype,password):
         login = LoginPb()
         login.contactDetails.CopyFrom(newRegisterdPb.contactDetails)
         login.personType.personType=persontype
         login.workerRef.dbInfo.id = newRegisterdPb.dbInfo.id
         login.workerRef.name.CopyFrom(newRegisterdPb.name)
+        login.password = password
         login.timeCreation.CopyFrom(self.m_timeUtility.getTimePb(timeZone=TimeZoneEnum.IST))
-        return login
+        return self.m_passwordService.getOrVerifyPassword(loginpb=login,mode=PasswordMode.GENERATE_PASSWORD)
 
     def getEmailBuilder(self, emailpb):
         toid = list()

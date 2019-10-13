@@ -32,7 +32,7 @@ class GenereateAndVerifyPassword:
         self.controlFlow(currentState=States.GET_PASSWORD_MODE)
 
     def done(self):
-        return self.builder
+        return self.pb
 
     def getPasswordMode(self):
         if (self.mode == PasswordMode.GENERATE_PASSWORD):

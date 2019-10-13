@@ -51,7 +51,7 @@ class RegistrationWorker:
 
     def createEntityInLogin(self):
         login = self.m_loginService.create(
-            builder=self.m_helper.getLoginPb(self.response.worker, self.resgistrationReq.worker.type.personType))
+            builder=self.m_helper.getLoginPb(self.response.worker, self.resgistrationReq.worker.type.personType,self.resgistrationReq.password))
         if (login != None):
             self.response.login.CopyFrom(login)
         self.controlFlow(currentState=States.SEND_MAIL)
