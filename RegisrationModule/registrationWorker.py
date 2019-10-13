@@ -39,9 +39,11 @@ class RegistrationWorker:
         searchRequest = self.m_helper.workerSearchReqBuilder(workerPb=self.workerPb)
         respone = self.m_workerService.search(builder=searchRequest)
         if (respone.summary.totalHits > 0):
-            self.respone = self.m_helper.userExixts()
+            self.response = self.m_helper.userExixts()
             self.controlFlow(currentState=States.DONE)
-        self.controlFlow(currentState=States.CREATE_ENTITY_IN_WORKER)
+        else:
+            self.controlFlow(currentState=States.CREATE_ENTITY_IN_WORKER)
+
 
     def createEntityInWorker(self):
         worker = self.m_workerService.create(builder=self.resgistrationReq.worker)

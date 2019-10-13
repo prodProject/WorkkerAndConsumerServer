@@ -6,7 +6,7 @@ from protobuff.mobile_pb2 import ISD_91
 from protobuff.persontypeenum_pb2 import WORKER
 from protobuff.registration_pb2 import RegistrationRequestPb
 from protobuff.worker_pb2 import WorkerPb
-
+service = RegistrationWorkerService()
 workerReg =RegistrationRequestPb()
 worker  = WorkerPb()
 worker.dbInfo.lifeTime = ACTIVE
@@ -26,4 +26,4 @@ worker.device.model = 'Redmi'
 worker.device.deviceName = 'H@cker'
 workerReg.worker.CopyFrom(worker)
 workerReg.password = 'new'
-print(MessageToJson(workerReg))
+print(service.registration(registrationRequestPb=workerReg))
