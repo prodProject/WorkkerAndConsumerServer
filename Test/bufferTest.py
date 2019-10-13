@@ -1,10 +1,13 @@
+from google.protobuf.json_format import MessageToJson
+
 from Services.registrationWorkerService import RegistrationWorkerService
 from protobuff.entity_pb2 import ACTIVE
 from protobuff.mobile_pb2 import ISD_91
 from protobuff.persontypeenum_pb2 import WORKER
+from protobuff.registration_pb2 import RegistrationRequestPb
 from protobuff.worker_pb2 import WorkerPb
 
-workerReg =RegistrationWorkerService()
+workerReg =RegistrationRequestPb()
 worker  = WorkerPb()
 worker.dbInfo.lifeTime = ACTIVE
 worker.name.firstName = 'shubham'
@@ -21,5 +24,6 @@ worker.device.macId = '19:68:15:c4:77:ad'
 worker.device.osType = 'ANDROID'
 worker.device.model = 'Redmi'
 worker.device.deviceName = 'H@cker'
-workerReg.worker = worker
-print(workerReg.registration(workerPb=workerReg))
+workerReg.worker.CopyFrom(worker)
+workerReg.password = 'new'
+print(MessageToJson(workerReg))

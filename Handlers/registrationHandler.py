@@ -10,4 +10,4 @@ class RegistrionHandler:
         service = RegistrationWorkerService()
         m_converter = ConvertJSONToPb()
         builder = m_converter.converjsontoPBProper(response=builder,instanceType=registration_pb2.RegistrationRequestPb())
-        return service.registration(builder=builder)
+        return service.registration(registrationRequestPb=builder)
