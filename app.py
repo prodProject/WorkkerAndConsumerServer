@@ -40,8 +40,8 @@ def updateWorker():
 
 @app.route('/registrationWorkerMain', methods=['POST'])
 def registration():
-    assert  request.json is not None,"RegistrationRequestPb is invalid"
     print(request.json)
+    assert  request.json is not None,"RegistrationRequestPb is invalid"
     return  RegistrionHandler.createRegistrationworker(builder=request.json)
 
 @app.route('/user', methods=['POST'])
