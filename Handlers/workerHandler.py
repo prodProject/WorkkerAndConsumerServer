@@ -1,4 +1,5 @@
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
+from CommonCode.convertPbToJSON import ConvertPbToJSON
 from Services.workerService import WorkerService
 from protobuff import worker_pb2, workersearch_pb2
 from protobuff.workersearch_pb2 import WorkerSearchRequestPb
@@ -11,7 +12,8 @@ class WorkerHandler:
     @staticmethod
     def getWorker(id):
         service = WorkerService()
-        return service.get(id=id)
+        m_convertPbtoJson = ConvertPbToJSON()
+        return m_convertPbtoJson.converPbtojson(service.get(id=id))
 
     @staticmethod
     def createWorker(builder):
