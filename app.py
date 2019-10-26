@@ -4,7 +4,8 @@ import smtplib
 from flask import Flask,request, redirect, url_for
 from flask_mail import Message
 from flask_mail import Mail
-
+import urllib.parse as urlparse
+from urllib.parse import parse_qs
 from CommonCode.strings import Strings
 from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
@@ -24,7 +25,10 @@ def getServerStatus():
 
 @app.route('/workerMain', methods=['GET'])
 def getWorker():
-    data = request.url.rsplit('/workerMain', 1)[-1]
+    print(request.url)
+    parsed = urlparse(request.url)
+    print(request.url)
+    data = parse_qs(parsed.query)['query']
     assert data is not '',"Invalid id"
     return WorkerHandler.getWorker(data[Strings.length(data)-1])
 
