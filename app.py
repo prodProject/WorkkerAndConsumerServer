@@ -27,8 +27,8 @@ def getServerStatus():
 def getWorker():
     print(request.url)
     parsed = urlparse(request.url)
-    print(request.url)
-    data = parse_qs(parsed.query)['query']
+    print(parsed.query)
+    data = parse_qs(parsed.query)['id']
     assert data is not '',"Invalid id"
     return WorkerHandler.getWorker(data[Strings.length(data)-1])
 
