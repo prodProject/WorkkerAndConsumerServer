@@ -1,11 +1,10 @@
 import os
 import smtplib
 
+from urllib import parse
 from flask import Flask,request, redirect, url_for
 from flask_mail import Message
 from flask_mail import Mail
-import urllib.parse as urlparse
-from urllib.parse import parse_qs
 from CommonCode.strings import Strings
 from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
@@ -25,10 +24,8 @@ def getServerStatus():
 
 @app.route('/workerMain', methods=['GET'])
 def getWorker():
-    print(request.url)
-    parsed = urlparse(request.url)
-    print(parsed.query)
-    data = parse_qs(parsed.query)['id']
+    data = parse.parse_qs(parse.urlparse(request.url).query)['def'][0]
+    print(data)
     assert data is not '',"Invalid id"
     return WorkerHandler.getWorker(data[Strings.length(data)-1])
 
