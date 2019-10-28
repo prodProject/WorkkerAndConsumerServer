@@ -16,8 +16,8 @@ class RegistrationHelper:
 
     def workerSearchReqBuilder(self, workerPb):
         req = WorkerSearchRequestPb()
-        req.contactDetais.email.localPart =  workerPb.contactDetails.email.localPart
-        req.contactDetais.email.domain =  workerPb.contactDetails.email.domain
+        req.contactDetails.email.localPart =  workerPb.contactDetails.email.localPart
+        req.contactDetails.email.domain =  workerPb.contactDetails.email.domain
         req.mobileNo.code = workerPb.contactDetails.primaryMobile.code
         req.mobileNo.number = workerPb.contactDetails.primaryMobile.number
         req.lifeTime = ACTIVE

@@ -29,10 +29,10 @@ class WorkerSearcher:
         subQuery = '';
         i = 0
         for data in self.typeConfig:
-            subQuery = " "+subQuery+" "+data
+            subQuery = " " + subQuery + " " + data
             if len(self.typeConfig) - 1 == i:
                 continue
-            subQuery = " "+subQuery+" "+SearcherConfig.AND
+            subQuery = " " + subQuery + " " + SearcherConfig.AND
             i = i + 1
         return subQuery
 
@@ -40,16 +40,16 @@ class WorkerSearcher:
         if (workerpb.lifeTime != StatusEnum.UNKNOWN_STATUS):
             self.typeConfig.append(
                 self.m_helper.getCondition(cond=WorkerSearchConfig.LIFETIME, value=StatusEnum.Name(workerpb.lifeTime)))
-        if (Strings.notEmpty(workerpb.contactDetais.email.localPart) and Strings.notEmpty(
-                workerpb.contactDetais.email.domain)):
+        if (Strings.notEmpty(workerpb.contactDetails.email.localPart) and Strings.notEmpty(
+                workerpb.contactDetails.email.domain)):
             self.typeConfig.append(self.m_helper.getCondition(cond=WorkerSearchConfig.EMAIL_LOCAL_PART,
-                                                              value=workerpb.contactDetais.email.localPart))
+                                                              value=workerpb.contactDetails.email.localPart))
             self.typeConfig.append(self.m_helper.getCondition(cond=WorkerSearchConfig.EMAIL_DOMAIN_PART,
-                                                              value=workerpb.contactDetais.email.domain))
-        if (Strings.notEmpty(workerpb.contactDetais.primaryMobile.number)):
+                                                              value=workerpb.contactDetails.email.domain))
+        if (Strings.notEmpty(workerpb.contactDetails.primaryMobile.number)):
             self.typeConfig.append(self.m_helper.getCondition(cond=WorkerSearchConfig.PRIMARY_MOBILE_NO,
-                                                              value=workerpb.contactDetais.primaryMobile.number))
-        if (len(workerpb.contactDetais.secondryMobile) > 0):
+                                                              value=workerpb.contactDetails.primaryMobile.number))
+        if (len(workerpb.contactDetails.secondryMobile) > 0):
             self.typeConfig.append(
                 self.m_helper.getConditionForCheckingInJsonArray(listKey='contactDetails', fieldKey='secondryMobile',
                                                                  key='number',

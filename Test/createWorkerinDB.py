@@ -8,7 +8,6 @@ from protobuff.worker_pb2 import WorkerPb
 service = WorkerService()
 #service = LoginService()
 worker  = WorkerPb()
-worker.dbInfo.id = "F"
 worker.dbInfo.lifeTime = ACTIVE
 worker.name.firstName = 'shubham'
 worker.name.lastName = 'tiwari'
@@ -24,4 +23,4 @@ worker.device.macId = '19:68:45:c4:d1:ad'
 worker.device.osType = 'ANDROID'
 worker.device.model = 'Redmi'
 worker.device.deviceName = 'H@cker'
-print(service.get(id="H"))
+print(service.create(builder=worker))
