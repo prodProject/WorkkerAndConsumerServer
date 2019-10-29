@@ -4,7 +4,6 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
-from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -16,6 +15,7 @@ _sym_db = _symbol_database.Default()
 
 import worker_pb2 as worker__pb2
 import consumer_pb2 as consumer__pb2
+import responsestatusenum_pb2 as responsestatusenum__pb2
 import login_pb2 as login__pb2
 
 
@@ -24,60 +24,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x12registration.proto\x12\tprotobuff\x1a\x0cworker.proto\x1a\x0e\x63onsumer.proto\x1a\x0blogin.proto\"w\n\x15RegistrationRequestPb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63omsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12\x10\n\x08password\x18\x03 \x01(\t\"\xb8\x01\n\x16RegistrationResponsePb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63omsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12!\n\x05login\x18\x03 \x01(\x0b\x32\x12.protobuff.LoginPb\x12-\n\x06status\x18\x04 \x01(\x0e\x32\x1d.protobuff.ResponseStatusEnum*\x8e\x01\n\x12ResponseStatusEnum\x12\x1b\n\x17UNKNOWN_RESPONSE_STATUS\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x12\t\n\x05\x45RROR\x10\x03\x12\x0e\n\nUSER_EXIST\x10\x04\x12\x16\n\x12USER_NOT_REGISTRED\x10\x05\x12\x0f\n\x0bUNEXP_ERROR\x10\x06\x62\x06proto3')
+  serialized_pb=_b('\n\x12registration.proto\x12\tprotobuff\x1a\x0cworker.proto\x1a\x0e\x63onsumer.proto\x1a\x18responsestatusenum.proto\x1a\x0blogin.proto\"w\n\x15RegistrationRequestPb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63omsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12\x10\n\x08password\x18\x03 \x01(\t\"\xb4\x01\n\x16RegistrationResponsePb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63onsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12!\n\x05login\x18\x03 \x01(\x0b\x32\x12.protobuff.LoginPb\x12)\n\x06status\x18\x04 \x01(\x0b\x32\x19.protobuff.ResponseTypePbb\x06proto3')
   ,
-  dependencies=[worker__pb2.DESCRIPTOR,consumer__pb2.DESCRIPTOR,login__pb2.DESCRIPTOR,])
+  dependencies=[worker__pb2.DESCRIPTOR,consumer__pb2.DESCRIPTOR,responsestatusenum__pb2.DESCRIPTOR,login__pb2.DESCRIPTOR,])
 
-_RESPONSESTATUSENUM = _descriptor.EnumDescriptor(
-  name='ResponseStatusEnum',
-  full_name='protobuff.ResponseStatusEnum',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNKNOWN_RESPONSE_STATUS', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='SUCCESS', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='FAILED', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='ERROR', index=3, number=3,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='USER_EXIST', index=4, number=4,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='USER_NOT_REGISTRED', index=5, number=5,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='UNEXP_ERROR', index=6, number=6,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=385,
-  serialized_end=527,
-)
-_sym_db.RegisterEnumDescriptor(_RESPONSESTATUSENUM)
-
-ResponseStatusEnum = enum_type_wrapper.EnumTypeWrapper(_RESPONSESTATUSENUM)
-UNKNOWN_RESPONSE_STATUS = 0
-SUCCESS = 1
-FAILED = 2
-ERROR = 3
-USER_EXIST = 4
-USER_NOT_REGISTRED = 5
-UNEXP_ERROR = 6
 
 
 
@@ -121,8 +71,8 @@ _REGISTRATIONREQUESTPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=76,
-  serialized_end=195,
+  serialized_start=102,
+  serialized_end=221,
 )
 
 
@@ -141,7 +91,7 @@ _REGISTRATIONRESPONSEPB = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='comsumer', full_name='protobuff.RegistrationResponsePb.comsumer', index=1,
+      name='consumer', full_name='protobuff.RegistrationResponsePb.consumer', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -156,8 +106,8 @@ _REGISTRATIONRESPONSEPB = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='status', full_name='protobuff.RegistrationResponsePb.status', index=3,
-      number=4, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -173,19 +123,18 @@ _REGISTRATIONRESPONSEPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=198,
-  serialized_end=382,
+  serialized_start=224,
+  serialized_end=404,
 )
 
 _REGISTRATIONREQUESTPB.fields_by_name['worker'].message_type = worker__pb2._WORKERPB
 _REGISTRATIONREQUESTPB.fields_by_name['comsumer'].message_type = consumer__pb2._CONSUMERPB
 _REGISTRATIONRESPONSEPB.fields_by_name['worker'].message_type = worker__pb2._WORKERPB
-_REGISTRATIONRESPONSEPB.fields_by_name['comsumer'].message_type = consumer__pb2._CONSUMERPB
+_REGISTRATIONRESPONSEPB.fields_by_name['consumer'].message_type = consumer__pb2._CONSUMERPB
 _REGISTRATIONRESPONSEPB.fields_by_name['login'].message_type = login__pb2._LOGINPB
-_REGISTRATIONRESPONSEPB.fields_by_name['status'].enum_type = _RESPONSESTATUSENUM
+_REGISTRATIONRESPONSEPB.fields_by_name['status'].message_type = responsestatusenum__pb2._RESPONSETYPEPB
 DESCRIPTOR.message_types_by_name['RegistrationRequestPb'] = _REGISTRATIONREQUESTPB
 DESCRIPTOR.message_types_by_name['RegistrationResponsePb'] = _REGISTRATIONRESPONSEPB
-DESCRIPTOR.enum_types_by_name['ResponseStatusEnum'] = _RESPONSESTATUSENUM
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 RegistrationRequestPb = _reflection.GeneratedProtocolMessageType('RegistrationRequestPb', (_message.Message,), {

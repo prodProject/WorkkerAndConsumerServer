@@ -4,7 +4,8 @@ from RegisrationModule.registrationHelper import RegistrationHelper
 from Services.emailService import EmailService
 from Services.loginService import LoginService
 from Services.workerService import WorkerService
-from protobuff.registration_pb2 import RegistrationResponsePb, SUCCESS
+from protobuff.registration_pb2 import RegistrationResponsePb
+from protobuff.responsestatusenum_pb2 import SUCCESS
 
 
 class States(Enum):
@@ -56,7 +57,7 @@ class RegistrationWorker:
             builder=self.m_helper.getLoginPb(self.response.worker, self.resgistrationReq.worker.type.personType,self.resgistrationReq.password))
         if (login != None):
             self.response.login.CopyFrom(login)
-            self.response.status = SUCCESS
+            self.response.status.statusType = SUCCESS
         self.controlFlow(currentState=States.SEND_MAIL)
 
     def sendMail(self):

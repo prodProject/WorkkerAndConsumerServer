@@ -1,11 +1,11 @@
 import os
 import smtplib
-
 from urllib import parse
-from flask import Flask,request, redirect, url_for
-from flask_mail import Message
+
+from flask import Flask, request, redirect, url_for
 from flask_mail import Mail
-from CommonCode.strings import Strings
+
+from Handlers.loginHandler import LoginHandler
 from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
 
@@ -44,6 +44,13 @@ def registration():
     print(request.json)
     assert  request.json is not None,"RegistrationRequestPb is invalid"
     return  RegistrionHandler.createRegistrationworker(builder=request.json)
+
+@app.route('/loginMain', methods=['POST'])
+def login():
+    print(request.json)
+    assert  request.json is not None,"LoginRequestPb is invalid"
+    return  LoginHandler.getLogin(builder=request.json)
+
 
 @app.route('/user', methods=['POST'])
 def user():

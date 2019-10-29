@@ -38,14 +38,14 @@ class LoginSearchEntity:
         return self.loginSearchResponse
 
     def getSearch(self):
-        loginResp = self.m_searchHandler.handle(workerpb=self.builder)
+        loginResp = self.m_searchHandler.handle(loginpb=self.builder)
         if (loginResp != None):
             self.loginResp = loginResp
         self.controlFlow(currentState=States.FORM_RESPONSE)
 
     def getFormResponse(self):
         if (self.loginResp != None):
-            self.loginSearchResponse = self.m_helper.loginResponse(workerResp=self.loginResp)
+            self.loginSearchResponse = self.m_helper.loginResponse(loginResp=self.loginResp)
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):

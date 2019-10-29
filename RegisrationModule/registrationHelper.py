@@ -5,7 +5,8 @@ from TimeUtility.timeUtill import TimeUtil
 from protobuff.email_pb2 import EmailBuilderPb, EmailIdPb
 from protobuff.entity_pb2 import ACTIVE
 from protobuff.login_pb2 import LoginPb
-from protobuff.registration_pb2 import RegistrationResponsePb, USER_EXIST
+from protobuff.registration_pb2 import RegistrationResponsePb
+from protobuff.responsestatusenum_pb2 import USER_EXIST
 from protobuff.time_pb2 import TimeZoneEnum
 from protobuff.workersearch_pb2 import WorkerSearchRequestPb
 
@@ -25,11 +26,12 @@ class RegistrationHelper:
 
     def userExixts(self):
         respone = RegistrationResponsePb()
-        respone.status = USER_EXIST
+        respone.status.statusType = USER_EXIST
         return respone
 
     def getLoginPb(self, newRegisterdPb, persontype,password):
         login = LoginPb()
+        login.dbInfo.lifeTime = ACTIVE
         login.contactDetails.CopyFrom(newRegisterdPb.contactDetails)
         login.personType.personType=persontype
         login.workerRef.dbInfo.id = newRegisterdPb.dbInfo.id

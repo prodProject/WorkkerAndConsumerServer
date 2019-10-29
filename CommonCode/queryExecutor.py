@@ -83,7 +83,7 @@ class QueryExecuter:
             conn = self.m_dbConnection.getConnection()
             cursor = conn.cursor()
             cursor.execute(query)
-            if (cursor.rowcount > 1):
+            if (cursor.rowcount > 0):
                 row=cursor.fetchall()
                 conn.commit()
                 conn.close()

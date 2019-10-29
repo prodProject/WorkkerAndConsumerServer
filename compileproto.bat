@@ -1,6 +1,7 @@
 cd protos
 echo [COMPILEING..........]
 protoc deviceinfo.proto --python_out=..\protobuff
+protoc responsestatusenum.proto --python_out=..\protobuff
 protoc address.proto --python_out=..\protobuff
 protoc persontypeenum.proto --python_out=..\protobuff
 protoc summary.proto --python_out=..\protobuff

@@ -33,7 +33,7 @@ class LoginService:
 
     def search(self, builder):
         assert builder is not None, "LoginSearchRequest Cannot be empty"
-        self.m_loginSearchEntity.start(builder=builder)
+        self.m_loginSearchEntity.start(loginPb=builder)
         return self.m_loginSearchEntity.done()
 
     def delete(builder):

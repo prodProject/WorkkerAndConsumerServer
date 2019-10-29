@@ -5,8 +5,8 @@ from protobuff.mobile_pb2 import ISD_91
 from protobuff.persontypeenum_pb2 import WORKER
 from protobuff.worker_pb2 import WorkerPb
 
-service = WorkerService()
-#service = LoginService()
+#service = WorkerService()
+service = LoginService()
 worker  = WorkerPb()
 worker.dbInfo.lifeTime = ACTIVE
 worker.name.firstName = 'shubham'
@@ -23,4 +23,4 @@ worker.device.macId = '19:68:45:c4:d1:ad'
 worker.device.osType = 'ANDROID'
 worker.device.model = 'Redmi'
 worker.device.deviceName = 'H@cker'
-print(service.create(builder=worker))
+print(service.get(id="kZ"))
