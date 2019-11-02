@@ -26,7 +26,7 @@ class Login:
     m_response = LoginResponsePb();
 
     def start(self, loginReq):
-        assert loginReq is not None, "LoginPb cannot be empty"
+        assert loginReq is not None, "LoginRequestPb cannot be empty"
         self.m_loginReq = loginReq
         self.controlFlow(currentState=States.CHECK_LOGIN_EXISTS)
 
@@ -34,7 +34,7 @@ class Login:
         return self.m_response
 
     def getLoginExists(self):
-        searchRequest = self.m_helper.getLoginSearchReqbuestBuilder(loginPb=self.m_loginReq)
+        searchRequest = self.m_helper.getLoginSearchReqbuestBuilder(loginPb=self.m_loginReq.login)
         respone = self.m_loginService.search(builder=searchRequest)
         if (respone.summary.totalHits > 0):
             self.m_response.status.statusType = SUCCESS
