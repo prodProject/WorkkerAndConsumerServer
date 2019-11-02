@@ -1,16 +1,9 @@
 from enum import Enum
 
-from CommonCode.convertJSONTOPb import ConvertJSONToPb
-from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.passwordHashOrDehashHelper import PasswordHasherOrDeHasher
-from CommonCode.queryExecutor import QueryExecuter
-from Enums.databaseTables import Tables
 from Enums.passwordEnum import PasswordMode
-from Helper.entityHelper import EntityHelper
 from Password.passwordHelper import PasswordHelper
 from Services.loginService import LoginService
-from Test.loginModuleTest import m_login, m_loginService
-from protobuff import worker_pb2
 
 
 class States(Enum):
@@ -56,7 +49,7 @@ class GenereateAndVerifyPassword:
         self.controlFlow(currentState=States.DONE)
 
     def getLogin(self):
-        self.m_login = m_loginService.get(id=self.pb.dbInfo.id)
+        self.m_login = self.m_loginService.get(id=self.pb.dbInfo.id)
         self.controlFlow(currentState=States.VERIFY_PASSWORD)
 
     def getVerifyPassWord(self):
