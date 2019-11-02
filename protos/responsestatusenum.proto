@@ -6,7 +6,7 @@ message ResponseTypePb {
     ResponseSatusEnum statusType = 1;
 }
 
-enum ResponseSatusEnum{
+enum ResponseSatusEnum {
     UNKNOWN_RESPONSE_STATUS = 0;
     SUCCESS = 1;
     FAILED = 2;
@@ -14,4 +14,5 @@ enum ResponseSatusEnum{
     USER_EXIST = 4;
     USER_NOT_REGISTRED = 5;
     UNEXP_ERROR = 6;
+    INVALID_CREDENTIALS = 7;
 }

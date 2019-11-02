@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x18responsestatusenum.proto\x12\tprotobuff\"B\n\x0eResponseTypePb\x12\x30\n\nstatusType\x18\x01 \x01(\x0e\x32\x1c.protobuff.ResponseSatusEnum*\x8d\x01\n\x11ResponseSatusEnum\x12\x1b\n\x17UNKNOWN_RESPONSE_STATUS\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x12\t\n\x05\x45RROR\x10\x03\x12\x0e\n\nUSER_EXIST\x10\x04\x12\x16\n\x12USER_NOT_REGISTRED\x10\x05\x12\x0f\n\x0bUNEXP_ERROR\x10\x06\x62\x06proto3')
+  serialized_pb=_b('\n\x18responsestatusenum.proto\x12\tprotobuff\"B\n\x0eResponseTypePb\x12\x30\n\nstatusType\x18\x01 \x01(\x0e\x32\x1c.protobuff.ResponseSatusEnum*\xa6\x01\n\x11ResponseSatusEnum\x12\x1b\n\x17UNKNOWN_RESPONSE_STATUS\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x12\t\n\x05\x45RROR\x10\x03\x12\x0e\n\nUSER_EXIST\x10\x04\x12\x16\n\x12USER_NOT_REGISTRED\x10\x05\x12\x0f\n\x0bUNEXP_ERROR\x10\x06\x12\x17\n\x13INVALID_CREDENTIALS\x10\x07\x62\x06proto3')
 )
 
 _RESPONSESATUSENUM = _descriptor.EnumDescriptor(
@@ -58,11 +58,15 @@ _RESPONSESATUSENUM = _descriptor.EnumDescriptor(
       name='UNEXP_ERROR', index=6, number=6,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='INVALID_CREDENTIALS', index=7, number=7,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=108,
-  serialized_end=249,
+  serialized_end=274,
 )
 _sym_db.RegisterEnumDescriptor(_RESPONSESATUSENUM)
 
@@ -74,6 +78,7 @@ ERROR = 3
 USER_EXIST = 4
 USER_NOT_REGISTRED = 5
 UNEXP_ERROR = 6
+INVALID_CREDENTIALS = 7
 
 
 
