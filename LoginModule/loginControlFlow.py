@@ -23,6 +23,7 @@ class Login:
     m_helper = LoginHelper()
     id = None
     m_loginReq = None
+    m_loginResp = None
     m_response = LoginResponsePb();
 
     def start(self, loginReq):
@@ -38,6 +39,7 @@ class Login:
         respone = self.m_loginService.search(builder=searchRequest)
         if (respone.summary.totalHits > 0):
             self.m_response.status.statusType = SUCCESS
+            self.m_loginResp = respone.results[0]
             if(self.m_loginReq.login.personType.personType == WORKER):
                 self.controlFlow(currentState=States.GET_WORKER)
             else:
