@@ -47,7 +47,7 @@ class Login:
             self.controlFlow(currentState=States.DONE)
 
     def getWorker(self):
-        worker = self.m_workerService.get(id=self.m_loginReq.workerRef.dbInfo.id)
+        worker = self.m_workerService.get(id=self.m_loginReq.login.workerRef.dbInfo.id)
         if (worker != None):
             self.m_response.worker.CopyFrom(worker)
         self.controlFlow(currentState=States.DONE)
