@@ -48,8 +48,9 @@ class Login:
             self.controlFlow(currentState=States.DONE)
 
     def verifyPassword(self):
-        checkPassword = self.m_passwordService.getOrVerifyPassword(loginpb=self.m_loginReq.login, mode=PasswordMode.VERIFY_PASSWORD)
-        if(checkPassword):
+        checkPassword = self.m_passwordService.getOrVerifyPassword(loginpb=self.m_loginResp,
+                                                                   mode=PasswordMode.VERIFY_PASSWORD)
+        if (checkPassword):
             if (self.m_loginReq.login.personType.personType == WORKER):
                 self.controlFlow(currentState=States.GET_WORKER)
             else:
@@ -57,6 +58,7 @@ class Login:
         else:
             self.m_response.status.statusType = INVALID_CREDENTIALS
             self.controlFlow(currentState=States.DONE)
+
     def getWorker(self):
         if (self.m_loginResp is not None):
             worker = self.m_workerService.get(id=self.m_loginResp.workerRef.dbInfo.id)
