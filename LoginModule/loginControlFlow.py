@@ -38,7 +38,7 @@ class Login:
         respone = self.m_loginService.search(builder=searchRequest)
         if (respone.summary.totalHits > 0):
             self.m_response.status.statusType = SUCCESS
-            if(self.m_loginReq.personType.personType == WORKER):
+            if(self.m_loginReq.login.personType.personType == WORKER):
                 self.controlFlow(currentState=States.GET_WORKER)
             else:
                 self.controlFlow(currentState=States.GET_CONSUMER)
