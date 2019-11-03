@@ -48,6 +48,7 @@ class Login:
             self.controlFlow(currentState=States.DONE)
 
     def verifyPassword(self):
+        self.m_loginResp.password = self.m_loginReq.login.password
         checkPassword = self.m_passwordService.getOrVerifyPassword(loginpb=self.m_loginResp,
                                                                    mode=PasswordMode.VERIFY_PASSWORD)
         if (checkPassword):

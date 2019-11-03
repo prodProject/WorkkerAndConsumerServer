@@ -55,7 +55,7 @@ class GenereateAndVerifyPassword:
     def getVerifyPassWord(self):
         self.m_isValid = self.m_passwordEncrytorOrDecryptor.getPasswordFromHash(
             actualPassword=self.m_helper.getPasswordFromLoginPb(loginPb=self.pb),
-            hashedPassword=self.m_login.password.encode('utf-8'))
+            hashedPassword=self.m_login.password)
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):
