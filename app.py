@@ -4,6 +4,7 @@ from urllib import parse
 
 from flask import Flask, request, redirect, url_for
 from flask_mail import Mail
+from google.protobuf.json_format import MessageToJson
 
 from Handlers.loginHandler import LoginHandler
 from Handlers.registrationHandler import RegistrionHandler
@@ -55,7 +56,7 @@ def login():
 @app.route('/workerTypeMain', methods=['GET'])
 def getWorkerType():
     if(request.json is not None):
-        return WorkerTypeHandler.searchWorkerType(builder=request.json)
+        return MessageToJson(WorkerTypeHandler.searchWorkerType(builder=request.json))
     else:
         data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
         print(data)
