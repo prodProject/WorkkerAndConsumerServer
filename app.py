@@ -61,7 +61,7 @@ def getWorkerType():
         data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
         print(data)
         assert data is not '',"Invalid id"
-        return WorkerHandler.getWorker(data)
+        return WorkerTypeHandler.getWorkerType(id=data)
 
 
 @app.route('/user', methods=['POST'])
