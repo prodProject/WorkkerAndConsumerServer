@@ -56,7 +56,7 @@ def login():
 @app.route('/workerTypeMain', methods=['GET'])
 def getWorkerType():
     if(request.json is not None):
-        return MessageToJson(WorkerTypeHandler.searchWorkerType(builder=request.json))
+        return WorkerTypeHandler.searchWorkerType(builder=request.json)
     else:
         data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
         print(data)
