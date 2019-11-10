@@ -16,5 +16,5 @@ class PasswordHasherOrDeHasher:
         result = hashlib.md5(password.encode())
         return result.hexdigest()
 
-    def getMd5PasswordMatch(self, actualpassword, hashedPassword):
-        return self.getMd5hashFromPassWord(password=actualpassword) == hashedPassword
+    def getMd5PasswordMatch(self, actualPassword, hashedPassword):
+        return self.getMd5hashFromPassWord(password=actualPassword) == hashedPassword

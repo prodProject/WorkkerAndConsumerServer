@@ -21,7 +21,7 @@ class CreateWorkerTypeEntity:
 
     def start(self, builder):
         self.builder = builder
-        self.controlFlow(currentState=States.GET_ENTITY_ID)
+        self.controlFlow(currentState=States.CREATE_WORKER_TYPE_ENTITY)
 
     def done(self):
         return self.builder
@@ -31,8 +31,8 @@ class CreateWorkerTypeEntity:
         self.controlFlow(currentState=States.CREATE_WORKER_TYPE_ENTITY)
 
     def createEntityId(self):
-        workerTypeEntity = self.m_helper.createEntity(id=self.id, builder=self.builder)
-        self.builder = self.m_queryExecutor.create(builder=workerTypeEntity,table=Tables.WORKER_TYPE.name)
+        #workerTypeEntity = self.m_helper.createEntity(id=self.id, builder=self.builder)
+        self.builder = self.m_queryExecutor.create(builder=self.builder,table=Tables.WORKER_TYPE.name)
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):

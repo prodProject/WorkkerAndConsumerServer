@@ -2,7 +2,6 @@ from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from Services.workerService import WorkerService
 from protobuff import worker_pb2, workersearch_pb2
-from protobuff.workersearch_pb2 import WorkerSearchRequestPb
 
 
 class WorkerHandler:

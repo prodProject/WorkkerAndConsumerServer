@@ -14,7 +14,7 @@ class States(Enum):
     DONE = 2,
 
 
-class GetWorkerEntity:
+class GetWorkerTypeEntity:
     m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
     m_converterPbToJson = ConvertPbToJSON()

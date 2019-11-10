@@ -8,6 +8,7 @@ from flask_mail import Mail
 from Handlers.loginHandler import LoginHandler
 from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
+from Handlers.workerTypeHandler import WorkerTypeHandler
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -50,6 +51,16 @@ def login():
     print(request.json)
     assert  request.json is not None,"LoginRequestPb is invalid"
     return  LoginHandler.getLogin(builder=request.json)
+
+@app.route('/workerTypeMain', methods=['GET'])
+def getWorkerType():
+    if(request.json is not None):
+        return WorkerTypeHandler.searchWorkerType(builder=request.json)
+    else:
+        data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
+        print(data)
+        assert data is not '',"Invalid id"
+        return WorkerHandler.getWorker(data)
 
 
 @app.route('/user', methods=['POST'])

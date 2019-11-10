@@ -1,4 +1,3 @@
-import sys, os
 from CommonCode.queryExecutor import QueryExecuter
 from CommonCode.strings import Strings
 from Enums.databaseTables import Tables

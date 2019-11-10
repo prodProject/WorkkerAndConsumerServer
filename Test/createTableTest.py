@@ -2,7 +2,7 @@ import psycopg2
 
 from Database.databaseConnection import DatabaseConnection
 
-query = 'TRUNCATE TABLE  "WORKER_DATA";'
+query = 'TRUNCATE TABLE  "WORKER_TYPE";'
 '''database = DatabaseConnection()
 con = database.getConnection()
 cur = con.cursor()

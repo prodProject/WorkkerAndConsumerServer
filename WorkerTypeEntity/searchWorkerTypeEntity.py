@@ -4,9 +4,8 @@ from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
 from Helper.entityHelper import EntityHelper
-from Searcher.workerSearcher import WorkerSearcher
 from Searcher.workerTypeSearcher import WorkerTypeSearcher
-from protobuff.workersearch_pb2 import WorkerSearchResponsePb
+from protobuff.workertype_pb2 import WorkerTypeSearchResponsePb
 
 
 class States(Enum):
@@ -16,33 +15,33 @@ class States(Enum):
     DONE = 3,
 
 
-class WorkerSearchEntity:
+class WorkerTypeSearchEntity:
     m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
-    m_searchHandler = WorkerSearcher()
+    m_searchHandler = WorkerTypeSearcher()
     m_converterPbToJson = ConvertPbToJSON()
     m_converterJsonToPb = ConvertJSONToPb()
     builder = None
     id = None
-    workerResp = None
-    workerSearchResponse = WorkerSearchResponsePb()
+    workerTypeResp = None
+    workerTypeSearchResponse = WorkerTypeSearchResponsePb()
 
-    def start(self, workersearchreqPb):
-        self.builder = workersearchreqPb
+    def start(self, workerTypePb):
+        self.builder = workerTypePb
         self.controlFlow(currentState=States.GET_SEARCH)
 
     def done(self):
-        return self.workerSearchResponse
+        return self.workerTypeSearchResponse
 
     def getSearch(self):
-        workerResp = self.m_searchHandler.handle(workerpb=self.builder)
-        if (workerResp != None):
-            self.workerResp = workerResp
+        workerTypeResp = self.m_searchHandler.handle(workerTypepb=self.builder)
+        if (workerTypeResp != None):
+            self.workerTypeResp = workerTypeResp
         self.controlFlow(currentState=States.FORM_RESPONSE)
 
     def getFormResponse(self):
-        if (self.workerResp != None):
-            self.workerSearchResponse = self.m_helper.workerResponse(workerResp=self.workerResp)
+        if (self.workerTypeResp != None):
+            self.workerTypeSearchResponse = self.m_helper.workerTypeResponse(workerTpeResp=self.workerTypeResp)
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):

@@ -19,8 +19,22 @@ class Strings:
 
     @staticmethod
     def qoutedString(string):
-        return "'"+string+"'"
+        return "'" + string + "'"
 
     @staticmethod
     def getFormattedEmail(builder):
-        return builder.localPart+'@'+builder.domain
+        return builder.localPart + '@' + builder.domain
+
+    @staticmethod
+    def getTittleCaseStringMaker(data):
+        Char1 = '^'
+        Char2 = '^^'
+        resultString = ''
+        counter = 1
+        for x in data.split(' '):
+            if (counter == 1):
+                resultString = resultString + Char2 + x.lower()
+            else:
+                resultString = resultString + Char1 + x.lower()
+            counter = counter+1
+        return resultString
