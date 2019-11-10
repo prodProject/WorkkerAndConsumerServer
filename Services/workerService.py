@@ -33,7 +33,7 @@ class WorkerService:
 
     def search(self, builder):
         assert builder is not None, "WorkerSearchRequest Cannot be empty"
-        self.m_workerSearchEntity.start(workerPb=builder)
+        self.m_workerSearchEntity.start(workersearchreqPb=builder)
         return self.m_workerSearchEntity.done()
 
     def delete(builder):
