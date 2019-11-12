@@ -21,6 +21,7 @@ class LoginSearcher:
     def handle(self, loginpb):
         assert loginpb is not None, "loginpb cannot be empty"
         self.validate(loginpb)
+        self.typeConfig.clear();
         subquery = self.getLoginConfig()
         return self.m_queryExecutor.search(query=subquery, table=Tables.LOGIN.name)
 

@@ -19,6 +19,7 @@ class WorkerTypeSearcher:
 
     def handle(self, workerTypepb):
         assert workerTypepb is not None, "WorkerPb cannot be empty"
+        self.typeConfig.clear();
         self.validate(workerTypepb)
         subquery = self.getWokerTypeConfig()
         return self.m_queryExecutor.search(query=subquery, table=Tables.WORKER_TYPE.name)
