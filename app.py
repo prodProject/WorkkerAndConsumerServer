@@ -69,7 +69,7 @@ def getWorkerType():
     else:
         print(data)
         assert data is not '', "Invalid Query"
-        return MessageToJson(WorkerTypeHandler.getWorkerType(id=data))
+        return WorkerTypeHandler.getWorkerType(id=data)
 
 
 @app.route('/user', methods=['POST'])
