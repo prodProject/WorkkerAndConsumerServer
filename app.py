@@ -1,5 +1,6 @@
 import os
 import smtplib
+from distutils.command.build import build
 from urllib import parse
 
 from flask import Flask, request, redirect, url_for
@@ -55,13 +56,10 @@ def login():
 
 @app.route('/workerTypeMain', methods=['GET'])
 def getWorkerType():
-    if(request.json is not None):
-        return WorkerTypeHandler.searchWorkerType(builder=request.json)
-    else:
-        data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
-        print(data)
-        assert data is not '',"Invalid id"
-        return WorkerTypeHandler.getWorkerType(id=data)
+    data = parse.parse_qs(parse.urlparse(request.url).query)['query']
+    print(data)
+    assert data is not '',"Invalid Query"
+    return WorkerTypeHandler.searchWorkerType(builder=data)
 
 
 @app.route('/user', methods=['POST'])
