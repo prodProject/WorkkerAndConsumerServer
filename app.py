@@ -3,7 +3,7 @@ import smtplib
 from distutils.command.build import build
 from urllib import parse
 
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, json
 from flask_mail import Mail
 from google.protobuf.json_format import MessageToJson
 
@@ -59,7 +59,7 @@ def getWorkerType():
     data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
     print(data)
     assert data is not '',"Invalid Query"
-    return WorkerTypeHandler.searchWorkerType(builder=data)
+    return WorkerTypeHandler.searchWorkerType(builder=json.loads(data))
 
 
 @app.route('/user', methods=['POST'])
