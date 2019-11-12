@@ -56,7 +56,7 @@ def login():
 
 @app.route('/workerTypeMain', methods=['GET'])
 def getWorkerType():
-    data = parse.parse_qs(parse.urlparse(request.url).query)['query']
+    data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
     print(data)
     assert data is not '',"Invalid Query"
     return WorkerTypeHandler.searchWorkerType(builder=data)
