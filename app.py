@@ -15,6 +15,7 @@ from Handlers.workerTypeHandler import WorkerTypeHandler
 app = Flask(__name__)
 mail = Mail(app)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def getServerStatus():
     # database = "DATABASE_URL :"+os.environ.get('DATABASE_URL',0)
@@ -29,37 +30,46 @@ def getServerStatus():
 def getWorker():
     data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
     print(data)
-    assert data is not '',"Invalid id"
+    assert data is not '', "Invalid id"
     return WorkerHandler.getWorker(data)
+
 
 @app.route('/workerMain', methods=['POST'])
 def createWorker():
-    assert  request.json is not None,"WorkerPb is invalid"
-    return  WorkerHandler.createWorker(builder=request.json)
+    assert request.json is not None, "WorkerPb is invalid"
+    return WorkerHandler.createWorker(builder=request.json)
+
 
 @app.route('/workerMain', methods=['PUT'])
 def updateWorker():
-    assert  request.json is not None,"WorkerPb is invalid"
-    return  WorkerHandler.updateWorker(builder=request.json)
+    assert request.json is not None, "WorkerPb is invalid"
+    return WorkerHandler.updateWorker(builder=request.json)
+
 
 @app.route('/registrationWorkerMain', methods=['POST'])
 def registration():
     print(request.json)
-    assert  request.json is not None,"RegistrationRequestPb is invalid"
-    return  RegistrionHandler.createRegistrationworker(builder=request.json)
+    assert request.json is not None, "RegistrationRequestPb is invalid"
+    return RegistrionHandler.createRegistrationworker(builder=request.json)
+
 
 @app.route('/loginMain', methods=['POST'])
 def login():
     print(request.json)
-    assert  request.json is not None,"LoginRequestPb is invalid"
-    return  LoginHandler.getLogin(builder=request.json)
+    assert request.json is not None, "LoginRequestPb is invalid"
+    return LoginHandler.getLogin(builder=request.json)
+
 
 @app.route('/workerTypeMain', methods=['GET'])
 def getWorkerType():
     data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
-    print(data)
-    assert data is not '',"Invalid Query"
-    return WorkerTypeHandler.searchWorkerType(builder=json.loads(data))
+    if ("{" in str(data)):
+        assert data is not '', "Invalid Query"
+        return MessageToJson(WorkerTypeHandler.searchWorkerType(builder=json.loads(data)))
+    else:
+        print(data)
+        assert data is not '', "Invalid Query"
+        return MessageToJson(WorkerTypeHandler.getWorkerType(id=data))
 
 
 @app.route('/user', methods=['POST'])
