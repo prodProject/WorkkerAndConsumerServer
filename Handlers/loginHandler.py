@@ -1,8 +1,7 @@
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from Services.loginModuleService import LoginModuleService
-from protobuff.login_pb2 import LoginRequestPb
-
+from protobuff import login_pb2
 
 class LoginHandler:
 
@@ -11,5 +10,5 @@ class LoginHandler:
         service = LoginModuleService()
         m_converter = ConvertJSONToPb()
         m_convertPbtoJson = ConvertPbToJSON()
-        builder = m_converter.converjsontoPBProper(response=builder, instanceType=LoginRequestPb())
+        builder = m_converter.converjsontoPBProper(response=builder, instanceType=login_pb2.LoginRequestPb())
         return m_convertPbtoJson.converPbtojson(service.login(loginRequestPb=builder))
