@@ -11,4 +11,5 @@ class LoginHandler:
         m_converter = ConvertJSONToPb()
         m_convertPbtoJson = ConvertPbToJSON()
         builder = m_converter.converjsontoPBProper(response=builder, instanceType=login_pb2.LoginRequestPb())
+        print(builder)
         return m_convertPbtoJson.converPbtojson(service.login(loginRequestPb=builder))

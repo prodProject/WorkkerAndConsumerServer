@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x10workertype.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x0bnames.proto\x1a\rsummary.proto\"\x8a\x01\n\x0cWorkertypePb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12-\n\nworkerType\x18\x02 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\x12&\n\ncategories\x18\x03 \x03(\x0b\x32\x12.protobuff.NamesPb\"o\n\x19WorkerTypeSearchRequestPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12-\n\nworkerType\x18\x02 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\"m\n\x1aWorkerTypeSearchResponsePb\x12%\n\x07summary\x18\x01 \x01(\x0b\x32\x14.protobuff.SummaryPb\x12(\n\x07results\x18\x02 \x03(\x0b\x32\x17.protobuff.WorkertypePb*\xe2\x01\n\x0eWorkerTypeEnum\x12\x17\n\x13UNKNOWN_WORKER_TYPE\x10\x00\x12\x0f\n\x0b\x43ONSTRUCTOR\x10\x01\x12\x0f\n\x0b\x45LECTRICIAN\x10\x02\x12\x0c\n\x08PAINTING\x10\x03\x12\x0c\n\x08\x43LEANING\x10\x04\x12\x0c\n\x08PLUMBING\x10\x05\x12\x08\n\x04MAID\x10\x06\x12\r\n\tCARPENTER\x10\x07\x12\x1d\n\x19LAUNDARY_AND_DRY_CLEANING\x10\x08\x12\x10\n\x0cPEST_CONTROL\x10\t\x12\x16\n\x12PACKERS_AND_MOVERS\x10\n\x12\t\n\x05SALON\x10\x0b\x62\x06proto3')
+  serialized_pb=_b('\n\x10workertype.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x0bnames.proto\x1a\rsummary.proto\"\x8a\x01\n\x0cWorkerTypePb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12-\n\nworkerType\x18\x02 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\x12&\n\ncategories\x18\x03 \x03(\x0b\x32\x12.protobuff.NamesPb\"o\n\x19WorkerTypeSearchRequestPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12-\n\nworkerType\x18\x02 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\"m\n\x1aWorkerTypeSearchResponsePb\x12%\n\x07summary\x18\x01 \x01(\x0b\x32\x14.protobuff.SummaryPb\x12(\n\x07results\x18\x02 \x03(\x0b\x32\x17.protobuff.WorkerTypePb*\xe2\x01\n\x0eWorkerTypeEnum\x12\x17\n\x13UNKNOWN_WORKER_TYPE\x10\x00\x12\x0f\n\x0b\x43ONSTRUCTOR\x10\x01\x12\x0f\n\x0b\x45LECTRICIAN\x10\x02\x12\x0c\n\x08PAINTING\x10\x03\x12\x0c\n\x08\x43LEANING\x10\x04\x12\x0c\n\x08PLUMBING\x10\x05\x12\x08\n\x04MAID\x10\x06\x12\r\n\tCARPENTER\x10\x07\x12\x1d\n\x19LAUNDARY_AND_DRY_CLEANING\x10\x08\x12\x10\n\x0cPEST_CONTROL\x10\t\x12\x16\n\x12PACKERS_AND_MOVERS\x10\n\x12\t\n\x05SALON\x10\x0b\x62\x06proto3')
   ,
   dependencies=[entity__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,summary__pb2.DESCRIPTOR,])
 
@@ -107,28 +107,28 @@ SALON = 11
 
 
 _WORKERTYPEPB = _descriptor.Descriptor(
-  name='WorkertypePb',
-  full_name='protobuff.WorkertypePb',
+  name='WorkerTypePb',
+  full_name='protobuff.WorkerTypePb',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='dbInfo', full_name='protobuff.WorkertypePb.dbInfo', index=0,
+      name='dbInfo', full_name='protobuff.WorkerTypePb.dbInfo', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='workerType', full_name='protobuff.WorkertypePb.workerType', index=1,
+      name='workerType', full_name='protobuff.WorkerTypePb.workerType', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='categories', full_name='protobuff.WorkertypePb.categories', index=2,
+      name='categories', full_name='protobuff.WorkerTypePb.categories', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -233,18 +233,18 @@ _WORKERTYPESEARCHREQUESTPB.fields_by_name['dbInfo'].message_type = entity__pb2._
 _WORKERTYPESEARCHREQUESTPB.fields_by_name['workerType'].enum_type = _WORKERTYPEENUM
 _WORKERTYPESEARCHRESPONSEPB.fields_by_name['summary'].message_type = summary__pb2._SUMMARYPB
 _WORKERTYPESEARCHRESPONSEPB.fields_by_name['results'].message_type = _WORKERTYPEPB
-DESCRIPTOR.message_types_by_name['WorkertypePb'] = _WORKERTYPEPB
+DESCRIPTOR.message_types_by_name['WorkerTypePb'] = _WORKERTYPEPB
 DESCRIPTOR.message_types_by_name['WorkerTypeSearchRequestPb'] = _WORKERTYPESEARCHREQUESTPB
 DESCRIPTOR.message_types_by_name['WorkerTypeSearchResponsePb'] = _WORKERTYPESEARCHRESPONSEPB
 DESCRIPTOR.enum_types_by_name['WorkerTypeEnum'] = _WORKERTYPEENUM
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-WorkertypePb = _reflection.GeneratedProtocolMessageType('WorkertypePb', (_message.Message,), {
+WorkerTypePb = _reflection.GeneratedProtocolMessageType('WorkerTypePb', (_message.Message,), {
   'DESCRIPTOR' : _WORKERTYPEPB,
   '__module__' : 'workertype_pb2'
-  # @@protoc_insertion_point(class_scope:protobuff.WorkertypePb)
+  # @@protoc_insertion_point(class_scope:protobuff.WorkerTypePb)
   })
-_sym_db.RegisterMessage(WorkertypePb)
+_sym_db.RegisterMessage(WorkerTypePb)
 
 WorkerTypeSearchRequestPb = _reflection.GeneratedProtocolMessageType('WorkerTypeSearchRequestPb', (_message.Message,), {
   'DESCRIPTOR' : _WORKERTYPESEARCHREQUESTPB,
