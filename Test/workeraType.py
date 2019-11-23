@@ -7,42 +7,42 @@ from CommonCode.strings import Strings
 from Services.workerTypeService import WorkerTypeService
 from protobuff.entity_pb2 import ACTIVE
 from protobuff.names_pb2 import NamesPb
-from protobuff.workertype_pb2 import WorkertypePb, WorkerTypeEnum
+from protobuff.workertype_pb2 import WorkerTypeEnum, WorkerTypePb
 
 converter = IntigerToStringIdConverter()
 m_workerType = WorkerTypeService()
 f = open("../WorkerTypeSheet.csv", 'rt')
 try:
     reader = csv.reader(f)
-    i=0
+    i = 0
     for row in reader:
-        if(i<2):
-            i=i+1
+        if (i < 2):
+            i = i + 1
             continue
-        j=0
-        workertype = WorkertypePb()
+        j = 0
+        workertype = WorkerTypePb()
         workertype.dbInfo.lifeTime = ACTIVE
         listType = list();
         listType.clear()
         for data in row:
-            if(j==0):
+            if (j == 0):
                 workertype.dbInfo.id = converter.convert(id=int(data))
-                j=j+1
+                j = j + 1
                 continue
-            if(j==1):
-                workertype.workerType= WorkerTypeEnum.Value(str(data))
-                j=j+1
+            if (j == 1):
+                workertype.workerType = WorkerTypeEnum.Value(str(data))
+                j = j + 1
                 continue
-            if(j>1):
+            if (j > 1):
                 namePb = NamesPb()
                 namePb.canonicalName = Strings.getTittleCaseStringMaker(data=data)
                 listType.append(namePb)
-                if(data.lower()=='others'):
+                if (data.lower() == 'others'):
                     workertype.categories.extend(listType)
                     break
-        #print(MessageToJson(workertype))
+        # print(MessageToJson(workertype))
         print(m_workerType.create(builder=workertype))
-        j=0
+        j = 0
 
 finally:
     f.close()

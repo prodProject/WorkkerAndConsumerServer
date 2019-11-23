@@ -43,7 +43,7 @@ class EntityHelper:
             # workerSearchResponse.results.add()
             try:
                 self.workerTypelist.append(self.m_converterJsonToPb.converjsontoPBProper(response=worker[0],
-                                                                                         instanceType=workertype_pb2.WorkertypePb()))
+                                                                                         instanceType=workertype_pb2.WorkerTypePb()))
             except ValueError:
                 pass
         workerTyepSearchResponse.results.extend(self.workerTypelist)
