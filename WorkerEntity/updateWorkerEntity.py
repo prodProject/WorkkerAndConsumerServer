@@ -3,17 +3,18 @@ from enum import Enum
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
+from Comparetor.workerComparetor import WorkerComparetor
 from Enums.databaseTables import Tables
 from Helper.entityHelper import EntityHelper
 from WorkerEntity.getWorkerEntity import GetWorkerEntity
-from protobuff import worker_pb2
 
 
 class States(Enum):
     START = 0,
     GET_ENTITY_ID = 1,
-    UPDATE_ENTITY_ID = 2,
-    DONE = 3,
+    COMPARE_PB = 2
+    UPDATE_ENTITY_ID = 3,
+    DONE = 4,
 
 
 class UpdateWorkerEntity:
@@ -22,6 +23,7 @@ class UpdateWorkerEntity:
     m_queryExecutor = QueryExecuter()
     m_converterPbToJson = ConvertPbToJSON()
     m_converterJsonToPb = ConvertJSONToPb()
+    m_compareWokerPb = WorkerComparetor()
     oldPb = None
     builder = None
     id = None
@@ -37,16 +39,24 @@ class UpdateWorkerEntity:
     def getEntityId(self):
         self.m_getEntity.start(id=self.id)
         self.oldPb = self.m_getEntity.done()
+        if (self.oldPb == None):
+            self.controlFlow(currentState=States.DONE)
+        self.controlFlow(currentState=States.COMPARE_PB)
+
+    def comaprePb(self):
+        self.m_compareWokerPb.compareWorkerPb(oldPb=self.oldPb, newPb=self.builder)
         self.controlFlow(currentState=States.UPDATE_ENTITY_ID)
 
     def updateEntity(self):
-        newPb = self.m_queryExecutor.update(id=self.id,builder=self.builder,table=Tables.WORKER_DATA.name)
+        newPb = self.m_queryExecutor.update(id=self.id, builder=self.builder, table=Tables.WORKER_DATA.name)
         self.builder = newPb
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):
         if (currentState == States.GET_ENTITY_ID):
             self.getEntityId()
+        elif (currentState == States.COMPARE_PB):
+            self.comaprePb()
         elif (currentState == States.UPDATE_ENTITY_ID):
             self.updateEntity()
         elif (currentState == States.DONE):
