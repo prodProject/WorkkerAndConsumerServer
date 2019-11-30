@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protobuff;
+
+message BooleanPb {
+    bool value= 1;
+}
+
+enum BooleanEnum{
+    DEFAULT=0;
+    TRUE =1;
+    FALSE=2;
+}

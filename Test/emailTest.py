@@ -9,7 +9,6 @@ tobu.localpart = "shubhamtiwaricr07"
 tobu.domain = "gmail.com"
 email.subject = "Hello"
 email.content = "hi"
-
 mail = SendMail()
 mail.start(builder=email)
 print(mail.done().headers)
