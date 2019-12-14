@@ -13,4 +13,4 @@ m_loginReq.login.contactDetails.email.domain = "e.e";
 m_loginReq.login.password = "e";
 m_loginReq.login.personType.personType = WORKER;
 m_converter = ConvertJSONToPb()
-print(m_loginService.login(loginRequestPb=m_loginReq))
+print(m_loginReq)

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package protobuff;
+
+message FilePb {
+    string filePath = 1;
+    string fileName = 2;
+    ExtensionTypeEnum extensionEnum = 3;
+}
+
+enum ExtensionTypeEnum {
+    UNKNOWN_EXTENSION_TYPE = 0;
+    IMG_JPG = 1;
+    IMG_PNG = 2;
+    IMG_GIF = 3;
+    TEXT = 4;
+    PDF = 5;
+}
+
+message FileConfigPb {
+    string fileUrl = 1;
+}
+

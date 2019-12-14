@@ -2,8 +2,13 @@ from enum import Enum
 
 
 class ServerTypeEnvironmentEnum(Enum):
-    DEVEL_1 = 0,
-    DEVEL_2 = 1,
-    DEVEL_3 = 2,
-    DEVEL_4 = 3,
-    PROD = 4,
+    UNKNOWN_ENV = 0
+    DEVEL_1 = 1,
+    DEVEL_2 = 2,
+    DEVEL_3 = 3,
+    DEVEL_4 = 4,
+    PROD = 5,
+
+    @staticmethod
+    def getEnum(name):
+       return ServerTypeEnvironmentEnum.__getattr__(name=name)

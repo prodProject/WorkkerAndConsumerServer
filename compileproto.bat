@@ -1,6 +1,7 @@
 cd protos
 echo [COMPILEING..........]
 protoc boolean.proto --python_out=..\protobuff
+protoc fileconfig.proto --python_out=..\protobuff
 protoc deviceinfo.proto --python_out=..\protobuff
 protoc responsestatusenum.proto --python_out=..\protobuff
 protoc address.proto --python_out=..\protobuff

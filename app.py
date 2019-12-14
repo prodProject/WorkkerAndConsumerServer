@@ -19,7 +19,7 @@ mail = Mail(app)
 @app.route('/', methods=['GET', 'POST'])
 def getServerStatus():
     # database = "DATABASE_URL :"+os.environ.get('DATABASE_URL',0)
-    environment = "ENVIRONMENT :" + os.environ.get('ENVIRONMENT', 1)
+    environment = "ENVIRONMENT :" + os.environ.get('SERVER_ENVIRONMENT', 3)
     url = "URL :" + os.environ.get('URL', 2)
     status = "STATUS :" + os.environ.get('STATUS', 3)
     response = environment + "<br>" + url + "<br>" + status

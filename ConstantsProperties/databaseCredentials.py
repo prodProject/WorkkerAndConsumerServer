@@ -2,6 +2,7 @@ from Enums.serverTypeEnum import ServerTypeEnvironmentEnum
 
 
 class ServerTypeEnvironment():
+    environment = ServerTypeEnvironmentEnum.UNKNOWN_ENV
     HOST = "";
     DATABASE_NAME = "";
     USER = "";
@@ -10,6 +11,7 @@ class ServerTypeEnvironment():
     URL = "";
 
     def setEnvironment(self, environmentType):
+        self.environment = environmentType
         if (environmentType == ServerTypeEnvironmentEnum.DEVEL_4):
             self.HOST = "ec2-54-235-114-242.compute-1.amazonaws.com"
             self.DATABASE_NAME = "dd6edd764lms8p"
@@ -63,3 +65,6 @@ class ServerTypeEnvironment():
 
     def getUrl(self):
         return self.URL
+
+    def getServerEnvironment(self):
+        return self.environment

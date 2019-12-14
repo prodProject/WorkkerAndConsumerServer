@@ -23,6 +23,7 @@ more-itertools= "*"
 Flask-Mail="*"
 sendgrid = "*"
 bcrypt = "*"
+python-firebase ="*"
 
 [requires]
 
