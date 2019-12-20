@@ -1,5 +1,4 @@
-from pymemcache import Client
-from pymemcache.client import base
+
 import memcache
 
 
