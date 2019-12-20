@@ -76,7 +76,7 @@ def getWorkerType():
 @app.route('/user', methods=['GET'])
 def user():
     cache=BasicCache()
-    return cache.getCache()
+    return str(cache.getCache())
     # return redirect(url_for('index'))
 
 
