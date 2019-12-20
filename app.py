@@ -11,6 +11,7 @@ from Handlers.loginHandler import LoginHandler
 from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
 from Handlers.workerTypeHandler import WorkerTypeHandler
+from Test.cachetest import BasicCache
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -72,9 +73,11 @@ def getWorkerType():
         return WorkerTypeHandler.getWorkerType(id=data)
 
 
-@app.route('/user', methods=['POST'])
+@app.route('/user', methods=['GET'])
 def user():
-    return redirect(url_for('index'))
+    cache=BasicCache()
+    return cache.getCache()
+    # return redirect(url_for('index'))
 
 
 @app.route('/mail', methods=['GET'])

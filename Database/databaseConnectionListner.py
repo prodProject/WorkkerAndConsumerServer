@@ -9,7 +9,7 @@ class DatabaseConnectionListner:
         self.getConnectionListner()
 
     def getConnectionListner(self):
-        self.m_serverTypeEnvironment.setEnvironment(environmentType=ServerTypeEnvironmentEnum.DEVEL_1   )
+        self.m_serverTypeEnvironment.setEnvironment(environmentType=ServerTypeEnvironmentEnum)
 
     def getEnvironment(self):
         return self.m_serverTypeEnvironment
