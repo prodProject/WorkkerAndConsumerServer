@@ -1,4 +1,3 @@
-
 import memcache
 
 
@@ -7,20 +6,15 @@ import memcache
 # print(result)
 
 
-
-
 class BasicCache:
-    client=None
+    client = None
 
     def __init__(self):
         self.client = memcache.Client([('127.0.0.1', 11255)])
-
-
-
+        self.setCache()
 
     def setCache(self):
         self.client.set('some_key', 'some_value')
-
 
     def getCache(self):
         self.client.get('some_key')
