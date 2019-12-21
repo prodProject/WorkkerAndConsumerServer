@@ -14,7 +14,7 @@ class BasicCache:
         self.setCache()
 
     def setCache(self):
-        self.client.set('some_key', 'some_value')
+        self.client.set('some_key', 'some_value',time=50000)
 
     def getCache(self):
         self.client.get('some_key')
