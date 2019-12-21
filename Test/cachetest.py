@@ -10,7 +10,7 @@ class BasicCache:
     client = None
 
     def __init__(self):
-        self.client = memcache.Client([('10.*.*.*', 11211)])
+        self.client = memcache.Client([('10.69.31.173', 11211)])
         self.setCache()
         print('hello')
 
