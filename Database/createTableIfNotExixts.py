@@ -37,7 +37,7 @@ class CreateTableIfNotExists:
             for table in Tables:
                 if (table == Tables.UNKNOWN):
                     continue
-                if (Tables.ENTITY_DATA not in table):
+                if (Tables.ENTITY_DATA == table):
                     try:
                         query = self.m_helper.getCreateEntityTableQuery(table=table.name)
                         conn = self.m_dbConnection.getConnection()

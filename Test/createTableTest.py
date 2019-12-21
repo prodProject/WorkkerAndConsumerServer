@@ -20,9 +20,9 @@ cur.close()'''
 database = DatabaseConnection()
 connection = database.getConnection()
 cursor = connection.cursor()
-postgres_insert_query = """ INSERT INTO "ENTITY_DATA" (dbid) VALUES (%s)"""
-record_to_insert = ('0')
-cursor.execute(query)
+postgres_insert_query = """ INSERT INTO "ENTITY_DATA" (dbid) VALUES (0)"""
+#record_to_insert = ('0')
+cursor.execute(postgres_insert_query)
 connection.commit()
 count = cursor.rowcount
 print(count, "Record inserted successfully into mobile table")
