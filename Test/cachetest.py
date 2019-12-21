@@ -12,6 +12,7 @@ class BasicCache:
     def __init__(self):
         self.client = memcache.Client([('0.0.0.0', 11211)])
         self.setCache()
+        print('hello')
 
 
     def setCache(self):
