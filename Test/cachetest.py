@@ -10,11 +10,13 @@ class BasicCache:
     client = None
 
     def __init__(self):
-        self.client = memcache.Client([('0.0.0.0', 11255)])
+        self.client = memcache.Client([('0.0.0.0', 11211)])
         self.setCache()
+
 
     def setCache(self):
         self.client.set('some_key', 'some_value',time=50000)
 
     def getCache(self):
         self.client.get('some_key')
+        print(self.client.get('some_key'))
