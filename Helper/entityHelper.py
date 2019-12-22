@@ -1,6 +1,8 @@
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
-from protobuff import worker_pb2, login_pb2, workertype_pb2
+from protobuff import worker_pb2, login_pb2, workertype_pb2, pushnotification_pb2
+from protobuff.entity_pb2 import ACTIVE
 from protobuff.login_pb2 import LoginSearchRespsonsePb
+from protobuff.pushnotification_pb2 import PushNotificationSearchResponsePb
 from protobuff.workersearch_pb2 import WorkerSearchResponsePb
 from protobuff.workertype_pb2 import WorkerTypeSearchResponsePb
 
@@ -8,11 +10,12 @@ from protobuff.workertype_pb2 import WorkerTypeSearchResponsePb
 class EntityHelper:
     m_converterJsonToPb = ConvertJSONToPb()
     workerlist = list()
-    loginlist = list()
+    pushNotificationList = list()
     workerTypelist = list()
 
     def createEntity(self, id, builder):
         builder.dbInfo.id = id
+        builder.dbInfo.lifeTime = ACTIVE
         return builder
 
     def comapreIds(self, id1, id2):
@@ -50,15 +53,30 @@ class EntityHelper:
         return workerTyepSearchResponse
 
     def loginResponse(self, loginResp):
-        self.loginlist.clear()
+        self.pushNotificationList.clear()
         loginSearchResponse = LoginSearchRespsonsePb()
         loginSearchResponse.summary.totalHits = len(loginResp)
         for index, login in enumerate(loginResp):
             # workerSearchResponse.results.add()
             try:
-                self.loginlist.append(
+                self.pushNotificationList.append(
                     self.m_converterJsonToPb.converjsontoPBProper(response=login[0], instanceType=login_pb2.LoginPb()))
             except ValueError:
                 pass
-        loginSearchResponse.results.extend(self.loginlist)
+        loginSearchResponse.results.extend(self.pushNotificationList)
         return loginSearchResponse
+
+
+    def pushNotificationResponse(self, pushNotificationResp):
+        self.pushNotificationList.clear()
+        pushNotificationSearchResponse = PushNotificationSearchResponsePb()
+        pushNotificationSearchResponse.summary.totalHits = len(pushNotificationResp)
+        for index, pushNotification in enumerate(pushNotificationResp):
+            # workerSearchResponse.results.add()
+            try:
+                self.pushNotificationList.append(
+                    self.m_converterJsonToPb.converjsontoPBProper(response=pushNotification[0], instanceType=pushnotification_pb2.PushNotificationPb()))
+            except ValueError:
+                pass
+        pushNotificationSearchResponse.results.extend(self.pushNotificationList)
+        return pushNotificationSearchResponse

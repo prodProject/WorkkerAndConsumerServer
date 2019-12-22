@@ -5,6 +5,7 @@ from Comparetor.contactDetailsComparetor import ContactDetailsComapretor
 from Comparetor.deviceComparetor import DeviceInfoComaretor
 from Comparetor.entityComparetor import EntityComparetor
 from Comparetor.genderComparetor import GenderComparetor
+from Comparetor.genericRefComparetor import GenericRefComparetor
 from Comparetor.namesComparetor import NamesComparetor
 from Comparetor.personTypeComparetor import PersonTypeComparetor
 from Comparetor.timeComparetor import TimeComparetor
@@ -35,6 +36,7 @@ class WorkerTypeConfigComapretor:
 
 class WorkerComparetor(EntityComparetor, NamesComparetor, ContactDetailsComapretor, TimeComparetor, GenderComparetor,
                        AddressComparetor, WorkerTypeConfigComapretor, PersonTypeComparetor, DeviceInfoComaretor):
+    m_genericRef = GenericRefComparetor()
 
     def compareWorkerPb(self, oldPb, newPb):
         self.campareEntityPb(oldPb=oldPb.dbInfo, newPb=newPb.dbInfo)
@@ -46,3 +48,4 @@ class WorkerComparetor(EntityComparetor, NamesComparetor, ContactDetailsComapret
         self.comapreWorkerTypeConfig(oldPb=oldPb.workerTypeConfig, newPb=newPb.workerTypeConfig)
         self.comaprePersonTypePb(oldPb=oldPb.type, newPb=newPb.type)
         self.compareDeviceInfoPb(oldPb=oldPb.device, newPb=newPb.device)
+        self.m_genericRef.compareGenericRef(oldPb=oldPb.pushNotificationRef, newPb=newPb.pushNotificationRef)

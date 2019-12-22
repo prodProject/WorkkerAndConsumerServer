@@ -39,15 +39,15 @@ class LoginSearcher:
     def validate(self, loginpb):
         if (loginpb.lifeTime != StatusEnum.UNKNOWN_STATUS):
             self.typeConfig.append(
-                self.m_helper.getCondition(cond=loginSearchConfig.LIFETIME, value=StatusEnum.Name(loginpb.lifeTime)))
+                self.m_helper.getEqualToCondition(cond=loginSearchConfig.LIFETIME, value=StatusEnum.Name(loginpb.lifeTime)))
         if (Strings.notEmpty(loginpb.login.contactDetails.email.localPart) and Strings.notEmpty(
                 loginpb.login.contactDetails.email.domain)):
-            self.typeConfig.append(self.m_helper.getCondition(cond=loginSearchConfig.EMAIL_LOCAL_PART,
-                                                              value=loginpb.login.contactDetails.email.localPart))
-            self.typeConfig.append(self.m_helper.getCondition(cond=loginSearchConfig.EMAIL_DOMAIN_PART,
-                                                              value=loginpb.login.contactDetails.email.domain))
+            self.typeConfig.append(self.m_helper.getEqualToCondition(cond=loginSearchConfig.EMAIL_LOCAL_PART,
+                                                                     value=loginpb.login.contactDetails.email.localPart))
+            self.typeConfig.append(self.m_helper.getEqualToCondition(cond=loginSearchConfig.EMAIL_DOMAIN_PART,
+                                                                     value=loginpb.login.contactDetails.email.domain))
         if (Strings.notEmpty(loginpb.login.contactDetails.primaryMobile.number)):
-            self.typeConfig.append(self.m_helper.getCondition(cond=loginSearchConfig.PRIMARY_MOBILE_NO,
-                                                              value=loginpb.login.contactDetails.primaryMobile.number))
+            self.typeConfig.append(self.m_helper.getEqualToCondition(cond=loginSearchConfig.PRIMARY_MOBILE_NO,
+                                                                     value=loginpb.login.contactDetails.primaryMobile.number))
 
         

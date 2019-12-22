@@ -5,7 +5,7 @@ from Searcher.sercherConfig import SearcherConfig
 
 
 class SearcherHelper:
-    def getCondition(self, cond, value):
+    def getEqualToCondition(self, cond, value):
         return cond + '=' + Strings.qoutedString(value)
 
     def getConditionForCheckingInJsonArray(self, listKey, fieldKey, key, value):

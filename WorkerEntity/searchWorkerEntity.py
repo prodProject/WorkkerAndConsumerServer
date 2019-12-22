@@ -5,7 +5,6 @@ from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
 from Helper.entityHelper import EntityHelper
 from Searcher.workerSearcher import WorkerSearcher
-from Searcher.workerTypeSearcher import WorkerTypeSearcher
 from protobuff.workersearch_pb2 import WorkerSearchResponsePb
 
 

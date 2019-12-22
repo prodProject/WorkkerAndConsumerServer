@@ -1,6 +1,5 @@
 import os
 import smtplib
-from distutils.command.build import build
 from urllib import parse
 
 from flask import Flask, request, redirect, url_for, json
@@ -8,7 +7,9 @@ from flask_mail import Mail
 from google.protobuf.json_format import MessageToJson
 
 from Handlers.loginHandler import LoginHandler
+from Handlers.pushNotificationServiceHandler import PushNotificationServiceHandler
 from Handlers.registrationHandler import RegistrionHandler
+from Handlers.sendPushNotificationHandler import SendPushNotificationHandler
 from Handlers.workerHandler import WorkerHandler
 from Handlers.workerTypeHandler import WorkerTypeHandler
 
@@ -18,7 +19,6 @@ mail = Mail(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def getServerStatus():
-    # database = "DATABASE_URL :"+os.environ.get('DATABASE_URL',0)
     environment = "ENVIRONMENT :" + os.environ.get('SERVER_ENVIRONMENT', 3)
     url = "URL :" + os.environ.get('URL', 2)
     status = "STATUS :" + os.environ.get('STATUS', 3)
@@ -44,6 +44,32 @@ def createWorker():
 def updateWorker():
     assert request.json is not None, "WorkerPb is invalid"
     return WorkerHandler.updateWorker(builder=request.json)
+
+
+@app.route('/pushNotificationMain', methods=['GET'])
+def getPushNotification():
+    data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
+    print(data)
+    assert data is not '', "Invalid id"
+    return PushNotificationServiceHandler.getPushNotification(data)
+
+
+@app.route('/pushNotificationMain', methods=['POST'])
+def createPushNotification():
+    assert request.json is not None, "pushNotificationPb is invalid"
+    return PushNotificationServiceHandler.createPushNotification(builder=request.json)
+
+
+@app.route('/pushNotificationMain', methods=['PUT'])
+def updatePushNotification():
+    assert request.json is not None, "pushNotificationPb is invalid"
+    return PushNotificationServiceHandler.updatePushNotification(builder=request.json)
+
+
+@app.route('/sendNotificationMain', methods=['PUT'])
+def sendPushNotification():
+    assert request.json is not None, "pushNotificationPb is invalid"
+    return SendPushNotificationHandler.snedNotification(builder=request.json)
 
 
 @app.route('/registrationWorkerMain', methods=['POST'])

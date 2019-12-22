@@ -17,7 +17,9 @@ import entity_pb2 as entity__pb2
 import deviceinfo_pb2 as deviceinfo__pb2
 import persontypeenum_pb2 as persontypeenum__pb2
 import names_pb2 as names__pb2
+import genericref_pb2 as genericref__pb2
 import contactdetails_pb2 as contactdetails__pb2
+import image_pb2 as image__pb2
 import time_pb2 as time__pb2
 import gender_pb2 as gender__pb2
 import address_pb2 as address__pb2
@@ -29,9 +31,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0cworker.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x10\x64\x65viceinfo.proto\x1a\x14persontypeenum.proto\x1a\x0bnames.proto\x1a\x14\x63ontactdetails.proto\x1a\ntime.proto\x1a\x0cgender.proto\x1a\raddress.proto\x1a\x10workertype.proto\"\xfb\x02\n\x08WorkerPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.TimePb\x12#\n\x06gender\x18\x05 \x01(\x0b\x32\x13.protobuff.GenderPb\x12%\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x14.protobuff.AddressPb\x12\x37\n\x10workerTypeConfig\x18\x07 \x01(\x0b\x32\x1d.protobuff.WorkerTypeConfigPb\x12%\n\x04type\x18\x08 \x01(\x0b\x32\x17.protobuff.PersonTypePb\x12\'\n\x06\x64\x65vice\x18\t \x01(\x0b\x32\x17.protobuff.DeviceInfoPb\"k\n\x12WorkerTypeConfigPb\x12-\n\nworkerType\x18\x01 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\x12&\n\ncategories\x18\x02 \x03(\x0b\x32\x12.protobuff.NamesPb\"T\n\x0bWorkerPbRef\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPbb\x06proto3')
+  serialized_pb=_b('\n\x0cworker.proto\x12\tprotobuff\x1a\x0c\x65ntity.proto\x1a\x10\x64\x65viceinfo.proto\x1a\x14persontypeenum.proto\x1a\x0bnames.proto\x1a\x10genericref.proto\x1a\x14\x63ontactdetails.proto\x1a\x0bimage.proto\x1a\ntime.proto\x1a\x0cgender.proto\x1a\raddress.proto\x1a\x10workertype.proto\"\xda\x03\n\x08WorkerPb\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPb\x12\x33\n\x0e\x63ontactDetails\x18\x03 \x01(\x0b\x32\x1b.protobuff.ContactDetailsPb\x12\x1e\n\x03\x64ob\x18\x04 \x01(\x0b\x32\x11.protobuff.TimePb\x12#\n\x06gender\x18\x05 \x01(\x0b\x32\x13.protobuff.GenderPb\x12%\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x14.protobuff.AddressPb\x12\x37\n\x10workerTypeConfig\x18\x07 \x01(\x0b\x32\x1d.protobuff.WorkerTypeConfigPb\x12%\n\x04type\x18\x08 \x01(\x0b\x32\x17.protobuff.PersonTypePb\x12\'\n\x06\x64\x65vice\x18\t \x01(\x0b\x32\x17.protobuff.DeviceInfoPb\x12\'\n\x0bprofilePics\x18\n \x01(\x0b\x32\x12.protobuff.ImagePb\x12\x34\n\x13pushNotificationRef\x18\x0b \x01(\x0b\x32\x17.protobuff.GenericRefPb\"k\n\x12WorkerTypeConfigPb\x12-\n\nworkerType\x18\x01 \x01(\x0e\x32\x19.protobuff.WorkerTypeEnum\x12&\n\ncategories\x18\x02 \x03(\x0b\x32\x12.protobuff.NamesPb\"T\n\x0bWorkerPbRef\x12#\n\x06\x64\x62Info\x18\x01 \x01(\x0b\x32\x13.protobuff.EntityPb\x12 \n\x04name\x18\x02 \x01(\x0b\x32\x12.protobuff.NamesPbb\x06proto3')
   ,
-  dependencies=[entity__pb2.DESCRIPTOR,deviceinfo__pb2.DESCRIPTOR,persontypeenum__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,gender__pb2.DESCRIPTOR,address__pb2.DESCRIPTOR,workertype__pb2.DESCRIPTOR,])
+  dependencies=[entity__pb2.DESCRIPTOR,deviceinfo__pb2.DESCRIPTOR,persontypeenum__pb2.DESCRIPTOR,names__pb2.DESCRIPTOR,genericref__pb2.DESCRIPTOR,contactdetails__pb2.DESCRIPTOR,image__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,gender__pb2.DESCRIPTOR,address__pb2.DESCRIPTOR,workertype__pb2.DESCRIPTOR,])
 
 
 
@@ -106,6 +108,20 @@ _WORKERPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='profilePics', full_name='protobuff.WorkerPb.profilePics', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='pushNotificationRef', full_name='protobuff.WorkerPb.pushNotificationRef', index=10,
+      number=11, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -118,8 +134,8 @@ _WORKERPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=176,
-  serialized_end=555,
+  serialized_start=207,
+  serialized_end=681,
 )
 
 
@@ -156,8 +172,8 @@ _WORKERTYPECONFIGPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=557,
-  serialized_end=664,
+  serialized_start=683,
+  serialized_end=790,
 )
 
 
@@ -194,8 +210,8 @@ _WORKERPBREF = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=666,
-  serialized_end=750,
+  serialized_start=792,
+  serialized_end=876,
 )
 
 _WORKERPB.fields_by_name['dbInfo'].message_type = entity__pb2._ENTITYPB
@@ -207,6 +223,8 @@ _WORKERPB.fields_by_name['address'].message_type = address__pb2._ADDRESSPB
 _WORKERPB.fields_by_name['workerTypeConfig'].message_type = _WORKERTYPECONFIGPB
 _WORKERPB.fields_by_name['type'].message_type = persontypeenum__pb2._PERSONTYPEPB
 _WORKERPB.fields_by_name['device'].message_type = deviceinfo__pb2._DEVICEINFOPB
+_WORKERPB.fields_by_name['profilePics'].message_type = image__pb2._IMAGEPB
+_WORKERPB.fields_by_name['pushNotificationRef'].message_type = genericref__pb2._GENERICREFPB
 _WORKERTYPECONFIGPB.fields_by_name['workerType'].enum_type = workertype__pb2._WORKERTYPEENUM
 _WORKERTYPECONFIGPB.fields_by_name['categories'].message_type = names__pb2._NAMESPB
 _WORKERPBREF.fields_by_name['dbInfo'].message_type = entity__pb2._ENTITYPB

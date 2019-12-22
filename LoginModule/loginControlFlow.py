@@ -20,6 +20,7 @@ class States(Enum):
 
 
 class Login:
+
     m_loginService = LoginService();
     m_passwordService = PasswordService()
     m_workerService = WorkerService();

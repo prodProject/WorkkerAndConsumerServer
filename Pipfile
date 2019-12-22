@@ -24,6 +24,8 @@ Flask-Mail="*"
 sendgrid = "*"
 bcrypt = "*"
 python-firebase ="*"
+pyfcm = "*"
+pyrebase = "*"
 
 [requires]
 

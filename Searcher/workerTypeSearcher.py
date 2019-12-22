@@ -38,8 +38,8 @@ class WorkerTypeSearcher:
     def validate(self, workerpb):
         if (workerpb.dbInfo.lifeTime != StatusEnum.UNKNOWN_STATUS):
             self.typeConfig.append(
-                self.m_helper.getCondition(cond=WorkerTypeSearchConfig.LIFETIME, value=StatusEnum.Name(workerpb.dbInfo.lifeTime)))
+                self.m_helper.getEqualToCondition(cond=WorkerTypeSearchConfig.LIFETIME, value=StatusEnum.Name(workerpb.dbInfo.lifeTime)))
 
         if (workerpb.workerType != UNKNOWN_WORKER_TYPE):
             self.typeConfig.append(
-                self.m_helper.getCondition(cond=WorkerTypeSearchConfig.WORKER_TYPE, value=WorkerTypeEnum.Name(workerpb.workerType)))
+                self.m_helper.getEqualToCondition(cond=WorkerTypeSearchConfig.WORKER_TYPE, value=WorkerTypeEnum.Name(workerpb.workerType)))
