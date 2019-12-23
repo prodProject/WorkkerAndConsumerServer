@@ -66,9 +66,9 @@ def updatePushNotification():
     return PushNotificationServiceHandler.updatePushNotification(builder=request.json)
 
 
-@app.route('/sendNotificationMain', methods=['PUT'])
+@app.route('/sendNotificationMain', methods=['POST'])
 def sendPushNotification():
-    assert request.json is not None, "pushNotificationPb is invalid"
+    assert request.json is not None, "pushNotificationRequestPb is invalid"
     return SendPushNotificationHandler.snedNotification(builder=request.json)
 
 
