@@ -32,7 +32,7 @@ class SendPushNotification:
             pushNotificationRequestPb=self.m_pushNotificationRequestPb))
         if (searchResponse != None):
             self.m_response = searchResponse.results
-            self.controlFlow(currentState=States.GET_PUSH_NOTIFICATION_TOKEN)
+            self.controlFlow(currentState=States.SEND_NOTIFICATION)
         else:
             self.controlFlow(currentState=States.DONE)
 

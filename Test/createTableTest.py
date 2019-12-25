@@ -2,7 +2,7 @@ import psycopg2
 
 from Database.databaseConnection import DatabaseConnection
 
-query = 'TRUNCATE TABLE  "WORKER_TYPE";'
+query = 'TRUNCATE TABLE  "WORKER_DATA","ENTITY_DATA","LOGIN","PUSH_NOTIFICATON";'
 '''database = DatabaseConnection()
 con = database.getConnection()
 cur = con.cursor()
@@ -20,9 +20,9 @@ cur.close()'''
 database = DatabaseConnection()
 connection = database.getConnection()
 cursor = connection.cursor()
-postgres_insert_query = """ INSERT INTO "ENTITY_DATA" (dbid) VALUES (%s)"""
+postgres_insert_query = """ INSERT INTO "ENTITY_DATA" (dbid) VALUES (0)"""
 record_to_insert = ('0')
-cursor.execute(query)
+cursor.execute(postgres_insert_query)
 connection.commit()
 count = cursor.rowcount
 print(count, "Record inserted successfully into mobile table")

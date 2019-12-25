@@ -1,6 +1,8 @@
-import bcrypt
-print("shub@123")
-#hased_pass = bcrypt.hashpw("shub@123", bcrypt.gensalt())
-#print(hased_pass)
-dcrypt = bcrypt.checkpw("shub@123", "$2a$12$.LErnnFTlG5HBK649RoUM.1Kgaa8VrmiUmSk.uHavscYBvDKKve7e")
-print(dcrypt)
+from Services import sendPushNotificationService
+from Services.sendPushNotificationService import SendPushNotificationService
+from protobuff.pushnotification_pb2 import PushNotificationRequestPb
+
+service = SendPushNotificationService()
+sendNotification = PushNotificationRequestPb()
+sendNotification.workerRef.dbInfo.id ="ku"
+print(service.sendNotification(pushNotificationRequestPb=sendNotification))

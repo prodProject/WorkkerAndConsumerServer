@@ -11,13 +11,13 @@ class SendPushNotificationHelper:
     def getPushNotificationBuilder(self, searchResponse):
         tokenList = list()
         pushNotifiactionBuilder = PushNotifiactionBuilderPb()
-        if (len(list) > 1):
+        if (len(tokenList) > 1):
             for pushNotificationPb in searchResponse:
                 tokenList.append(pushNotificationPb.tokenId)
             pushNotifiactionBuilder.registrationIds.extend(tokenList)
             pushNotifiactionBuilder.sendType = MULTIPLE
         else:
-            pushNotifiactionBuilder.registrationId = searchResponse[0]
+            pushNotifiactionBuilder.registrationId = searchResponse[0].tokenId
             pushNotifiactionBuilder.sendType = SINGLE
         pushNotifiactionBuilder.subject = 'Hello'
         pushNotifiactionBuilder.body = 'This is Test'
