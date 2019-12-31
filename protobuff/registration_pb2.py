@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protobuff',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x12registration.proto\x12\tprotobuff\x1a\x0cworker.proto\x1a\x0e\x63onsumer.proto\x1a\x18responsestatusenum.proto\x1a\x0blogin.proto\"w\n\x15RegistrationRequestPb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63omsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12\x10\n\x08password\x18\x03 \x01(\t\"\xb4\x01\n\x16RegistrationResponsePb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63onsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12!\n\x05login\x18\x03 \x01(\x0b\x32\x12.protobuff.LoginPb\x12)\n\x06status\x18\x04 \x01(\x0b\x32\x19.protobuff.ResponseTypePbb\x06proto3')
+  serialized_pb=_b('\n\x12registration.proto\x12\tprotobuff\x1a\x0cworker.proto\x1a\x0e\x63onsumer.proto\x1a\x18responsestatusenum.proto\x1a\x0blogin.proto\"\x96\x01\n\x15RegistrationRequestPb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63omsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x1d\n\x15pushNotificationToken\x18\x04 \x01(\t\"\xb4\x01\n\x16RegistrationResponsePb\x12#\n\x06worker\x18\x01 \x01(\x0b\x32\x13.protobuff.WorkerPb\x12\'\n\x08\x63onsumer\x18\x02 \x01(\x0b\x32\x15.protobuff.ConsumerPb\x12!\n\x05login\x18\x03 \x01(\x0b\x32\x12.protobuff.LoginPb\x12)\n\x06status\x18\x04 \x01(\x0b\x32\x19.protobuff.ResponseTypePbb\x06proto3')
   ,
   dependencies=[worker__pb2.DESCRIPTOR,consumer__pb2.DESCRIPTOR,responsestatusenum__pb2.DESCRIPTOR,login__pb2.DESCRIPTOR,])
 
@@ -59,6 +59,13 @@ _REGISTRATIONREQUESTPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='pushNotificationToken', full_name='protobuff.RegistrationRequestPb.pushNotificationToken', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -71,8 +78,8 @@ _REGISTRATIONREQUESTPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=102,
-  serialized_end=221,
+  serialized_start=103,
+  serialized_end=253,
 )
 
 
@@ -123,8 +130,8 @@ _REGISTRATIONRESPONSEPB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=224,
-  serialized_end=404,
+  serialized_start=256,
+  serialized_end=436,
 )
 
 _REGISTRATIONREQUESTPB.fields_by_name['worker'].message_type = worker__pb2._WORKERPB

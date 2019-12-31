@@ -1,3 +1,5 @@
+from pyparsing import pyparsing_unicode
+
 from ConstantsProperties import sendGridEmailProperties
 from Enums.passwordEnum import PasswordMode
 from Services.passwordService import PasswordService
@@ -5,6 +7,7 @@ from TimeUtility.timeUtill import TimeUtil
 from protobuff.email_pb2 import EmailBuilderPb, EmailIdPb
 from protobuff.entity_pb2 import ACTIVE
 from protobuff.login_pb2 import LoginPb
+from protobuff.pushnotification_pb2 import PushNotificationPb
 from protobuff.registration_pb2 import RegistrationResponsePb
 from protobuff.responsestatusenum_pb2 import USER_EXIST
 from protobuff.time_pb2 import TimeZoneEnum
@@ -53,3 +56,11 @@ class RegistrationHelper:
         emailBuilder.subject = "Thank you For Registration"
         emailBuilder.content = "We are thanking your for joining us.We definatly take care of you"
         return emailBuilder
+
+    def getPushNotificationPb(self,registration,worker):
+         pushNotification = PushNotificationPb();
+         pushNotification.workerRef.dbInfo.id = worker.dbInfo.id
+         pushNotification.workerRef.name.CopyFrom(worker.name)
+         pushNotification.type.CopyFrom(worker.type)
+         pushNotification.tokenId = registration.pushNotificationToken;
+         return pushNotification;
