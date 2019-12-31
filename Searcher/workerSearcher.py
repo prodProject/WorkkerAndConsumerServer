@@ -20,8 +20,8 @@ class WorkerSearcher:
 
     def handle(self, workerpb):
         assert workerpb is not None, "WorkerPb cannot be empty"
-        self.validate(workerpb)
         self.typeConfig.clear();
+        self.validate(workerpb)
         subquery = self.getWokerConfig()
         return self.m_queryExecutor.search(query=subquery, table=Tables.WORKER_DATA.name)
 

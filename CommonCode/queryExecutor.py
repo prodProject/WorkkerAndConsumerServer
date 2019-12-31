@@ -1,10 +1,8 @@
 import psycopg2
-from google.protobuf.json_format import MessageToJson
 
 from CommonCode.intigerToStringIdConvertor import IntigerToStringIdConverter
 from Database.databaseConnection import DatabaseConnection
 from Database.databaseHelper import DatabaseHelper
-from Enums.databaseTables import Tables
 
 
 class QueryExecuter:
@@ -44,7 +42,7 @@ class QueryExecuter:
                 conn.commit()
                 conn.close()
                 cursor.close()
-                return MessageToJson(builder)
+                return builder
             else:
                 conn.commit()
                 conn.close()
