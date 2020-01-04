@@ -1,8 +1,7 @@
-
 from CommonCode.queryExecutor import QueryExecuter
 from CommonCode.strings import Strings
+from Enums.databaseTables import Tables
 from Searcher.searcherHelper import SearcherHelper
-from Enums.consumerDatabaseTable import Tables
 from Searcher.sercherConfig import SearcherConfig
 from protobuff.entity_pb2 import StatusEnum
 
@@ -13,31 +12,36 @@ class ConsumerSearchConfig():
     EMAIL_DOMAIN_PART = "raw_data -> 'contactDetails'->'email' ->> 'domain'"
     PRIMARY_MOBILE_NO = "raw_data -> 'contactDetails'->'primaryMobile' ->> 'number'"
 
+
 class ConsumerSearcher:
     m_queryExecutor = QueryExecuter()
     m_helper = SearcherHelper()
     typeConfig = list()
 
-    def handel(self, consumerpb):
-        assert  consumerpb is not None, "ConsumerPb cannot be empty"
-        self.validate(consumerpb)
+    def handle(self, consumerpb):
+        assert consumerpb is not None, "ConsumerPb cannot be empty"
         self.typeConfig.clear();
+        self.validate(consumerpb)
         subquery = self.getConsumerConfig()
         return self.m_queryExecutor.search(query=subquery, table=Tables.CONSUMER_DATA.name)
 
-    def getConsumerConsumer(self):
-        subQuery = ';';
+    def getConsumerConfig(self):
+        subQuery = '';
         i = 0
         for data in self.typeConfig:
             subQuery = " " + subQuery + " " + data
             if len(self.typeConfig) - 1 == i:
                 continue
-        subQuery = "" + subQuery + "" + SearcherConfig.AND
-        i = i + 1
-    def validate (self, consumerpb):
+            if len(self.typeConfig) != 1:
+                subQuery = "" + subQuery + "" + SearcherConfig.AND
+            i = i + 1
+        return subQuery
+
+    def validate(self, consumerpb):
         if (consumerpb.lifeTime != StatusEnum.UNKNOWN_STATUS):
             self.typeConfig.append(
-                self.m_helper.getCondition(cond=ConsumerSearchConfig.LIFETIME, value=StatusEnum.Name((consumerpb.lifeTime)))
+                self.m_helper.getCondition(cond=ConsumerSearchConfig.LIFETIME,
+                                           value=StatusEnum.Name((consumerpb.lifeTime)))
             )
         if (Strings.notEmpty(consumerpb.contactDetails.email.localPart) and Strings.notEmpty(
                 consumerpb.contactDetails.email.domain)):
@@ -58,7 +62,7 @@ class ConsumerSearcher:
             self.typeConfig.append(
                 self.m_helper.getOrCond(cond1=self.m_helper.getCondition(cond=ConsumerSearchConfig.PRIMARY_MOBILE_NO,
                                                                          value=consumerpb.mobileNo.number),
-                                             cond2=self.m_helper.getConditionForCheckingInJsonArray(listKey='contactDetails',
+                                        cond2=self.m_helper.getConditionForCheckingInJsonArray(listKey='contactDetails',
                                                                                                fieldKey='secondryMobile',
                                                                                                key='number',
                                                                                                value=consumerpb.mobileNo.number)))

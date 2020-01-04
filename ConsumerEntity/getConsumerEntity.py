@@ -34,7 +34,7 @@ class GetConsumerEntity:
         consumerPb = self.m_queryExecutor.get(id=self.id, table=Tables.CONSUMER_DATA.name)
         if (consumerPb != None):
             self.builder = self.m_converterJsonToPb.converjsontoPBProper(response=consumerPb,
-                                                                         instanceType=consumer_pb2.consumerPb())
+                                                                         instanceType=consumer_pb2.ConsumerPb())
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):

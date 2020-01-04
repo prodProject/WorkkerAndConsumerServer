@@ -27,6 +27,9 @@ class CreateConsumerEntity:
         self.builder = builder
         self.controlFlow(currentState=States.GET_ENTITY_ID)
 
+    def done(self):
+        return self.builder
+
     def getEntityId(self):
         self.id = self.m_entityId.get()
         self.controlFlow(currentState=States.CREATE_CONSUMER_ENTITY)
@@ -43,3 +46,4 @@ class CreateConsumerEntity:
             self.createEntityId()
         elif (currentState == States.DONE):
             self.done()
+

@@ -23,6 +23,7 @@ class CreateTableIfNotExists:
 
     def getTablesFromDb(self):
         query = self.m_helper.getAllTableQuery()
+        print(query)
         conn = self.m_dbConnection.getConnection()
         cursor = conn.cursor()
         cursor.execute(query)
@@ -40,6 +41,7 @@ class CreateTableIfNotExists:
                 if (Tables.ENTITY_DATA == table):
                     try:
                         query = self.m_helper.getCreateEntityTableQuery(table=table.name)
+                        print(query)
                         conn = self.m_dbConnection.getConnection()
                         cursor = conn.cursor()
                         cursor.execute(query)
@@ -51,6 +53,7 @@ class CreateTableIfNotExists:
                 elif (table == Tables.WORKER_TYPE):
                     try:
                         query = self.m_helper.getWorkerTypeTableQuery(table=table.name)
+                        print(query)
                         conn = self.m_dbConnection.getConnection()
                         cursor = conn.cursor()
                         cursor.execute(query)
@@ -62,6 +65,7 @@ class CreateTableIfNotExists:
                 else:
                     try:
                         query = self.m_helper.getCreateTableQuery(table=table.name)
+                        print(query)
                         conn = self.m_dbConnection.getConnection()
                         cursor = conn.cursor()
                         cursor.execute(query)
@@ -77,6 +81,7 @@ class CreateTableIfNotExists:
                 if (table not in self.response and table == Tables.ENTITY_DATA):
                     try:
                         query = self.m_helper.getCreateEntityTableQuery(table=table.name)
+                        print(query)
                         conn = self.m_dbConnection.getConnection()
                         cursor = conn.cursor()
                         cursor.execute(query)
@@ -88,6 +93,7 @@ class CreateTableIfNotExists:
                 elif (table not in self.response and table == Tables.WORKER_TYPE):
                     try:
                         query = self.m_helper.getWorkerTypeTableQuery(table=table.name)
+                        print(query)
                         conn = self.m_dbConnection.getConnection()
                         cursor = conn.cursor()
                         cursor.execute(query)
@@ -99,6 +105,7 @@ class CreateTableIfNotExists:
                 elif (table not in self.response):
                     try:
                         query = self.m_helper.getCreateTableQuery(table=table.name)
+                        print(query)
                         conn = self.m_dbConnection.getConnection()
                         cursor = conn.cursor()
                         cursor.execute(query)

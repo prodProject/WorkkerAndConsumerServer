@@ -3,6 +3,8 @@ from enum import Enum
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
+from Comparetor.consumerComparetor import ConsumerComparetor
+from ConsumerEntity.getConsumerEntity import GetConsumerEntity
 from Enums.databaseTables import Tables
 from Helper.entityHelper import EntityHelper
 from WorkerEntity.getWorkerEntity import GetWorkerEntity
@@ -18,7 +20,7 @@ class States(Enum):
 
 class UpdateConsumerEntity:
     m_helper = EntityHelper()
-    m_getEntity = GetWorkerEntity()
+    m_getEntity = GetConsumerEntity()
     m_queryExecutor = QueryExecuter()
     m_converterPbToJson = ConvertPbToJSON()
     m_converterJsonToPb = ConvertJSONToPb()
@@ -44,7 +46,7 @@ class UpdateConsumerEntity:
         self.controlFlow(currentState=States.COMPARE_PB)
 
     def comaprePb(self):
-        self.m_compareConsumerPb4.compareConsumerPb(oldPb=self.oldPb, newPb=self.builder)
+        self.m_compareConsumerPb.compareConsumerPb(oldPb=self.oldPb, newPb=self.builder)
         self.controlFlow(currentState=States.UPDATE_ENTITY_ID)
 
     def updateEntity(self):
