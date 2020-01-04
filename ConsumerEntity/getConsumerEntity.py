@@ -3,15 +3,17 @@ from enum import Enum
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
+from Enums.databaseTables import Tables
 from Helper.entityHelper import EntityHelper
-from Enums.consumerDatabaseTable import Tables
-
+from protobuff import consumer_pb2
+from protobuff.consumer_pb2 import ConsumerPb
 
 
 class States(Enum):
     START = 0,
     GET_ENTITY_ID = 1,
-    DONE = 3,
+    DONE = 2,
+
 
 class GetConsumerEntity:
     m_helper = EntityHelper()
@@ -21,7 +23,6 @@ class GetConsumerEntity:
     builder = None
     id = None
 
-
     def start(self, id):
         self.id = id
         self.controlFlow(currentState=States.GET_ENTITY_ID)
@@ -30,10 +31,10 @@ class GetConsumerEntity:
         return self.builder
 
     def getEntityId(self):
-        workerPb = self.m_queryExecutor.get(id=self.id, table=Tables.CONSUMER_DATA.name)
-        if (workerPb != None):
-            #proto file error convert worker_pb2 to consumer_pb2
-            self.builder = self.m_converterJsonToPb.converjsontoPBProper(response=workerPb,instanceType=worker_pb2.WorkerPb())
+        consumerPb = self.m_queryExecutor.get(id=self.id, table=Tables.CONSUMER_DATA.name)
+        if (consumerPb != None):
+            self.builder = self.m_converterJsonToPb.converjsontoPBProper(response=consumerPb,
+                                                                         instanceType=consumer_pb2.consumerPb())
         self.controlFlow(currentState=States.DONE)
 
     def controlFlow(self, currentState):

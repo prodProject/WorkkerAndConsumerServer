@@ -7,6 +7,7 @@ class Tables(Enum):
     WORKER_DATA = 2;
     WORKER_TYPE = 3;
     LOGIN=4;
+    CONSUMER_DATA=5;
 
     @staticmethod
     def getEnum(name):

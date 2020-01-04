@@ -2,28 +2,25 @@ from enum import Enum
 
 from CommonCode.convertPbToJSON import ConvertPbToJSON
 from CommonCode.queryExecutor import QueryExecuter
+from Enums.databaseTables import Tables
 from Helper.entityHelper import EntityHelper
 from Services.entityService import EntityService
-#improt proto file of consumer
-# from protobuff.worker_pb2 import WorkerPb
-
-from Enums.databaseTables import Tables
-# from Database.createTableIfNotExixts import States
+from protobuff.consumer_pb2 import ConsumerPb
 
 
 class States(Enum):
-     START = 0,
-     GET_ENTITY_ID = 1,
-     CREATE_CONSUMER_ENTITY = 2,
-     DONE = 3,
+    START = 0,
+    GET_ENTITY_ID = 1,
+    CREATE_CONSUMER_ENTITY = 2,
+    DONE = 3,
+
 
 class CreateConsumerEntity:
     m_entityId = EntityService()
     m_helper = EntityHelper()
     m_queryExecutor = QueryExecuter()
     m_converter = ConvertPbToJSON()
-    #use bulider for consumer insted of worker
-    #builder = WorkerPb()
+    builder = ConsumerPb()
     id = None
 
     def start(self, builder):
