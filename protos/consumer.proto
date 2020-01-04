@@ -5,6 +5,8 @@ package protobuff;
 import "entity.proto";
 import "persontypeenum.proto";
 import "names.proto";
+import "summary.proto";
+import "mobile.proto";
 import "contactdetails.proto";
 import "time.proto";
 import "gender.proto";
@@ -24,3 +26,15 @@ message ConsumerPbRef {
     EntityPb dbInfo = 1;
     NamesPb name = 2;
 }
+
+message ConsumerSearchRequestPb {
+    StatusEnum lifeTime =1;
+    ContactDetailsPb contactDetails =2;
+    MobilePb mobileNo = 3;
+}
+
+message ConsumerSearchResponsePb {
+    SummaryPb summary =1;
+    repeated ConsumerPb results =2;
+}
+
