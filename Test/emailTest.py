@@ -1,14 +1,13 @@
-from SendGridEmail.sendEmailFromSendgrid import SendMail
-from protobuff.email_pb2 import EmailBuilderPb
+from sparkpost import SparkPost
 
-email = EmailBuilderPb()
-email.fromId.localpart="no-reply"
-email.fromId.domain="prod.com"
-tobu=email.toId.add()
-tobu.localpart = "shubhamtiwaricr07"
-tobu.domain = "gmail.com"
-email.subject = "Hello"
-email.content = "hi"
-mail = SendMail()
-mail.start(builder=email)
-print(mail.done().headers)
+sp = SparkPost('952b3fd41adb013f97e54ed4e0d861341e460d03')
+
+response = sp.transmissions.send(
+    use_sandbox=True,
+    recipients=['shubhamtiwaricr07@gmail.com'],
+    html='<p>Hello world</p>',
+    from_email='no-reply@sparkpostbox.com',
+    subject='Hello from python-sparkpost'
+)
+
+print(response)
