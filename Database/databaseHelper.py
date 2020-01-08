@@ -9,6 +9,7 @@ class DatabaseHelper:
     BASE_UPDATE_QUERY = "UPDATE"
     BASE_INSERT_QUERY = 'INSERT INTO'
     BASE_RAW_DATA_QUERY = "SELECT raw_data FROM "
+    BASE_COUNT_DATA_TABLE = "SELECT count(raw_data) FROM"
 
     def getBaseQuery(self):
         return self.BASE_QUERY
@@ -26,7 +27,7 @@ class DatabaseHelper:
         return self.BASE_UPDATE_QUERY + ' "' + data + '"' + " SET dbid = " + value + " WHERE id = 1"
 
     def getInsertQuery(self, table, data):
-        if(table == Tables.WORKER_TYPE.name):
+        if (table == Tables.WORKER_TYPE.name):
             print(type(data.workerType))
             return self.BASE_INSERT_QUERY + ' "' + table + '"' + "( dbid ,workertype, raw_data) " + " VALUES " + "(" + self.getSingleQuotedString(
                 data.dbInfo.id) + " , " + self.getSingleQuotedString(
@@ -48,13 +49,16 @@ class DatabaseHelper:
         return "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
 
     def getCreateTableQuery(self, table):
-        return 'CREATE TABLE'+'"'+table+'"'+'(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
+        return 'CREATE TABLE' + '"' + table + '"' + '(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
 
     def getCreateEntityTableQuery(self, table):
-        return 'CREATE TABLE '+'"'+table+'"'+' (id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL);'
+        return 'CREATE TABLE ' + '"' + table + '"' + ' (id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL);'
 
-    def getWorkerTypeTableQuery(self,table):
-       return 'CREATE TABLE'+'"'+table+'"'+'(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,workertype VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
+    def getWorkerTypeTableQuery(self, table):
+        return 'CREATE TABLE' + '"' + table + '"' + '(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,workertype VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
 
-    def getSearchQuery(self,table,subquery):
-       return self.BASE_RAW_DATA_QUERY +'"'+table+'" WHERE '+ subquery + ';'
+    def getSearchQuery(self, table, subquery):
+        return self.BASE_RAW_DATA_QUERY + '"' + table + '" WHERE ' + subquery + ';'
+
+    def getCountQuery(self, table, subquery):
+        return self.BASE_COUNT_DATA_TABLE + '"' + table + '" WHERE ' + subquery + ';'
