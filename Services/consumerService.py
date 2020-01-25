@@ -1,3 +1,4 @@
+from ConsumerEntity.countConsumerEntity import CountConsumerEntity
 from ConsumerEntity.createConsumerEntity import CreateConsumerEntity
 from ConsumerEntity.getConsumerEntity import GetConsumerEntity
 from ConsumerEntity.searchConsumerEntity import ConsumerSearchEntity
@@ -11,6 +12,7 @@ class ConsumerService:
     m_updateConsumerEntity = UpdateConsumerEntity()
     m_consumerSearchEntity = ConsumerSearchEntity()
     m_consumerEntityHelper = EntityHelper()
+    m_consumerCountEntity = CountConsumerEntity()
 
     def create(self, builder):
         assert builder is not None, "ConsumerPb Cannot be empty"
@@ -36,6 +38,12 @@ class ConsumerService:
         self.m_consumerSearchEntity.start(consumersearchreqPb=builder)
         return self.m_consumerSearchEntity.done()
 
+    def count(self, builder):
+         #assert builder is not None, "WorkerSearchRequest Cannot be empty"
+         self.m_consumerCountEntity.start(consumerSearchPb=builder)
+         return self.m_consumerCountEntity.done()
+
     def delete(builder):
         assert builder.dbInfo.id is not '', "DbInfo id cannot be empty"
         print(builder)
+

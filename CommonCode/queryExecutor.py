@@ -96,9 +96,9 @@ class QueryExecuter:
         except (Exception, psycopg2.Error) as error:
             print("Error in update operation", error)
 
-    def count(self, table, subquery):
+    def count(self, table, query):
         try:
-            query = self.m_helper.getSearchQuery(table= table, subquery=subquery)
+            query = self.m_helper.getCountQuery(table= table, subquery=query)
             print(query)
             conn = self.m_dbConnection.getConnection()
             cursor = conn.cursor()
@@ -108,7 +108,8 @@ class QueryExecuter:
                 conn.commit()
                 conn.close()
                 cursor.close()
-                return row
+                data=row[0]
+                return data[0]
             else:
                 conn.commit()
                 conn.close()

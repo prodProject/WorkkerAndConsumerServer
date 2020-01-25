@@ -30,9 +30,6 @@ class ConsumerSearchEntity:
         self.builder = consumersearchreqPb
         self.controlFlow(currentState=States.GET_SEARCH)
 
-    def done(self):
-        return self.consumerSearchResponse
-
     def getSearch(self):
         consumerResp = self.m_searchHandler.handle(consumerpb=self.builder)
         if (consumerResp != None):

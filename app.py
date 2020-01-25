@@ -7,6 +7,7 @@ from flask import Flask, request, redirect, url_for, json
 from flask_mail import Mail
 from google.protobuf.json_format import MessageToJson
 
+from Handlers.consumerHandler import ConsumerHandler
 from Handlers.loginHandler import LoginHandler
 from Handlers.registrationHandler import RegistrionHandler
 from Handlers.workerHandler import WorkerHandler
@@ -46,6 +47,12 @@ def updateWorker():
     assert request.json is not None, "WorkerPb is invalid"
     return WorkerHandler.updateWorker(builder=request.json)
 
+@app.route('/countWorkerMain', methods=['GET'])
+def getWorkerCount():
+    data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
+    if ("{" in str(data)):
+        assert data is not '', "Invalid Query"
+        return MessageToJson(WorkerHandler.countWorker(builder=json.loads(data)))
 
 @app.route('/registrationWorkerMain', methods=['POST'])
 def registration():
@@ -72,6 +79,24 @@ def getWorkerType():
         assert data is not '', "Invalid Query"
         return WorkerTypeHandler.getWorkerType(id=data)
 
+@app.route('/consumerMain', methods=['POST'])
+def createConsumer():
+    assert request.json is not None, "ConsumerPb is invalid"
+    return ConsumerHandler.createConsumer(builder=request.json)
+
+
+@app.route('/workerMain', methods=['PUT'])
+def updateConsumer():
+    assert request.json is not None, "ConsumerPb is invalid"
+    return ConsumerHandler.updateConsumer(builder=request.json)
+
+@app.route('/countConsumerMain', methods=['GET'])
+def getConsumerCount():
+    data = parse.parse_qs(parse.urlparse(request.url).query)['query'][0]
+    if ("{" in str(data)):
+        assert data is not '', "Invalid Query"
+        return MessageToJson(ConsumerHandler.countConsumerer(builder=json.loads(data)))
+
 
 @app.route('/user', methods=['GET'])
 def user():
@@ -93,3 +118,4 @@ def mailSend():
         return "Successfully sent email"
     except smtplib.SMTPException:
         return "Error: unable to send email"
+

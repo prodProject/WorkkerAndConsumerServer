@@ -1,4 +1,5 @@
 from CommonCode.convertPbToJSON import ConvertPbToJSON
+from CommonCode.strings import Strings
 from Enums.databaseTables import Tables
 from protobuff.workertype_pb2 import WorkerTypeEnum
 
@@ -9,6 +10,7 @@ class DatabaseHelper:
     BASE_UPDATE_QUERY = "UPDATE"
     BASE_INSERT_QUERY = 'INSERT INTO'
     BASE_RAW_DATA_QUERY = "SELECT raw_data FROM "
+    BASE_COUNT_RAW_DATA_QUERY = "SELECT count(raw_data) FROM "
 
     def getBaseQuery(self):
         return self.BASE_QUERY
@@ -58,3 +60,9 @@ class DatabaseHelper:
 
     def getSearchQuery(self,table,subquery):
        return self.BASE_RAW_DATA_QUERY +'"'+table+'" WHERE '+ subquery + ';'
+
+    def getCountQuery(self,table,subquery):
+        if(Strings.isEmpty(subquery)):
+            return self.BASE_COUNT_RAW_DATA_QUERY +'"'+table+'" WHERE '+ 'true' + ';'
+        else:
+            return self.BASE_COUNT_RAW_DATA_QUERY +'"'+table+'" WHERE '+ subquery + ';'
