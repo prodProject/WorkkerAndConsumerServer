@@ -13,7 +13,6 @@ from Handlers.registrationHandler import RegistrionHandler
 from Handlers.sendPushNotificationHandler import SendPushNotificationHandler
 from Handlers.workerHandler import WorkerHandler
 from Handlers.workerTypeHandler import WorkerTypeHandler
-from Test.cachetest import BasicCache
 
 app = Flask(__name__)
 mail = Mail(app)
