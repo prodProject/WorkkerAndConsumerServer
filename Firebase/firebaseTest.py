@@ -15,6 +15,5 @@ firebaseConfig = {
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 
-storage = firebase.storage();
-print(storage.download(token="34f3acab-ca39-4e0d-a596-34d833fecb7e",filename='file1.txt'))
-#print(storage.child("images/file1.txt").get_url(token="34f3acab-ca39-4e0d-a596-34d833fecb7e"))
+database = firebase.database();
+print(database.child("users").child("Morty").set("hello"))

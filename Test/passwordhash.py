@@ -6,3 +6,5 @@ service = SendPushNotificationService()
 sendNotification = PushNotificationRequestPb()
 sendNotification.workerRef.dbInfo.id ="ku"
 print(service.sendNotification(pushNotificationRequestPb=sendNotification))
+
+

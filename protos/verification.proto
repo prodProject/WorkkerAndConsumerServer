@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package protobuff;
+
+import "genericref.proto";
+
+message VerificationPb {
+    GenericRefPb workerRef = 1;
+    string code = 2;
+}

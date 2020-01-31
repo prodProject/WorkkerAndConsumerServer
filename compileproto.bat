@@ -25,4 +25,5 @@ protoc consumer.proto --python_out=..\protobuff
 protoc registration.proto --python_out=..\protobuff
 protoc task.proto --python_out=..\protobuff
 protoc pushnotification.proto --python_out=..\protobuff
+protoc verification.proto --python_out=..\protobuff
 cd ..

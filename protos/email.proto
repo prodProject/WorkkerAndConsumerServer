@@ -7,9 +7,19 @@ message EmailIdPb {
     string domain = 2;
 }
 
-message EmailBuilderPb{
-    EmailIdPb fromId=1;
-    repeated EmailIdPb toId=2;
-    string subject =3;
-    string content = 4;
+enum EmailTypeEnum {
+    UNKNOWN_EMAIL = 0;
+    WELCOME_MAIL = 1;
+    VERIFICATION_MAIL = 2;
+}
+
+message EmailBuilderPb {
+    EmailTypeEnum emailType = 1;
+    EmailIdPb fromId = 2;
+    repeated EmailIdPb toId = 3;
+    string subject = 4;
+    string content = 5;
+    string from = 6;
+    string to = 7;
+    string name = 8;
 }
