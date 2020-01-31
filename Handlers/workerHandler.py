@@ -34,3 +34,13 @@ class WorkerHandler:
         m_converter = ConvertJSONToPb()
         builder = m_converter.converjsontoPBProper(response=builder,instanceType=workersearch_pb2.WorkerSearchRequestPb())
         return service.search(builder=builder)
+
+    @staticmethod
+    def countWorker(builder):
+        if (builder != None):
+            m_converter = ConvertJSONToPb()
+            builder = m_converter.converjsontoPBProper(response=builder,instanceType=workersearch_pb2.WorkerSearchRequestPb())
+
+        service = WorkerService()
+        return service.count(builder=builder)
+

@@ -1,5 +1,7 @@
 from CommonCode.convertJSONTOPb import ConvertJSONToPb
-from protobuff import worker_pb2, login_pb2, workertype_pb2, pushnotification_pb2
+from protobuff import pushnotification_pb2
+from protobuff import worker_pb2, login_pb2, workertype_pb2, consumer_pb2
+from protobuff.consumer_pb2 import ConsumerSearchResponsePb
 from protobuff.entity_pb2 import ACTIVE
 from protobuff.login_pb2 import LoginSearchRespsonsePb
 from protobuff.pushnotification_pb2 import PushNotificationSearchResponsePb
@@ -11,6 +13,8 @@ class EntityHelper:
     m_converterJsonToPb = ConvertJSONToPb()
     workerlist = list()
     pushNotificationList = list()
+    consumerlist = list()
+    loginlist = list()
     workerTypelist = list()
 
     def createEntity(self, id, builder):
@@ -37,6 +41,20 @@ class EntityHelper:
                 pass
         workerSearchResponse.results.extend(self.workerlist)
         return workerSearchResponse
+
+    def consumerRespose(self, consumerResp):
+        self.consumerlist.clear()
+        consumerSerchResponse = ConsumerSearchResponsePb()
+        consumerSerchResponse.summary.totalHits = len(consumerResp)
+        for index, consumer in enumerate(consumerResp):
+            # ConumerSearchResponse.results.add()
+            try:
+                self.workerlist.append(self.m_converterJsonToPb.converjsontoPBProper(response=consumer[0],
+                                                                                     instanceType=consumer_pb2.ConsumerPb()))
+            except ValueError:
+                pass
+        consumerSerchResponse.results.extend(self.workerlist)
+        return consumerSerchResponse
 
     def workerTypeResponse(self, workerTpeResp):
         self.workerTypelist.clear()
@@ -66,7 +84,6 @@ class EntityHelper:
         loginSearchResponse.results.extend(self.pushNotificationList)
         return loginSearchResponse
 
-
     def pushNotificationResponse(self, pushNotificationResp):
         self.pushNotificationList.clear()
         pushNotificationSearchResponse = PushNotificationSearchResponsePb()
@@ -75,7 +92,8 @@ class EntityHelper:
             # workerSearchResponse.results.add()
             try:
                 self.pushNotificationList.append(
-                    self.m_converterJsonToPb.converjsontoPBProper(response=pushNotification[0], instanceType=pushnotification_pb2.PushNotificationPb()))
+                    self.m_converterJsonToPb.converjsontoPBProper(response=pushNotification[0],
+                                                                  instanceType=pushnotification_pb2.PushNotificationPb()))
             except ValueError:
                 pass
         pushNotificationSearchResponse.results.extend(self.pushNotificationList)

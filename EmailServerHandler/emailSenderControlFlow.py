@@ -8,3 +8,5 @@ class States(Enum):
 
 
 class EmailSender:
+    def a(self):
+        return

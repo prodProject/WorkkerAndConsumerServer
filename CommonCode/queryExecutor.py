@@ -33,7 +33,7 @@ class QueryExecuter:
 
     def update(self, id, builder, table):
         try:
-            query = self.m_helper.updateRawDataEntityQuery(id=id,newPb=builder,table=table)
+            query = self.m_helper.updateRawDataEntityQuery(id=id, newPb=builder, table=table)
             print(query)
             conn = self.m_dbConnection.getConnection()
             cursor = conn.cursor()
@@ -59,7 +59,7 @@ class QueryExecuter:
             cursor = conn.cursor()
             cursor.execute(query)
             if (cursor.rowcount == 1):
-                row=cursor.fetchall()
+                row = cursor.fetchall()
                 data = row[0]
                 conn.commit()
                 conn.close()
@@ -73,7 +73,6 @@ class QueryExecuter:
         except (Exception, psycopg2.Error) as error:
             print("Error in update operation", error)
 
-
     def search(self, query, table):
         try:
             query = self.m_helper.getSearchQuery(table=table, subquery=query)
@@ -82,7 +81,7 @@ class QueryExecuter:
             cursor = conn.cursor()
             cursor.execute(query)
             if (cursor.rowcount > 0):
-                row=cursor.fetchall()
+                row = cursor.fetchall()
                 conn.commit()
                 conn.close()
                 cursor.close()
@@ -93,4 +92,26 @@ class QueryExecuter:
                 cursor.close()
                 return None
         except (Exception, psycopg2.Error) as error:
+            print("Error in update operation", error)
+
+    def count(self, table, query):
+        try:
+            query = self.m_helper.getCountQuery(table= table, subquery=query)
+            print(query)
+            conn = self.m_dbConnection.getConnection()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            if (cursor.rowcount > 0):
+                row = cursor.fetchall()
+                conn.commit()
+                conn.close()
+                cursor.close()
+                data=row[0]
+                return data[0]
+            else:
+                conn.commit()
+                conn.close()
+                cursor.close()
+                return None
+        except(Exception, psycopg2.Error) as error:
             print("Error in update operation", error)

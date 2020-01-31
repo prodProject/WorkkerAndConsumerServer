@@ -26,6 +26,8 @@ bcrypt = "*"
 python-firebase ="*"
 pyfcm = "*"
 pyrebase = "*"
+python-memcached = "*"
+
 
 [requires]
 

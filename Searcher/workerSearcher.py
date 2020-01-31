@@ -56,9 +56,15 @@ class WorkerSearcher:
                                                                  value=workerpb.contactDetais.primaryMobile.number))
         if (Strings.notEmpty(workerpb.mobileNo.number)):
             self.typeConfig.append(
+<<<<<<< HEAD
                 self.m_helper.getOrCond(cond1=self.m_helper.getEqualToCondition(cond=WorkerSearchConfig.PRIMARY_MOBILE_NO,
                                                                                 value=workerpb.mobileNo.number),
                                         cond2=self.m_helper.getConditionForCheckingInJsonArray(listKey='contactDetails',
+=======
+                self.m_helper.getOrCond(cond1=self.m_helper.getCondition(cond=WorkerSearchConfig.PRIMARY_MOBILE_NO,
+                                                                         value=workerpb.mobileNo.number),
+                                             cond2=self.m_helper.getConditionForCheckingInJsonArray(listKey='contactDetails',
+>>>>>>> demontest
                                                                                                fieldKey='secondryMobile',
                                                                                                key='number',
                                                                                                value=workerpb.mobileNo.number)))

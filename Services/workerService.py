@@ -1,8 +1,10 @@
 from Helper.entityHelper import EntityHelper
+from WorkerEntity.countWorkerEntity import CountWorkerEntity
 from WorkerEntity.createWorkerEntity import CreateWorkerEntity
 from WorkerEntity.getWorkerEntity import GetWorkerEntity
-from WorkerEntity.searchWorkerEntity import WorkerSearchEntity
+from WorkerEntity.searchWorkerEntity import  WorkerSearchEntity
 from WorkerEntity.updateWorkerEntity import UpdateWorkerEntity
+
 
 
 class WorkerService:
@@ -11,6 +13,7 @@ class WorkerService:
     m_updateWorkerEntity = UpdateWorkerEntity()
     m_workerSearchEntity = WorkerSearchEntity()
     m_workerEntityHelper = EntityHelper()
+    m_workerCountEntity = CountWorkerEntity()
 
     def create(self, builder):
         assert builder is not None, "WorkerPb Cannot be empty"
@@ -35,6 +38,11 @@ class WorkerService:
         assert builder is not None, "WorkerSearchRequest Cannot be empty"
         self.m_workerSearchEntity.start(workersearchreqPb=builder)
         return self.m_workerSearchEntity.done()
+
+    def count(self, builder):
+         #assert builder is not None, "WorkerSearchRequest Cannot be empty"
+         self.m_workerCountEntity.start(workerSearchPb=builder)
+         return self.m_workerCountEntity.done()
 
     def delete(builder):
         assert builder.dbInfo.id is not '', "DbInfo id cannot be empty"

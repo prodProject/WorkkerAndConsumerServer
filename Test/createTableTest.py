@@ -2,7 +2,11 @@ import psycopg2
 
 from Database.databaseConnection import DatabaseConnection
 
+
 query = 'TRUNCATE TABLE  "WORKER_DATA","ENTITY_DATA","LOGIN","PUSH_NOTIFICATON" RESTART IDENTITY CASCADE;'
+
+#query = 'CREATE TABLE"CONSUMER_DATA"(id serial PRIMARY KEY,dbid VARCHAR (255) UNIQUE NOT NULL,raw_data json NOT NULL);'
+
 '''database = DatabaseConnection()
 con = database.getConnection()
 cur = con.cursor()
